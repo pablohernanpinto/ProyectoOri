@@ -35,8 +35,8 @@ button{
     cursor: pointer;
     transition-duration: 0.4s;
   }
-  
-  
+
+
 button:hover {
     background-color: #869ad1 ;
     color:white;
@@ -54,7 +54,7 @@ button:hover {
 
 
 .modal {
-    
+
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -82,18 +82,18 @@ button:hover {
     animation-name: animatetop;
     animation-duration: 0.5s
   }
-  
+
   /* Add Animation */
   @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
+    from {top:-300px; opacity:0}
     to {top:0; opacity:1}
   }
-  
+
   @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
   }
-  
+
   /* The Close Button */
   .close {
     color: white;
@@ -101,14 +101,14 @@ button:hover {
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
   }
-  
+
   .modal-header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -116,11 +116,10 @@ button:hover {
     background-color: #253e85;
     color: white;
   }
-  
+
   .modal-body {padding: 2px 16px;}
 
 
 .orden{
     flex-direction: row;
 }
-  

@@ -13,7 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AllConveniosComponent } from './components/all-convenios/all-convenios.component';
 import { AddComComponent } from './components/modals/add-com/add-com.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './components/modals/modalInfo/modal.component';
@@ -30,7 +30,7 @@ import { NgToastModule } from 'ng-angular-popup';
     PageNotFoundComponent,
     AllConveniosComponent,
     HeaderComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,10 +41,11 @@ import { NgToastModule } from 'ng-angular-popup';
     MatDialogModule,
     NgSelectModule,
     NgToastModule,
-    
+    ReactiveFormsModule,
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
+  ],
   bootstrap: [AppComponent],
-  
 })
-export class AppModule { }
+export class AppModule {}
