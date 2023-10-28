@@ -1,0 +1,26 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Agregar Convenio</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+
+            <div class = 'orden'>
+                <ng-select
+                    [items]="options"
+                    bindLabel="label"
+                    [(ngModel)]="selectedOption"
+                    placeholder="Selecciona una opción"
+                    [searchable]="true"
+                    >
+                </ng-select>
+            </div>
+            
+            
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  

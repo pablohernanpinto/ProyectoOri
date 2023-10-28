@@ -1,0 +1,36 @@
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span (click)="closeDialog()" class="close">&times;</span>
+      <h2  *ngIf="mostrarEnPantalla">{{ mostrarEnPantalla.Nombre_Convenio }}</h2>
+    </div>
+    <div class="modal-body">
+      <ng-container *ngIf="mostrarEnPantalla">
+        <h3>Nombre de convenio: {{ mostrarEnPantalla.Nombre_Convenio }} </h3>
+        <h3>Tipo de convenio: {{ mostrarEnPantalla.Tipo_Convenio }} </h3>
+        <h3>Vigencia: {{ mostrarEnPantalla.Vigencia }} </h3>
+        <h3>Año de firma: {{ mostrarEnPantalla.Anio_Firma }} </h3>
+        <h3>Tipo de firma: {{ mostrarEnPantalla.Tipo_Firma }} </h3>
+        <h3>Cupos: {{ mostrarEnPantalla.Cupos }} </h3>
+        <h3>Documentos: {{ mostrarEnPantalla.Documentos }} </h3>
+        
+        <button class="button" (click)="delete()">Borrar</button>
+        <br>
+        <br>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+
+<!--
+
+              "ID": convenio[0],
+            "NOMBRE_CONV": convenio[1],
+            "TIPO_CONV": convenio[2],
+            "VIGENCIA": convenio[3],
+            "ANO_FIRMA": convenio[4],
+            "TIPO_FIRMA": convenio[5],
+            "CUPOS": convenio[6],
+            "DOCUMENTOS": convenio[7]
+-->
