@@ -14,7 +14,7 @@ export class AllConveniosComponent {
   constructor(private http: HttpClient,public dialog: MatDialog) { }
 
   openModal(Index: number) {
-    const dialogRef = this.dialog.open(ModalComponent, {data: { Index:Index }});
+    const dialogRef = this.dialog.open(ModalComponent, {data: {Index:Index}});
   }
   
 

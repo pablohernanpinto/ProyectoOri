@@ -19,15 +19,17 @@ export class AddComComponent {
 
 
   ngOnInit() {
-    this.hacerPeticion(); 
+    this.hacerPeticion();
   }
 
-  
-  options = [
-    { label: 'Opción 1', value: 1 },
-    { label: 'Opción 2', value: 2 },
-    { label: 'Opción 3', value: 3 }
-  ];
+  lista = [
+  {Nombre_Institucion: ' Centro de Investigación Energética'},
+  {Nombre_Institucion2: ' Centro de Investigación Energética'}
+  ]
+
+  options = [];
+
+
 
 
   formulario = {
@@ -54,29 +56,21 @@ export class AddComComponent {
       alert("INGRESO NO VALIDO");
     }
   }
+
+  
   closeDialog() {
     this.dialogRef.close('');
   }
-  PaginaPrincipal(){
-    this.router.navigate(['/page']);
-
-    this.http.post('http://localhost:3000/api/convenios/', this.formulario).subscribe(
-      (data: any) => {console.log(data); // Esto imprimirá la respuesta del servidor en la consola del navegador
-      },
-      (error) => {
-        console.error(error); // Esto imprimirá cualquier error en la consola del navegador
-      }
-    );
-  }
-
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/instituciones/';
+    const url = 'http://localhost:3000/api/nombresInstituciones/';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
-      console.log(this.convenios)});
+      console.log(this.convenios.length)});
+      this.options = this.convenios.map((label: any, index: number) => ({ label, value: index + 1 }));
+
   }
-  
+
 }
 
 
