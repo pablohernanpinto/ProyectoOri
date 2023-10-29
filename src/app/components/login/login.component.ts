@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -40,6 +40,12 @@ export class LoginComponent {
       alert('El usuario o la contraseña no son correctos');
     }else{
       this.router.navigateByUrl('/page');
+    }
+  }
+  @HostListener('document:keypress', ['$event']) /* Al presionar ENTER se puede iniciar sesión */
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.Login();
     }
   }
 }

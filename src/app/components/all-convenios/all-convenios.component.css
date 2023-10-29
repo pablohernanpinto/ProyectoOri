@@ -3,7 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
  /* Esto asegura que el cuerpo ocupe toda la altura de la ventana */
 }
 
@@ -15,7 +15,7 @@ body {
 
 .listTittle th {
     padding-inline: 100px; /* Ajusta el espacio alrededor de las celdas del encabezado */
-    
+
 }
 
 .listElements td {
@@ -26,7 +26,7 @@ body {
 
 th, td {
     padding: 8px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #253e85;}
 
 

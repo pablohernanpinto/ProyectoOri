@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .header {
-    padding-top: 20px;
+    padding-top: 10px;
     display: flex;
     justify-content: center; /* Esto centra los elementos horizontalmente */
     align-items: center; /* Esto centra los elementos verticalmente */
+    background-color: #253e85;
 }
 #logo {
     margin-right: 10px; /* Espacio entre el logo y el input */
@@ -11,43 +14,60 @@
 
 input[type="text"] {
     border-radius: 30px;
-    background-color: rgba(171, 185, 224, 0.5);
-    width: 60%;
+    background-color: #f4f5f9;
+    width: 30%;
     padding: 12px 20px;
     box-sizing: border-box;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    margin-bottom: 14px;
+    margin-left: 230px;
 
 }
 
 
 input::placeholder{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
+    font-family: 'Poppins', sans-serif;
+    font-size: small;
 }
 
 
 #logo{
-    background-color: #253e85;
-    border-radius: 50px;
     padding-left: 10px;
     padding-top: 10px;
-    transition-duration: 0.4s;
+    padding-top: 5px;
+    margin-bottom: 15px;
+    margin-right: 80px;
     cursor: pointer;
-    transition-duration: 0.4s;
   }
 
-
-#logo:hover {
-    background-color: #869ad1 ;
-
-}
-
 button{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
-    background-color: #253e85;
+    font-family: 'Poppins', sans-serif;
+    font-size: small;
     border-radius: 5cm;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 140px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 10px 20px;
+    border-left-width: 0px;
+    border-left-style: solid;
+    border-right-width: 0px;
+    border-right-style: solid;
+    border-top-width: 0px;
+    border-top-style: solid;
+    border-bottom-width: 0px;
+    border-bottom-style: solid;
+    background-color: #253e85;
     color: white;
-    padding: 16px 32px;
     text-align: center;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -61,13 +81,15 @@ button:hover {
 
 
 .buscador{
-    height: 56px;
-    width: 57;
-    background-color: #253e85;
+    height: 40px;
+    width: 40;
     border-radius: 50px;
     transition-duration: 0.4s;
     cursor: pointer;
     transition-duration: 0.4s;
+    margin-bottom: 15px;
+    margin-left: 1px;
+    margin-right: 40px;
 }
 
 
@@ -77,10 +99,12 @@ button:hover {
 }
 
 .perfil{
-    height: 50px;
-    width: 50;
+    height: 30px;
+    width: 30;
     padding: 5px;
-    background-color: #253e85;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    margin-right: 20px;
     border-radius: 50px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -91,4 +115,13 @@ button:hover {
 .perfil:hover {
     background-color: #869ad1 ;
     color:white;
+}
+
+.logout{
+    height: 30px;
+    width: 30;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    border-radius: 50px;
+    cursor: pointer;
 }

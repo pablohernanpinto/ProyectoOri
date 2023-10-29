@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio</title>
 </head>
 <body>
-    <nav class="header">
-        <img (click)="goMainPage()" id ='logo' src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
+    <nav class="header" style="height: 40px;">
+        <img (click)="goMainPage()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
         <input type="text" name="search" placeholder="Buscar por universidad, tipo de convenio, etc">
         <img class="buscador" src="../../../assets/BUSCADOR.png" alt="search">
-        <button (click)="ModalADD()" type="button" >+CONVENIO</button>
+        <button (click)="ModalADD()" type="button" >Agregar convenio</button>
         <img class="perfil" src="../../../assets/PERFIL.png" alt="search">
+        <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
     </nav>
 </body>
 </html>
