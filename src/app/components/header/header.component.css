@@ -118,10 +118,19 @@ button:hover {
 }
 
 .logout{
+    padding: 5px;
     height: 30px;
     width: 30;
     margin-bottom: 10px;
     margin-left: 5px;
     border-radius: 50px;
+    transition-duration: 0.4s;
     cursor: pointer;
+    transition-duration: 0.4s;
+
+}
+
+.logout:hover {
+    background-color: #869ad1 ;
+    color:white;
 }
