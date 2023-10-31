@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+
+
     <table class="fullElements">
       <thead>
         <tr class="listTittle">
@@ -17,7 +19,9 @@
         </tr>
       </thead>
       <tbody >
-        <tr  (click)="openModal(i)" class="listElements" *ngFor="let convenio of convenios; let i = index">
+        
+        <tr (click)="openModal(i)" class="listElements" *ngFor="let convenio of filtrarConvenios(); let i = index">
+
           <td>{{ convenio.Nombre_Convenio }}</td>
           <td>{{ convenio.Tipo_Convenio }}</td>
           <td>{{ convenio.Vigencia }}</td>

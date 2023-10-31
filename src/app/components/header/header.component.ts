@@ -12,14 +12,17 @@ import { ModalService } from './modal.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  convenios: any;
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private loginService: LoginService,
     private http: HttpClient,
+    private envioServicio: ModalService
     ) {}
   
+  convenios: any;
+  busqueda:string  = '';
+
   
   ModalADD() {
 
@@ -34,6 +37,11 @@ export class HeaderComponent {
     this.loginService.logout(); // Llama al método logout del servicio
   }
   
+  enviarMensaje(){
+    //console.log(this.busqueda)
+    this.envioServicio.disparadorDeBusqueda.next({mensaje:this.busqueda})
+  }
+
   hacerPeticion() {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {

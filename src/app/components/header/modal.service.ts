@@ -5,6 +5,6 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 })
 export class ModalService {
 
-
+  @Output() disparadorDeBusqueda: EventEmitter<any> = new EventEmitter();
   constructor() { }
 }

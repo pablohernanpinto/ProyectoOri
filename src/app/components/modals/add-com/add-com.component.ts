@@ -31,9 +31,9 @@ export class AddComComponent {
 
 
   formulario = {
-    nombre_conv: '',
-    coordinadorConv: '',
-    nombreInstitucion: '',
+    nombreInst: '',
+    coordinadorInstitucion: '',
+    nombreConvenio: '',
     tipoDeConvenio: '',
     vigencia: '',
     ano_firma: '',
@@ -47,7 +47,37 @@ export class AddComComponent {
       // También puedes agregar validaciones adicionales si es necesario
       console.log('Formulario enviado', this.formulario);
     }
+/* 
+              <select name="selecConvenio" class="seleccion" [(ngModel)]="formulario.nombre_conv" required>
+                <option *ngIf="true" disabled selected value="">Seleccione un convenio</option>
+                  <option *ngFor="let convenio of options" [value]="convenio">{{convenio}}</option>
+                </select>
+                <br>  
+                <br>  
 
+                <select name="coordinadorConv" class="seleccion" [(ngModel)]="formulario.coordinadorConv" required>
+                  <option *ngIf="true" disabled selected value="">Coordinador de convenios</option>
+                  <option *ngFor="let convenio of options" [value]="convenio">{{ convenio }}</option>
+                </select>
+            
+                <div class="orden">
+                  <input  name = 'nombreInstitucion' type="text" class="input" [(ngModel)]="formulario.nombreInstitucion" placeholder="Ingresa tu nombre" required>
+                  <input type="text" class="input" [(ngModel)]="formulario.tipoDeConvenio" placeholder="Tipo de convenio" required>
+                </div>
+            
+                <div class="orden">
+                  <input type="text" class="input" name = 'vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
+                  <input type="text" class="input" [(ngModel)]="formulario.ano_firma" placeholder="Año de Firma" required>
+                </div>
+            
+                <div class="orden">
+                  <input type="text" name = 'documentos' class="input" [(ngModel)]="formulario.documentos" placeholder="Documentos" required>
+                </div>
+            
+                <div class="orden">
+                  <input type="text" class="input" name = 'cupos' [(ngModel)]="formulario.cupos" placeholder="cupos" required>
+                </div>
+             */
 
   addConvenio(formContact: NgForm) {
     if (formContact.valid) {
