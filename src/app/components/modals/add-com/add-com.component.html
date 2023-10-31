@@ -1,27 +1,105 @@
-<div id="myModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span (click)="closeDialog()" class="close">&times;</span>
-        <h2>Agregar Convenio</h2>
-      </div>
-      <div class="modal-body">
-        <ng-container>
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span (click)="closeDialog()" class="close">&times;</span>
+          <h2>Agregar Convenio</h2>
+        </div>
+        <div class="modal-body">
+          <ng-container>
+            <br>
+            <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+              <div class="orden">
+              <select name="selecConvenio" class="seleccion" [(ngModel)]="formulario.nombre_conv" required>
+                <option *ngIf="true" disabled selected value="">Seleccione un convenio</option>
+                  <option *ngFor="let convenio of options" [value]="convenio">{{convenio}}</option>
+                </select>
+                <br>  
 
-            <div class = 'orden'>
-                <ng-select
-                    [items]="options"
-                    bindLabel="label"
-                    [(ngModel)]="selectedOption"
-                    placeholder="Selecciona una opción"
-                    [searchable]="true"
-                    >
-                </ng-select>
-                <br><br><br>
-            </div>
+
+                <select name="coordinadorConv" class="seleccion" [(ngModel)]="formulario.coordinadorConv" required>
+                  <option *ngIf="true" disabled selected value="">Coordinador de convenios</option>
+                  <option *ngFor="let convenio of options" [value]="convenio">{{ convenio }}</option>
+                </select>
+                
+              </div>
+
+
+                <div class="orden">
+                  <input  name = 'nombreInstitucion' type="text" class="input" [(ngModel)]="formulario.nombreInstitucion" placeholder="Ingresa tu nombre" required>
+
+                  <input name = 'tipoDeConvenio'  type="text" class="input" [(ngModel)]="formulario.tipoDeConvenio" placeholder="Tipo de convenio" required>
+                </div>
             
+                <div class="orden">
+                  <input type="text" class="input" name = 'vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
+
+                  <input type="text" class="input" name = 'ano_firma' [(ngModel)]="formulario.ano_firma" placeholder="Año de Firma" required>
+                </div>
             
-        </ng-container>
+                <div class="orden">
+                  <input type="text" name = 'documentos' class="input" [(ngModel)]="formulario.documentos" placeholder="Documentos" required>
+                </div>
+            
+                <div class="orden">
+                  <input type="text" class="input" name = 'cupos' [(ngModel)]="formulario.cupos" placeholder="cupos" required>
+                </div>
+            
+                <div class="orden">
+                  <button type="submit">Enviar</button>
+                </div>
+            
+            </form>
+            <br>
+          </ng-container>
+        </div>
       </div>
     </div>
-  </div>
-  
+    
+
+    <!--
+
+              <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact = "ngForm" >
+
+              <label for="nombreInstitucion">Nombre de institucion </label>
+              <input type="text" name="nombre" [(ngModel)]="formulario.nombreInstitucion" required #name="ngModel">
+
+              <label for="unidadAcademica">Unidad academica </label>
+              <input type="text" name="unidadAcademica" [(ngModel)]="formulario.unidadAcademica"  required  #unidadAcademica="ngModel">
+
+
+              <label for="pais">País</label>
+              <input type="text" name="pais" [(ngModel)]="formulario.pais"  required  #pais="ngModel">
+
+              <label for="alcance">Alcance </label>
+              <input type="text" name="alcance" [(ngModel)]="formulario.alcance" required  #alcance="ngModel">
+
+              <label for="tipoInstitucion">Tipo de Institución</label>
+              <input type="text" name="tipoInstitucion" [(ngModel)]="formulario.tipoInstitucion" required  #tipoInstitucion="ngModel">
+      
+              <label for="nombreConvenio">Nombre del Convenio</label>
+              <input type="text" name="nombreConvenio" [(ngModel)]="formulario.nombre_conv" required  #nombreConvenio="ngModel">
+      
+              <label for="tipoConvenio">Tipo de Convenio</label>
+              <input type="text" name="tipoConvenio" [(ngModel)]="formulario.tipo_conv" required  #tipoConvenio="ngModel">
+      
+              <label for="tipoFirma">Tipo de Firma</label>
+              <input type="text" name="tipoFirma" [(ngModel)]="formulario.tipo_firma" required  #tipoFirma="ngModel">
+      
+              <label for="cupos">Cupos</label>
+              <input type="text" name="cupos" [(ngModel)]="formulario.cupos" required  #cupos="ngModel">
+      
+              <label for="documentos">Documentos</label>
+              <input type="text" name="documentos" [(ngModel)]="formulario.documentos" required  #documentos="ngModel"><br><br>
+
+
+              <label  for="vigencia">Vigencia</label>
+              <input type="date" name="vigencia" [(ngModel)]="formulario.vigencia" required  #vigencia="ngModel"> 
+      
+              <label class="Fechas" for="ano_firma">Año de Firma</label>
+              <input type="date" name="ano_firma" [(ngModel)]="formulario.ano_firma"  required #anoFirma="ngModel"><br><br>
+
+
+              <button type="submit">AGREGAR</button>
+              <button (click)="PaginaPrincipal()" type="button" >Pagina Principal</button>
+          </form>
+    -->

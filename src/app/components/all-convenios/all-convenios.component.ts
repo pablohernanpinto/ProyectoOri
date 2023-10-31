@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modals/modalInfo/modal.component';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-all-convenios',
@@ -11,9 +12,12 @@ import { ModalComponent } from '../modals/modalInfo/modal.component';
 export class AllConveniosComponent {
   convenios: any[] = []; // Inicialización aquí
 
-  constructor(private http: HttpClient,public dialog: MatDialog) { }
+  constructor(private http: HttpClient,
+    public dialog: MatDialog,
+    private listado : ModalService) { }
 
   openModal(Index: number) {
+
     const dialogRef = this.dialog.open(ModalComponent, {data: {Index:Index}});
   }
   
@@ -21,6 +25,7 @@ export class AllConveniosComponent {
 
   ngOnInit() {
     this.hacerPeticion(); 
+
   }
 
 
@@ -28,6 +33,7 @@ export class AllConveniosComponent {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
+
     });
   }
 
