@@ -6,6 +6,7 @@
     <title>Inicio</title>
 </head>
 <body>
+<<<<<<< HEAD
     <nav class="header" style="height: 40px;">
         <img (click)="goMainPage()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
         <input type="text" [(ngModel)]="busqueda" (input)="enviarMensaje()" name="search" placeholder="Buscar por universidad, tipo de convenio, etc">
@@ -19,5 +20,21 @@
         
         <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
     </nav>
+=======
+    <header>
+        <div>
+            <img (click)="goMainPage()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
+        </div>
+        <div class="search">
+            <input type="text" name="search" placeholder="Buscar por universidad, tipo de convenio, etc">
+            <img class="buscador" src="../../../assets/BUSCADOR.png" alt="search" title="Buscar">
+        </div>
+        <nav>
+            <button (click)="ModalADD()" type="button" title="Nuevo Convenio" >Agregar convenio</button>
+            <img class="perfil" src="../../../assets/PERFIL.png" alt="search" title="Perfil">
+            <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 
+        </nav>
+    </header>
+>>>>>>> fcd4fb2a18855c5cf225651006863e6439ad2842
 </body>
 </html>
