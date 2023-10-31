@@ -1,114 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.header {
-    padding-top: 10px;
+header {
     display: flex;
-    justify-content: center; /* Esto centra los elementos horizontalmente */
+    justify-content: space-between; /* Esto crea un espacio entre los elementos horizontalmente, con los div*/
     align-items: center; /* Esto centra los elementos verticalmente */
+    min-height: 70px;
     background-color: #253e85;
 }
-#logo {
-    margin-right: 10px; /* Espacio entre el logo y el input */
+#logo{
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
+.search{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 50px;
+    
+}
 
 input[type="text"] {
     border-radius: 30px;
+    height: 20px;
     background-color: #f4f5f9;
-    width: 30%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-left: 20px;
-    padding-right: 0px;
-    border-left-width: 0px;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    margin-bottom: 14px;
-    margin-left: 230px;
-
+    border: none;
+    width: 500px;
+    padding: 5px 20px;
+    box-sizing: content-box;
 }
-
-
-input::placeholder{
-    font-family: 'Poppins', sans-serif;
-    font-size: small;
-}
-
-
-#logo{
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-top: 5px;
-    margin-bottom: 15px;
-    margin-right: 80px;
-    cursor: pointer;
-  }
-
-button{
-    font-family: 'Poppins', sans-serif;
-    font-size: small;
-    border-radius: 5cm;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 140px;
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding: 10px 20px;
-    border-left-width: 0px;
-    border-left-style: solid;
-    border-right-width: 0px;
-    border-right-style: solid;
-    border-top-width: 0px;
-    border-top-style: solid;
-    border-bottom-width: 0px;
-    border-bottom-style: solid;
-    background-color: #253e85;
-    color: white;
-    text-align: center;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    transition-duration: 0.4s;
-  }
-
-button:hover {
-    background-color: #869ad1 ;
-    color:white;
-}
-
 
 .buscador{
-    height: 40px;
-    width: 40;
+    width: 35px;
     border-radius: 50px;
-    transition-duration: 0.4s;
     cursor: pointer;
-    transition-duration: 0.4s;
-    margin-bottom: 15px;
-    margin-left: 1px;
-    margin-right: 40px;
 }
-
 
 .buscador:hover {
     background-color: #869ad1 ;
     color:white;
 }
-
-.perfil{
-    height: 30px;
-    width: 30;
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-left: -10px;
-    margin-right: 20px;
-    border-radius: 50px;
-    transition-duration: 0.4s;
+nav{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+button{
+    border-radius: 30px;
+    color: white;
     cursor: pointer;
-    transition-duration: 0.4s;
+    background-color: #253e85;
+    font-weight: 600;
+    padding-right: 20px;
+    margin: 20px;
+    border-color: white;
+    border-style: solid;
+    padding: 5px 20px;
+}
+
+button:hover {
+    background-color: #869ad1 ;
+    color:white;
+}
+.perfil{
+    width: 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 20px;
 
 }
 
@@ -118,19 +79,22 @@ button:hover {
 }
 
 .logout{
-    padding: 5px;
-    height: 30px;
-    width: 30;
-    margin-bottom: 10px;
-    margin-left: 5px;
     border-radius: 50px;
-    transition-duration: 0.4s;
     cursor: pointer;
-    transition-duration: 0.4s;
-
+    padding: 5px;
 }
 
 .logout:hover {
     background-color: #869ad1 ;
     color:white;
+}
+
+@media (max-width: 700px){
+    header{
+        flex-direction: column;
+    }
+    
+    nav{
+        padding: 10px 0px;
+    }
 }
