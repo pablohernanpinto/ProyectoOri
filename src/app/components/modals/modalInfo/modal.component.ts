@@ -17,7 +17,7 @@ export class ModalComponent {
   mostrarEnPantalla: any;
 
   closeDialog() {
-    this.dialogRef.close('Pizza!');
+    this.dialogRef.close('');
   }
 
   ngOnInit() {
@@ -29,15 +29,16 @@ export class ModalComponent {
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
       this.mostrarEnPantalla = (this.convenios[this.data.Index]);
+     // console.log(this.mostrarEnPantalla.ID_Convenio)
     });
   }
 
   delete() {
-
-    this.http.delete('http://localhost:3000/api/convenios/'+this.data.Index)
+    //console.log('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
+    this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
     .subscribe(() => this.status = 'Delete successful');
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
-   // window.location.reload();
+    window.location.reload();
   }
   
 }

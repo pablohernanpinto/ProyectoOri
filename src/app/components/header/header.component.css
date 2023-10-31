@@ -70,12 +70,13 @@ button:hover {
     border-radius: 30px;
     cursor: pointer;
     margin: 20px;
-
+    padding: 5px;
 }
 
 .perfil:hover {
     background-color: #869ad1 ;
     color:white;
+    
 }
 
 .logout{
