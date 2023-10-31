@@ -4,6 +4,6 @@ import { Injectable, Output,EventEmitter} from '@angular/core';
   providedIn: 'root'
 })
 export class ModalService {
-
+  
   constructor() { }
 }
