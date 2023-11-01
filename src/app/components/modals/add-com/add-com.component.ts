@@ -31,8 +31,8 @@ export class AddComComponent {
 
 
   formulario = {
-  /*   nombreInst: '',
-    coordinadorInstitucion: '', */
+    id_institucion: '',
+    id_coordinador: '', 
     nombre_conv: '',
     tipo_conv: '',
     vigencia: '',

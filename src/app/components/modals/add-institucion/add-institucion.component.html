@@ -1,0 +1,48 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Añadir institucion</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+            <br>
+            <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+
+                
+                <div class="orden">
+                    <input  name = 'nombre_inst' type="text" class="input" [(ngModel)]="formulario.nombre_inst" placeholder="Nombre de institucion" required>
+  
+                    <input name = 'unidad_academica'  type="text" class="input" [(ngModel)]="formulario.unidad_academica" placeholder="Unidad Academica" required>
+                </div>
+            
+                  
+                <div class="orden">
+                    <input  name = 'pais' type="text" class="input" [(ngModel)]="formulario.pais" placeholder="Pais" required>
+  
+                    <input name = 'tipo_institucion'  type="text" class="input" [(ngModel)]="formulario.tipo_institucion" placeholder="Tipo de institucion" required>
+                  </div>
+              
+
+                  <div class="orden">
+                    <button type="submit">Enviar</button>
+                  </div>
+            
+            </form>            
+            <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+
+  <!--     {
+        "id": 1,
+        "Nombre_Institucion": "Insitucion1",
+        "Unidad_Academica": "Unidadacademica1",
+        "Pais": "Pais",
+        "Alcance": "Alcance1",
+        "Tipo_Institucion": "Tipodeinstitucion"
+            },
+        
+        -->

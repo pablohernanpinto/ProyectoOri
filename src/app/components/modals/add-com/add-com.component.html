@@ -8,6 +8,22 @@
           <ng-container>
             <br>
             <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+              
+              <div class="orden">
+        
+                <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.id_institucion" required>
+                  <option *ngIf="true" disabled selected value="">Seleccione una institucion</option>
+                  <option *ngFor="let convenio of options" [value]="convenio">{{convenio}}</option>
+                </select>
+                <br>  
+
+
+                <select name="coordinadorInstitucion" class="seleccion" [(ngModel)]="formulario.id_coordinador" required>
+                  <option *ngIf="true" disabled selected value="">Coordinador de institucion</option>
+                  <option *ngFor="let convenio of options" [value]="convenio">{{ convenio }}</option>
+                </select>
+              </div>
+
                 <div class="orden">
                   <input  name = 'nombreConvenio' type="text" class="input" [(ngModel)]="formulario.nombre_conv" placeholder="Ingrese nombre de convenio" required>
 

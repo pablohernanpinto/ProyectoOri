@@ -9,11 +9,13 @@
     <header>
         <div>
             <img (click)="goMainPage()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
+            
         </div>
         <div class="search">
             <input type="text" [(ngModel)]="busqueda" (input)="enviarMensaje()" name="search" placeholder="Buscar por universidad, tipo de convenio, etc">
         </div>
         <nav>
+            <button (click)="ModalAddInstituciones()" type="button" title="Nuevo Convenio" >Agregar institucion</button>
             <button (click)="ModalADD()" type="button" title="Nuevo Convenio" >Agregar convenio</button>
             <img class="perfil" src="../../../assets/PERFIL.png" alt="search" title="Perfil">
             <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 

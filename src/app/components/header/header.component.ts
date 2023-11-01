@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/guards/login.service';
 import { HttpClient } from '@angular/common/http';
 import { ModalService } from './modal.service';
+import { AddInstitucionComponent } from '../modals/add-institucion/add-institucion.component';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,6 @@ export class HeaderComponent {
 
   
   ModalADD() {
-
     const dialogRef = this.dialog.open(AddComComponent);
   }
 
@@ -38,7 +38,6 @@ export class HeaderComponent {
   }
   
   enviarMensaje(){
-    //console.log(this.busqueda)
     this.envioServicio.disparadorDeBusqueda.next({mensaje:this.busqueda})
   }
 
@@ -48,6 +47,11 @@ export class HeaderComponent {
       this.convenios = data;
 
     });
+  }
+
+
+  ModalAddInstituciones(){
+    const dialogRef = this.dialog.open(AddInstitucionComponent);
   }
 }
 

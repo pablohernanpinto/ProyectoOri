@@ -19,6 +19,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import { ModalComponent } from './components/modals/modalInfo/modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgToastModule } from 'ng-angular-popup';
+import { AddInstitucionComponent } from './components/modals/add-institucion/add-institucion.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NgToastModule } from 'ng-angular-popup';
     AllConveniosComponent,
     HeaderComponent,
     ModalComponent,
+    AddInstitucionComponent,
   ],
   imports: [
     BrowserModule,
