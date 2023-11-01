@@ -23,6 +23,8 @@ export class AddInstitucionComponent {
 
   closeDialog() {
     this.dialogRef.close('');
+    window.location.reload();
+
   }
 
 

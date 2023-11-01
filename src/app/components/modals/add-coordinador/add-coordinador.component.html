@@ -1,0 +1,43 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Añadir institucion</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+            <br>
+            <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+
+                
+                <div class="orden">
+                  <!-- necesito el nombre de la institucion y pasar el id -->
+                  <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndex">
+                    <option *ngIf="true" disabled selected value="">Seleccione una institucion</option>
+                    <option *ngFor="let convenio of optionsInstituciones; let i = index" [value]="convenio">{{convenio}}</option>
+                  </select>
+
+
+                    <input name = 'Tipo_Coordinador'  type="text" class="input" [(ngModel)]="formulario.Tipo_Coordinador" placeholder="Unidad Academica" required>
+                </div>
+            
+                  
+                <div class="orden">
+                    <input  name = 'Nombre' type="text" class="input" [(ngModel)]="formulario.Nombre" placeholder="Pais" required>
+  
+                    <input name = 'Correo'  type="text" class="input" [(ngModel)]="formulario.Correo" placeholder="Tipo de institucion" required>
+                  </div>
+              
+
+                  <div class="orden">
+                    <button type="submit">Enviar</button>
+                  </div>
+            
+            </form>            
+            <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+

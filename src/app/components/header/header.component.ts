@@ -6,6 +6,7 @@ import { LoginService } from 'src/guards/login.service';
 import { HttpClient } from '@angular/common/http';
 import { ModalService } from './modal.service';
 import { AddInstitucionComponent } from '../modals/add-institucion/add-institucion.component';
+import { AddCoordinadorComponent } from '../modals/add-coordinador/add-coordinador.component';
 
 @Component({
   selector: 'app-header',
@@ -48,10 +49,23 @@ export class HeaderComponent {
 
     });
   }
-
+  selectOption(event: Event) {
+    const selectedOption = (event.target as HTMLSelectElement).value;
+    if (selectedOption === 'coordinador') {
+        this.ModalAddCoordinador();
+    } else if (selectedOption === 'institucion') {
+        this.ModalAddInstituciones();
+    } else if (selectedOption === 'convenio') {
+        this.ModalADD();
+    }
+}
 
   ModalAddInstituciones(){
     const dialogRef = this.dialog.open(AddInstitucionComponent);
+  }
+
+  ModalAddCoordinador(){
+    const dialogRef = this.dialog.open(AddCoordinadorComponent);
   }
 }
 

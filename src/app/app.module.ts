@@ -20,6 +20,7 @@ import { ModalComponent } from './components/modals/modalInfo/modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgToastModule } from 'ng-angular-popup';
 import { AddInstitucionComponent } from './components/modals/add-institucion/add-institucion.component';
+import { AddCoordinadorComponent } from './components/modals/add-coordinador/add-coordinador.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AddInstitucionComponent } from './components/modals/add-institucion/add
     HeaderComponent,
     ModalComponent,
     AddInstitucionComponent,
+    AddCoordinadorComponent,
   ],
   imports: [
     BrowserModule,

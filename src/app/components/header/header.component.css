@@ -99,3 +99,24 @@ button:hover {
         padding: 10px 0px;
     }
 }
+select {
+    border-radius: 30px;
+    background-color: #253e85;
+    border: 2px solid #ffffff; /* Añadimos un borde sólido de 2px */
+    padding: 5px ;
+    color:white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: border-color 0.3s; /* Agregamos una transición para el color del borde */
+}
+
+select:hover {
+    
+    border-color: #869ad1; /* Cambiamos el color del borde en hover */
+    background-color: #869ad1;
+}
+
+option {
+    font-size: 16px;
+}

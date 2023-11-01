@@ -11,22 +11,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-com.component.css']
 })
 export class AddComComponent {
+  coordinadores: any;
+  selectedIndexIns: number | undefined;
+  selectedIndexCoor: number | undefined;
+  url = 'http://localhost:3000/api/';
+
+
 
   constructor(private router: Router,private http: HttpClient,public dialog: MatDialog,public dialogRef: MatDialogRef<AddComComponent>) { }
  
 
   ngOnInit() {
     this.hacerPeticion();
-    //console.log(this.options)
-
+    //console.log(this.options
   }
- 
 
-  options: string[] = []; 
+  onOptionSelected() {
+    this.optionsCoor = []
+    this.idCoor = []
+    console.log("Opción seleccionada:", this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]);
+    this.formulario.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]
+    this.http.get(this.url+'coordinadores/').subscribe((data: any) => {
+      this.coordinadores = data;
+      if (Array.isArray(this.coordinadores)) {
+        for (let i = 0; i < this.coordinadores.length; i++) {
+
+          if(this.coordinadores[i].ID_Institucion == this.formulario.id_institucion ){
+            this.optionsCoor.push(String(this.coordinadores[i].Nombre))
+            this.idCoor.push(String(this.coordinadores[i].ID_Coordinador))
+          }
+        }
+      }
+    });
+  }
+  
+
+  optionsInstituciones: string[] = []; 
+  optionsCoor: string[] = []; 
   convenios: any[] = [];
-  valorConvenios:string |undefined;
+  idInstituciones: any[] = [];
+  idCoor: any[] = [];
   valorNombre:string |undefined;
-  valorConvenio:string |undefined;
   tipoDeFirma: string[] = ['Digital', 'Fisica'];
 
 
@@ -43,8 +68,12 @@ export class AddComComponent {
   };
   
   addConvenio(formContact: NgForm) {
+
+    console.log(this.idCoor[this.optionsCoor.indexOf(this.formulario.id_coordinador)])
+    this.formulario.id_coordinador = this.idCoor[this.optionsCoor.indexOf(this.formulario.id_coordinador)]
+
+    console.log(this.formulario)
       if (formContact.valid) {
-        console.log(this.formulario)
         this.http.post('http://localhost:3000/api/convenios', this.formulario).subscribe(
             (data) => {
               alert('CONVENIO INGRESADO');
@@ -64,24 +93,21 @@ export class AddComComponent {
     
   closeDialog() {
     this.dialogRef.close('');
+    window.location.reload();
+
   }
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/nombresInstituciones/';
-    this.http.get(url).subscribe((data: any) => {
+    this.http.get(this.url+'nombresInstituciones/').subscribe((data: any) => {
       this.convenios = data;
       if (Array.isArray(this.convenios)) {
-
         for (let i = 0; i < this.convenios.length; i++) {
-          //this.options = this.convenios.map(convenio => {return { label: convenio.Nombre_Institucion};});
-          console.log(this.convenios[i].Nombre_Institucion, 'aqui')
-          this.options.push(this.convenios[i].Nombre_Institucion)
+          this.optionsInstituciones.push(this.convenios[i].Nombre_Institucion)
+          this.idInstituciones.push(this.convenios[i].ID_Institucion)
         }
-        console.log(this.options)
       }
     });
   }
-
 }
 
 

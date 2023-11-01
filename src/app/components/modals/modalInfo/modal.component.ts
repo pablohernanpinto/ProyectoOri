@@ -18,6 +18,8 @@ export class ModalComponent {
 
   closeDialog() {
     this.dialogRef.close('');
+    window.location.reload();
+
   }
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class ModalComponent {
     this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
     .subscribe(() => this.status = 'Delete successful');
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
-    window.location.reload();
+
   }
   
 }
