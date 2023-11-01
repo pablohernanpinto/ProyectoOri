@@ -16,13 +16,13 @@ export class AddCoordinadorComponent {
   optionsInstituciones: string[] = []; 
   idInstituciones: string[] = []; 
   selectedIndex: number | undefined;
-  
+  tipoCord: string[] = ['Interno', 'Externo'];
 
   formulario = {
     id_institucion: '',
-    Tipo_Coordinador: '',
-    Nombre: '',
-    Correo: '',
+    tipo: '',
+    nombre: '',
+    correo: '',
   };
 
   ngOnInit() {
@@ -36,14 +36,15 @@ export class AddCoordinadorComponent {
 
   addConvenio(formContact: NgForm) {
     if (formContact.valid) {
-      this.selectedIndex = this.optionsInstituciones.indexOf(this.formulario.id_institucion);
-      this.formulario.id_institucion = this.idInstituciones[this.selectedIndex]
-      console.log(this.idInstituciones[this.selectedIndex],'test')
+
+      this.formulario.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]
+
+
+      console.log(this.formulario,'test')
       this.http.post('http://localhost:3000/api/coordinadores', this.formulario).subscribe(
           (data) => {
             alert('CONVENIO INGRESADO');
             window.location.reload();
-            console.log(data);
           },
           (error) => {
             alert('ERROR AL INGRESAR CONVENIO');

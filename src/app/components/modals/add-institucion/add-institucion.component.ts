@@ -27,7 +27,6 @@ export class AddInstitucionComponent {
 
   }
 
-
   addConvenio(formContact: NgForm) {
     if (this.formulario.pais !== 'Chile'){
       this.formulario.alcance = 'Internacional'

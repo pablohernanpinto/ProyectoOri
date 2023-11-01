@@ -18,14 +18,17 @@
                   </select>
 
 
-                    <input name = 'Tipo_Coordinador'  type="text" class="input" [(ngModel)]="formulario.Tipo_Coordinador" placeholder="Unidad Academica" required>
+                  <select name="Tipo_Coordinador" class="seleccion" [(ngModel)]="formulario.tipo" required>
+                    <option *ngIf="true" disabled selected value="">Tipo de coordinador</option>
+                    <option *ngFor="let tipo of tipoCord" [value]="tipo">{{ tipo }}</option>
+                  </select>
                 </div>
             
                   
                 <div class="orden">
-                    <input  name = 'Nombre' type="text" class="input" [(ngModel)]="formulario.Nombre" placeholder="Pais" required>
+                    <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" required>
   
-                    <input name = 'Correo'  type="text" class="input" [(ngModel)]="formulario.Correo" placeholder="Tipo de institucion" required>
+                    <input name = 'correo'  type="text" class="input" [(ngModel)]="formulario.correo" placeholder="Correo" required>
                   </div>
               
 

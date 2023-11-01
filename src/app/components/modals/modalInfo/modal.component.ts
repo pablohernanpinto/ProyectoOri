@@ -9,8 +9,6 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-
-
   constructor(private http: HttpClient,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: {Index: number}, public toast: NgToastService) { } // Corregido aquí
  
   convenios: any;
@@ -19,7 +17,6 @@ export class ModalComponent {
   closeDialog() {
     this.dialogRef.close('');
     window.location.reload();
-
   }
 
   ngOnInit() {
@@ -41,6 +38,5 @@ export class ModalComponent {
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
     alert('SE BORRO EL CONVENIO');
     window.location.reload();
-  }
-  
+  }  
 }
