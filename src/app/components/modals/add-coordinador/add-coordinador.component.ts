@@ -10,42 +10,31 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-coordinador.component.css']
 })
 export class AddCoordinadorComponent {
+  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient) { }
+
   convenios: any;
   optionsInstituciones: string[] = []; 
   idInstituciones: string[] = []; 
   selectedIndex: number | undefined;
   
-  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient) { }
 
   formulario = {
-
     id_institucion: '',
     Tipo_Coordinador: '',
     Nombre: '',
     Correo: '',
-
   };
-  /* select id_coordinador "ID_Coordinador",
-    id_institucion "ID_Institucion",
-    tipo "Tipo_Coordinador",
-    nombre "Nombre",
-    correo "Correo"
-  from coordinador`; */
 
   ngOnInit() {
     this.hacerPeticion();
-    //console.log(this.options)
-
   }
+
   closeDialog() {
     this.dialogRef.close('');
     window.location.reload();
   }
 
-
   addConvenio(formContact: NgForm) {
-
-
     if (formContact.valid) {
       this.selectedIndex = this.optionsInstituciones.indexOf(this.formulario.id_institucion);
       this.formulario.id_institucion = this.idInstituciones[this.selectedIndex]
@@ -73,13 +62,9 @@ export class AddCoordinadorComponent {
       this.convenios = data;
       if (Array.isArray(this.convenios)) {
         for (let i = 0; i < this.convenios.length; i++) {
-          //this.options = this.convenios.map(convenio => {return { label: convenio.Nombre_Institucion};});
-          //console.log(this.convenios[i].Nombre_Institucion, 'aqui')
           this.optionsInstituciones.push(this.convenios[i].Nombre_Institucion)
           this.idInstituciones.push(this.convenios[i].ID_Institucion)
-
         }
-
       }
     });
   }

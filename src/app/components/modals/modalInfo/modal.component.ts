@@ -9,7 +9,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-  status: string | undefined;
+
 
   constructor(private http: HttpClient,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: {Index: number}, public toast: NgToastService) { } // Corregido aquí
  
@@ -31,16 +31,16 @@ export class ModalComponent {
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
       this.mostrarEnPantalla = (this.convenios[this.data.Index]);
-     // console.log(this.mostrarEnPantalla.ID_Convenio)
     });
   }
 
   delete() {
-    //console.log('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
+    console.log(this.mostrarEnPantalla.ID_Convenio)
     this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
-    .subscribe(() => this.status = 'Delete successful');
+    .subscribe();
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
-
+    alert('SE BORRO EL CONVENIO');
+    window.location.reload();
   }
   
 }
