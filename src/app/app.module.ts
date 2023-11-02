@@ -21,7 +21,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgToastModule } from 'ng-angular-popup';
 import { AddInstitucionComponent } from './components/modals/add-institucion/add-institucion.component';
 import { AddCoordinadorComponent } from './components/modals/add-coordinador/add-coordinador.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { AddUsuarioComponent } from './components/modals/add-usuario/add-usuario.component';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { AddUsuarioComponent } from './components/modals/add-usuario/add-usuario
     ModalComponent,
     AddInstitucionComponent,
     AddCoordinadorComponent,
-    AdminComponent,
     AddUsuarioComponent,
   ],
   imports: [
