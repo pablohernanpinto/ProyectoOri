@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ModalService } from './modal.service';
 import { AddInstitucionComponent } from '../modals/add-institucion/add-institucion.component';
 import { AddCoordinadorComponent } from '../modals/add-coordinador/add-coordinador.component';
+import { AddUsuarioComponent } from '../modals/add-usuario/add-usuario.component';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private loginService: LoginService,
+    public loginService: LoginService,
     private http: HttpClient,
     private envioServicio: ModalService
     ) {}
@@ -57,7 +58,9 @@ export class HeaderComponent {
         this.ModalAddInstituciones();
     } else if (selectedOption === 'convenio') {
         this.ModalADD();
-    }
+    } else if (selectedOption === 'usuario') {
+        this.ModalAddUsuario();
+}
 }
 
   ModalAddInstituciones(){
@@ -66,6 +69,14 @@ export class HeaderComponent {
 
   ModalAddCoordinador(){
     const dialogRef = this.dialog.open(AddCoordinadorComponent);
+  }
+
+  ModalAddUsuario(){
+    const dialogRef = this.dialog.open(AddUsuarioComponent);
+  }
+
+  getUserRole() {
+    this.loginService.getUserRole();
   }
 }
 

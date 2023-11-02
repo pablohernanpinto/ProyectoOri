@@ -19,6 +19,7 @@
                 <option value="coordinador">Agregar coordinador de institucion</option>
                 <option value="institucion">Agregar institucion</option>
                 <option value="convenio">Agregar convenio</option>
+                <option value="convenio" *ngIf="loginService.getUserRole() === 'admin'">Agregar usuario</option>
             </select>
             <img class="perfil" src="../../../assets/PERFIL.png" alt="search" title="Perfil">
             <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 
