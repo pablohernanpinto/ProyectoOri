@@ -43,11 +43,11 @@ export class AddCoordinadorComponent {
       console.log(this.formulario,'test')
       this.http.post('http://localhost:3000/api/coordinadores', this.formulario).subscribe(
           (data) => {
-            alert('CONVENIO INGRESADO');
+            alert('SE A INGRESADO COORDINAR');
             window.location.reload();
           },
           (error) => {
-            alert('ERROR AL INGRESAR CONVENIO');
+            alert('ERROR AL INGRESAR COORDINADOR');
             console.error(error);
             window.location.reload();
           }
