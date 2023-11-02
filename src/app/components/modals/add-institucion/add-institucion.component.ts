@@ -36,15 +36,14 @@ export class AddInstitucionComponent {
     }
 
     if (formContact.valid) {
-      console.log(this.formulario,'test')
       this.http.post('http://localhost:3000/api/instituciones', this.formulario).subscribe(
           (data) => {
-            alert('CONVENIO INGRESADO');
+            alert('SE A INGRESADO INSTITUCION');
           //  window.location.reload();
             console.log(data);
           },
           (error) => {
-            alert('ERROR AL INGRESAR CONVENIO');
+            alert('ERROR AL INGRESAR INSTITUCION');
             console.error(error);
           }
         );

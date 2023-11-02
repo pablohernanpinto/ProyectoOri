@@ -1,1 +1,44 @@
-<p>add-usuario works!</p>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Añadir institucion</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+            <br>
+            <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+
+                
+                <div class="orden">
+                    <input  name = 'email' type="text" class="input" [(ngModel)]="formulario.email" placeholder="Email" required>
+  
+                    <input name = 'contrasena'  type="text" class="input" [(ngModel)]="formulario.contrasena" placeholder="Contraseña" required>
+                </div>
+            
+                  
+                <div class="orden">
+                    <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" required>
+  
+                    <input name = 'apellido'  type="text" class="input" [(ngModel)]="formulario.apellido" placeholder="Tipo de institucion" required>
+                  </div>
+                
+                  <div class="orden">
+                    <input  name = 'vigencia' type="text" class="input" [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
+  
+                    <input name = 'privilegios'  type="text" class="input" [(ngModel)]="formulario.privilegios" placeholder="Tipo de institucion" required>
+                  </div>
+              
+
+                  <div class="orden">
+                    <button type="submit">Enviar</button>
+                  </div>
+            
+            </form>            
+            <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+

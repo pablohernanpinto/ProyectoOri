@@ -90,3 +90,8 @@
     color: white;
   }
   
+
+  .modal-content {
+    max-height: 600px; /* Establece una altura máxima para el contenido del modal */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+  }

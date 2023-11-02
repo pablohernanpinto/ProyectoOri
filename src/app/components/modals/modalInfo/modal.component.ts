@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
+import { LoginService } from 'src/guards/login.service';
 
 @Component({
   selector: 'app-modal',
@@ -9,11 +10,18 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-  constructor(private http: HttpClient,public dialogRef: MatDialogRef<ModalComponent>,@Inject(MAT_DIALOG_DATA) public data: {Index: number}, public toast: NgToastService) { } // Corregido aquí
+  constructor(private http: HttpClient,
+    public dialogRef: MatDialogRef<ModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {Index: number},
+    public toast: NgToastService,
+    public loginService: LoginService) { } // Corregido aquí
  
   convenios: any;
   mostrarEnPantalla: any;
 
+  getUserRole() {
+    this.loginService.getUserRole();
+  }
   closeDialog() {
     this.dialogRef.close('');
     window.location.reload();

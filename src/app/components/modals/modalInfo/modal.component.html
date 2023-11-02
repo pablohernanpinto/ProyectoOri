@@ -13,8 +13,16 @@
         <h3>Tipo de firma: {{ mostrarEnPantalla.Tipo_Firma }} </h3>
         <h3>Cupos: {{ mostrarEnPantalla.Cupos }} </h3>
         <h3>Documentos: {{ mostrarEnPantalla.Documentos }} </h3>
-        <h3>Index: {{mostrarEnPantalla.ID_Convenio}}</h3>
-        <button class="button" (click)="delete()">Borrar</button>
+        <h3>Alcance: {{mostrarEnPantalla.Alcance}}</h3>
+        <h3>Nombre coordinador: {{mostrarEnPantalla.Nombre_Coordinador}}</h3>
+        <h3>Correo coordinador: {{mostrarEnPantalla.Correo_Coordinador}}</h3>
+        <h3>Nombre institucion: {{mostrarEnPantalla.Nombre_Institucion}}</h3>
+        <h3>Pais: {{mostrarEnPantalla.Pais}}</h3>
+        <h3>Tipo convenio: {{mostrarEnPantalla.Tipo_Convenio}}</h3>
+        <h3>Tipo coordinador: {{mostrarEnPantalla.Tipo_Coordinador}}</h3>
+        <h3>Tipo institucion: {{mostrarEnPantalla.Tipo_Institucion}}</h3>
+        <h3>Unidad academica: {{mostrarEnPantalla.Unidad_Academica}}</h3>
+        <button *ngIf="loginService.getUserRole() === 'si'" class="button" (click)="delete()">Borrar</button>
         <br>
         <br>
       </ng-container>

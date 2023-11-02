@@ -18,7 +18,7 @@ export class AddComComponent {
 
 
 
-  constructor(private router: Router,private http: HttpClient,public dialog: MatDialog,public dialogRef: MatDialogRef<AddComComponent>) { }
+  constructor(private http: HttpClient,public dialog: MatDialog,public dialogRef: MatDialogRef<AddComComponent>) { }
  
 
   ngOnInit() {

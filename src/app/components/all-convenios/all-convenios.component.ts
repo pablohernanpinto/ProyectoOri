@@ -40,8 +40,6 @@ export class AllConveniosComponent {
     this.listado.disparadorDeBusqueda.subscribe(mensaje => {
       this.searchTerm = String(mensaje.mensaje);
     })
-
-    
   }
 
 
@@ -49,14 +47,7 @@ export class AllConveniosComponent {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
-      
+      console.log(this.convenios)
     });
   }
-
-
-
-
-
-
-
 }
