@@ -35,7 +35,7 @@ export class AddUsuarioComponent {
     if (formContact.valid) {
       this.http.post('http://localhost:3000/api/usuarios/register', this.formulario).subscribe(
           (data) => {
-            alert('SE A INGRESADO EL USUARIO');
+            alert('SE hA INGRESADO EL USUARIO');
             console.log(data);
           },
           (error) => {

@@ -44,7 +44,7 @@ export class ModalComponent {
     this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
     .subscribe();
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
-    alert('SE BORRO EL CONVENIO');
+    alert('SE BORRÓ EL CONVENIO');
     window.location.reload();
   }  
 }

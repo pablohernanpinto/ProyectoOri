@@ -86,7 +86,7 @@ export class AddComComponent {
             }
           );
       } else {
-        alert('INGRESO NO VALIDO');
+        alert('INGRESO NO VÁLIDO');
       }
     }
   

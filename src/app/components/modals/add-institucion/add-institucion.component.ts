@@ -38,17 +38,17 @@ export class AddInstitucionComponent {
     if (formContact.valid) {
       this.http.post('http://localhost:3000/api/instituciones', this.formulario).subscribe(
           (data) => {
-            alert('SE A INGRESADO INSTITUCION');
+            alert('SE HA INGRESADO INSTITUCIÓN');
           //  window.location.reload();
             console.log(data);
           },
           (error) => {
-            alert('ERROR AL INGRESAR INSTITUCION');
+            alert('ERROR AL INGRESAR INSTITUCIÓN');
             console.error(error);
           }
         );
     } else {
-      alert('INGRESO NO VALIDO');
+      alert('INGRESO NO VÁLIDO');
     }
   }
 }
