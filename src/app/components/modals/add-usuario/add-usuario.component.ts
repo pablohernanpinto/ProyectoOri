@@ -31,7 +31,7 @@ export class AddUsuarioComponent {
 
   }
 
-  addConvenio(formContact: NgForm) {
+  addUsuarios(formContact: NgForm) {
     if (formContact.valid) {
       this.http.post('http://localhost:3000/api/usuarios/register', this.formulario).subscribe(
           (data) => {
