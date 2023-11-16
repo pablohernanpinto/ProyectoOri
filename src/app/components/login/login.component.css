@@ -65,7 +65,7 @@ button:hover {
 
 
 body {
-  background-image: url('./../../../assets/ucm.jpg'); /* Ruta de tu imagen */
+  background-image: url('./../../../assets/ucm.png'); /* Ruta de tu imagen */
   background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
   background-position: center; /* Posición de la imagen */
   background-repeat: no-repeat; /* No repetir la imagen */

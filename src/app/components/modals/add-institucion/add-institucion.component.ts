@@ -39,16 +39,20 @@ export class AddInstitucionComponent {
       this.http.post('http://localhost:3000/api/instituciones', this.formulario).subscribe(
           (data) => {
             alert('SE A INGRESADO INSTITUCION');
-            window.location.reload();
+          //  window.location.reload();
             console.log(data);
+            window.location.reload();
+        
           },
           (error) => {
-            alert('ERROR AL INGRESAR INSTITUCION');
+            alert('ERROR AL INGRESAR INSTITUCIÓN');
             console.error(error);
+            window.location.reload();
+
           }
         );
     } else {
-      alert('INGRESO NO VALIDO');
+      alert('INGRESO NO VÁLIDO');
     }
   }
 }

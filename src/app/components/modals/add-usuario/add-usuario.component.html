@@ -2,12 +2,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <span (click)="closeDialog()" class="close">&times;</span>
-        <h2>Añadir institucion</h2>
+        <h2>Añadir Usuario</h2>
       </div>
       <div class="modal-body">
         <ng-container>
             <br>
-            <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+            <form class="ingreso" (ngSubmit)="addUsuarios(formContact)" #formContact="ngForm">
 
                 
                 <div class="orden">
@@ -20,7 +20,7 @@
                 <div class="orden">
                     <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" required>
   
-                    <input name = 'apellido'  type="text" class="input" [(ngModel)]="formulario.apellido" placeholder="Tipo de institucion" required>
+                    <input name = 'apellido'  type="text" class="input" [(ngModel)]="formulario.apellido" placeholder="Apellido" required>
                   </div>
                 
                   <div class="orden">
@@ -31,7 +31,7 @@
               
 
                   <div class="orden">
-                    <button type="submit">Enviar</button>
+                    <button type="submit">Agregar Usuario</button>
                   </div>
             
             </form>            

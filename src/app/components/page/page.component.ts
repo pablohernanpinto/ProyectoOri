@@ -40,7 +40,9 @@ export class PageComponent {
   busqueda:string  = '';
 
  
-
+  PRUEBA(){
+    console.log(this.loginService.getUserRole())
+  }
   toggleSidenav() {
     // Verifica que sidenav no sea undefined antes de usarlo
     if (this.sidenav) {

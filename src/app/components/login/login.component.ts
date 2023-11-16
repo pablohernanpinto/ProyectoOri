@@ -7,8 +7,6 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/guards/login.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,6 +22,12 @@ export class LoginComponent {
     private http: HttpClient
   ) {}
 
+  form: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+
+  data = {}
 
   formulario = {
     email: '',
@@ -44,15 +48,21 @@ export class LoginComponent {
 
   login(formContact: NgForm) {
     
-    console.log(this.formulario)
+    console.log(this.formulario,'estesot')
     if (formContact.valid) {
 
       this.http.post('http://localhost:3000/api/usuarios/login', this.formulario).subscribe(
           (data) => {
           // Redirigir a la página principal después de un inicio de sesión exitoso
-          this.router.navigateByUrl('/page');
-          console.log(data,'esta es ');
-          },
+          this.data = data
+          console.log(data)
+          let user = this.loginService.login(data);
+          if (!user){
+            alert('El usuario o la contraseña no son correctos');
+          }else{
+            this.router.navigateByUrl('/page');
+          }
+        },
           (error) => {
             alert('Usuario invalido');
             console.error(error);

@@ -14,8 +14,7 @@ input[type=text] {
 
 button {
   text-align: start;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: large;
+  font-size: medium;
   background-color: #253e85;
   border-radius: 5px; /* Cambiado de 5cm a 5px */
   color: white;

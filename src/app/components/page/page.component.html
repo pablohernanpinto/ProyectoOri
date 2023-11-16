@@ -14,7 +14,7 @@
 
     <div class="header-container">
         <div class="izquierda">
-            <button class="boton" mat-button (click)="toggleSidenav()">Añadir</button>
+            <button  class="boton" *ngIf="loginService.getUserRole() === 'si'" mat-button (click)="toggleSidenav()">Añadir</button><!--  *ngIf="loginService.getUserRole() === 'si'" -->
             <img title="Inicio" src="./../../../assets/LOGO_ORI2Color.png" width="150" alt="Logo de ORI">
         </div>
         <div class="search">
@@ -35,9 +35,9 @@
             <h3 class="opcion" (click)="ModalAddCoordinador()" value="coordinador">Agregar coordinador de institución</h3>
             <h3 class="opcion" (click)="ModalAddInstituciones()" value="institucion">Agregar institución</h3>
             <h3 class="opcion" (click)="ModalADD()" value="convenio">Agregar convenio</h3>
-            <h3 class="opcion" (click)="ModalAddUsuario()" value="usuario">Agregar usuario</h3>
+            <h3 class="opcion" *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com'"  (click)="ModalAddUsuario()" value="usuario">Agregar usuario</h3>
         </nav>
-
+<!-- *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com' " -->
         
     </mat-sidenav>
 
