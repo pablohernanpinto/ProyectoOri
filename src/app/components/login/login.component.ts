@@ -2,9 +2,10 @@ import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from 'src/guards/login.service';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+
 import { HttpClient } from '@angular/common/http';
+import { LoginService } from 'src/guards/login.service';
 
 
 
@@ -14,52 +15,52 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  form: FormGroup = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-  });
-  usuarios: any;
   constructor(
     private router: Router,
     private renderer: Renderer2,
-    private loginService: LoginService,
+    public loginService: LoginService,
     private fb: FormBuilder,
     @Inject(DOCUMENT) private document: Document,
     private http: HttpClient
   ) {}
 
 
+  formulario = {
+    email: '',
+    contrasena: '',
+  };
+
   ngOnInit() {
-    this.hacerPeticion()
+
     this.renderer.setStyle(this.document.body, 'background-color', '#253e85');
   }
 
   imagePath = '../../elements/ori.png';
 
-  Login() {
+  logout() {
+    this.loginService.logout(); // Llama al método logout del servicio
+  }
+  
 
-    let user = this.loginService.login(
-      this.form.value.username,
-      this.form.value.password,
-      this.usuarios,
-    );
-    if (!user){
-      alert('El usuario o la contraseña no son correctos');
-    }else{
-      this.router.navigateByUrl('/page');
-    }
-  }
-  @HostListener('document:keypress', ['$event']) /* Al presionar ENTER se puede iniciar sesión */
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      this.Login();
-    }
-  }
+  login(formContact: NgForm) {
+    
+    console.log(this.formulario)
+    if (formContact.valid) {
 
-  hacerPeticion() {
-    const url = 'http://localhost:3000/api/';
-    this.http.get(url+'usuarios').subscribe((data: any) => {
-      this.usuarios = data;
-    });
-  }
+      this.http.post('http://localhost:3000/api/usuarios/login', this.formulario).subscribe(
+          (data) => {
+          // Redirigir a la página principal después de un inicio de sesión exitoso
+          this.router.navigateByUrl('/page');
+          console.log(data,'esta es ');
+          },
+          (error) => {
+            alert('Usuario invalido');
+            console.error(error);
+          }
+        );
+    } else {
+      alert('INGRESO NO VALIDO');
+    }
+}
+
 }

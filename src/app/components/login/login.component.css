@@ -62,3 +62,15 @@ button:hover {
   background-color: #253e85;
   color: white;
 }
+
+
+body {
+  background-image: url('./../../../assets/ucm.jpg'); /* Ruta de tu imagen */
+  background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
+  background-position: center; /* Posición de la imagen */
+  background-repeat: no-repeat; /* No repetir la imagen */
+}
+
+#Imagen img {
+  max-width: 100%; /* Ajustar el tamaño máximo de la imagen dentro de su contenedor */
+}

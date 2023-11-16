@@ -4,16 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="page.component.css"> 
+
 </head>
+
 <body>
+
+
+    <div class="header-container">
+        <div class="izquierda">
+            <button class="boton" mat-button (click)="toggleSidenav()">Añadir</button>
+            <img title="Inicio" src="./../../../assets/LOGO_ORI2Color.png" width="150" alt="Logo de ORI">
+        </div>
+        <div class="search">
+            <input type="text" [(ngModel)]="busqueda" (input)="enviarMensaje()" name="search" placeholder="Buscar por universidad, tipo de convenio, etc">
+        </div>
+    
+        <div class="derecha">
+            <img class="icono" (click)="logout()"  title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
+        </div>
+    </div>
+    
+
+    
+    <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+
+        <nav class="opciones">
+            <h3 class="opcion" (click)="ModalAddCoordinador()" value="coordinador">Agregar coordinador de institución</h3>
+            <h3 class="opcion" (click)="ModalAddInstituciones()" value="institucion">Agregar institución</h3>
+            <h3 class="opcion" (click)="ModalADD()" value="convenio">Agregar convenio</h3>
+            <h3 class="opcion" (click)="ModalAddUsuario()" value="usuario">Agregar usuario</h3>
+        </nav>
+
+        
+    </mat-sidenav>
+
+    <mat-sidenav-content id="mySidenav">
     <div>
-        <app-header></app-header>
+        <div class="usuarios">
+            <app-users></app-users>
+        </div>
 
         <nav id="convenios">
             <app-all-convenios></app-all-convenios>
         </nav>
-        <nav id="content">
-        </nav>
+
     </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 </body>
 </html>

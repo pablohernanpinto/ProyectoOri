@@ -39,7 +39,7 @@ export class AddInstitucionComponent {
       this.http.post('http://localhost:3000/api/instituciones', this.formulario).subscribe(
           (data) => {
             alert('SE A INGRESADO INSTITUCION');
-          //  window.location.reload();
+            window.location.reload();
             console.log(data);
           },
           (error) => {

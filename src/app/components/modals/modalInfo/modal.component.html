@@ -22,7 +22,7 @@
         <h3>Tipo coordinador: {{mostrarEnPantalla.Tipo_Coordinador}}</h3>
         <h3>Tipo institucion: {{mostrarEnPantalla.Tipo_Institucion}}</h3>
         <h3>Unidad academica: {{mostrarEnPantalla.Unidad_Academica}}</h3>
-        <button *ngIf="loginService.getUserRole() === 'si'" class="button" (click)="delete()">Borrar</button>
+        <button  class="button" (click)="delete()">Borrar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
         <br>
         <br>
       </ng-container>

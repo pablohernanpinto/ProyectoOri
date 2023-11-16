@@ -13,20 +13,25 @@
             <img src="../../../assets/LOGO_ORI.png" alt="Logo Ori">
          </nav>
     </div>
-    <form class="contenedor" action="javascript:void(0);" [formGroup]="form">
+    <form class="ingreso" (ngSubmit)="login(formContact)" #formContact="ngForm">
+
         <br>
         <nav id="cuadroLogin">
             <h1 style="font-size: 30px; font-family: 'Poppins', sans-serif;">Ingresar</h1>
             <nav id="inputs">
               <br><br><br>
-              <input type="text" formControlName="username" name="username" id="username" placeholder="Usuario" autocomplete="off" class="fname" required/><br><br>
+              <input id="username" class="fname"  name = 'email' type="text"  [(ngModel)]="formulario.email" placeholder="Email" required>              
               <br><br><br>
-              <input type="password" formControlName="password" name="password" id="password" placeholder="Contraseña" autocomplete="off" class="fname" (keypress)="handleKeyboardEvent($event)" required/><br><br>
-              <br><br>
-              <button type="submit" (click)="Login()" style="font-family: 'Poppins', sans-serif;">Iniciar Sesión</button>
+              <input name = 'contrasena' id="username" class="fname" type="password"  [(ngModel)]="formulario.contrasena" placeholder="Constraseña" required>              <br><br>
+              <button type="submit" style="font-family: 'Poppins', sans-serif;">Iniciar Sesión</button>
               <br><br>
             </nav>
         </nav>
      </form>
 </body>
 </html>
+
+<!-- <input  name = 'user' type="text" class="input" [(ngModel)]="formulario.usuario" placeholder="Pais" required>
+
+<input name = 'constrasenia'  type="text" class="input" [(ngModel)]="formulario.constrasenia" placeholder="Tipo de institucion" required>
+ -->

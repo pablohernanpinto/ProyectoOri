@@ -1,11 +1,162 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 #content{
     display: flex;
     justify-content: space-between;
 }
 
 content h2{
-
     margin-right: 10px
+}
+
+.icono{
+    background-color: grey;
+    border-radius: 100%;
+    padding:5px;
+    width: 40px; /* Ajusta el ancho del icono según tus necesidades */
+    height: 40px; /* Ajusta la altura del icono según tus necesidades */
+    margin-left: 10px; /* Ajusta el margen entre las imágenes en la derecha */
+
+}
+.iconos {
+    display: flex;
 
 }
 
+#convenios, .usuarios{
+    border: 1px solid grey ;
+    margin: 2%;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    background-color: #111;
+    padding-top: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+mat-sidenav {
+    width: 250px;
+    background-color:#01a1dd ;
+
+  }
+  
+mat-sidenav-content {
+    background-color: #eef5f9;
+    padding: 16px;
+  }
+
+.headerBar{
+    background-color: #01a1dd;
+}
+.boton{
+    border-radius: 0;
+    background-color: #01a1dd;
+    color: white;
+    border-radius: 0;
+    background-color: #01a1dd;
+    margin-bottom: 0; /* Evita que el botón tenga margen inferior */
+    height: 60px; /* Ajusta la altura según tus necesidades */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente dentro del botón */
+}
+
+.header-container {
+    display: flex;
+    background-color: white;
+    align-items: flex-start; 
+    justify-content: space-between;
+}
+
+
+
+.derecha{
+    display: flex;
+    background-color: white;
+    
+
+    align-items: center;
+    justify-content: flex-end;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav-content {
+    height: 100%;
+}
+
+/* Opcional: Si deseas que el contenido principal tenga un espacio entre el borde superior del mat-sidenav y el contenido, puedes agregar un padding superior. */
+mat-sidenav-content {
+    padding-top: 20px; /* Ajusta según tus preferencias */
+}
+.opcion:hover {
+    background-color:   #253e85; /* Cambia el color de fondo al pasar el ratón por encima */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar el ratón por encima */
+    /* Puedes agregar más estilos según sea necesario */
+}
+
+.izquierda {
+    display: flex;
+    align-items: center;
+}
+
+.opciones{
+    margin: 10px;
+}
+
+.opcion{
+    color: white;
+}
+
+.buscador{
+    width: 35px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+.search{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 10px;
+    
+}
+
+input[type="text"] {
+    border-radius: 30px;
+    height: 20px;
+    background-color: #d6d9e4;
+    border: none;
+    width: 800px;
+    padding: 5px 10px;
+    box-sizing: content-box;
+}
+
+.buscador{
+    width: 35px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.buscador:hover {
+    background-color: grey ;
+    color:white;
+}

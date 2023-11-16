@@ -1,37 +1,36 @@
 body {
-    padding-top: 40px;
+    border-top: 2px solid #01a1dd;
     display: flex;
     justify-content: center;
     align-items: center;
-
- /* Esto asegura que el cuerpo ocupe toda la altura de la ventana */
+    background-color: white;
+    /* Esto asegura que el cuerpo ocupe toda la altura de la ventana */
 }
 
 .fullElements {
-    text-align: center; /* Esto centra el texto dentro de los elementos */
-    padding: 20px; /* Ajusta el espacio alrededor del contenedor */
+    text-align: center;
+    padding: 2%; /* Cambiado a un porcentaje para hacerlo relativo */
     border-collapse: collapse;
+    width: 100%; /* Asegura que la tabla ocupe el 100% del ancho disponible */
 }
 
-.listTittle th {
-    padding-inline: 100px; /* Ajusta el espacio alrededor de las celdas del encabezado */
-
-}
-
+.listTittle th,
 .listElements td {
-    padding-inline: 100px; /* Ajusta el espacio alrededor de las celdas de datos */
-
+    padding: 1%; /* Cambiado a un porcentaje para hacerlo relativo */
 }
-
 
 th, td {
-    padding: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
     text-align: center;
-    border-bottom: 1px solid #253e85;}
-
+    border-bottom: 1px solid #253e85;
+}
 
 .listElements:hover {
     background-color: #869ad1;
     color: aliceblue;
 }
 
+  

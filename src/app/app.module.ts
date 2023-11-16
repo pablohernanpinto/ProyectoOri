@@ -23,6 +23,11 @@ import { AddInstitucionComponent } from './components/modals/add-institucion/add
 import { AddCoordinadorComponent } from './components/modals/add-coordinador/add-coordinador.component';
 import { AddUsuarioComponent } from './components/modals/add-usuario/add-usuario.component';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { UsersComponent } from './components/users/users.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,18 +42,21 @@ import { AddUsuarioComponent } from './components/modals/add-usuario/add-usuario
     AddInstitucionComponent,
     AddCoordinadorComponent,
     AddUsuarioComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    
+    MatSidenavModule,
     BrowserAnimationsModule,
     MatDialogModule,
     NgSelectModule,
     NgToastModule,
     ReactiveFormsModule,
+    MatSidenavModule,
+    MatButtonModule,
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
