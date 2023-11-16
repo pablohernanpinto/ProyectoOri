@@ -34,7 +34,10 @@ export class LoginService {
       (u) => u.username === username && u.password === password
     );
     if (user) {
+
       this.session = user;
+
+      console.log(this.session,'este es')
       localStorage.setItem('session', JSON.stringify(this.session));
       this.users =[]
       return true; // Devuelve verdadero si el inicio de sesión es exitoso.
