@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 
 @Component({
@@ -29,20 +30,22 @@ export class AddComComponent {
   onOptionSelected() {
     this.optionsCoor = []
     this.idCoor = []
-    console.log("Opción seleccionada:", this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]);
+    console.log(this.formulario.nombre_conv)
+    /* console.log("Opción seleccionada:", this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]); */
     this.formulario.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]
-    this.http.get(this.url+'coordinadores/').subscribe((data: any) => {
-      this.coordinadores = data;
-      if (Array.isArray(this.coordinadores)) {
-        for (let i = 0; i < this.coordinadores.length; i++) {
-
-          if(this.coordinadores[i].ID_Institucion == this.formulario.id_institucion ){
-            this.optionsCoor.push(String(this.coordinadores[i].Nombre))
-            this.idCoor.push(String(this.coordinadores[i].ID_Coordinador))
+    this.http.get(this.url + 'coordinadores/').pipe(
+      map((data: any) => {
+        this.coordinadores = data;
+        if (Array.isArray(this.coordinadores)) {
+          for (let i = 0; i < this.coordinadores.length; i++) {
+            if (this.coordinadores[i].ID_Institucion == this.formulario.id_institucion) {
+              this.optionsCoor.push(String(this.coordinadores[i].Nombre));
+              this.idCoor.push(String(this.coordinadores[i].ID_Coordinador));
+            }
           }
         }
-      }
-    });
+      })
+    ).subscribe();
   }
   
 
@@ -69,7 +72,7 @@ export class AddComComponent {
   
   addConvenio(formContact: NgForm) {
 
-    console.log(this.idCoor[this.optionsCoor.indexOf(this.formulario.id_coordinador)])
+    /* console.log(this.idCoor[this.optionsCoor.indexOf(this.formulario.id_coordinador)]) */
     this.formulario.id_coordinador = this.idCoor[this.optionsCoor.indexOf(this.formulario.id_coordinador)]
 
     console.log(this.formulario)
@@ -94,7 +97,6 @@ export class AddComComponent {
   closeDialog() {
     this.dialogRef.close('');
     window.location.reload();
-
   }
 
   hacerPeticion() {

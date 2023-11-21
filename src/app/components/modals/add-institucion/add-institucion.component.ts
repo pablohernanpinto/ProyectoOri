@@ -15,7 +15,6 @@ export class AddInstitucionComponent {
 
   formulario = {
     nombre_inst: '',
-    unidad_academica: '',
     pais: '',
     alcance: '',
     tipo_institucion: '',
@@ -34,7 +33,6 @@ export class AddInstitucionComponent {
     else{
       this.formulario.alcance = 'Nacional'
     }
-
     if (formContact.valid) {
       this.http.post('http://localhost:3000/api/instituciones', this.formulario).subscribe(
           (data) => {

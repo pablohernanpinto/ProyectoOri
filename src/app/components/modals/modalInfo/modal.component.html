@@ -6,25 +6,59 @@
     </div>
     <div class="modal-body">
       <ng-container *ngIf="mostrarEnPantalla">
-        <h3>Nombre de convenio: {{ mostrarEnPantalla.Nombre_Convenio }} </h3>
-        <h3>Tipo de convenio: {{ mostrarEnPantalla.Tipo_Convenio }} </h3>
-        <h3>Vigencia: {{ mostrarEnPantalla.Vigencia }} </h3>
-        <h3>Año de firma: {{ mostrarEnPantalla.Anio_Firma }} </h3>
-        <h3>Tipo de firma: {{ mostrarEnPantalla.Tipo_Firma }} </h3>
-        <h3>Cupos: {{ mostrarEnPantalla.Cupos }} </h3>
-        <h3>Documentos: {{ mostrarEnPantalla.Documentos }} </h3>
-        <h3>Alcance: {{mostrarEnPantalla.Alcance}}</h3>
-        <h3>Nombre coordinador: {{mostrarEnPantalla.Nombre_Coordinador}}</h3>
-        <h3>Correo coordinador: {{mostrarEnPantalla.Correo_Coordinador}}</h3>
-        <h3>Nombre institucion: {{mostrarEnPantalla.Nombre_Institucion}}</h3>
-        <h3>Pais: {{mostrarEnPantalla.Pais}}</h3>
-        <h3>Tipo convenio: {{mostrarEnPantalla.Tipo_Convenio}}</h3>
-        <h3>Tipo coordinador: {{mostrarEnPantalla.Tipo_Coordinador}}</h3>
-        <h3>Tipo institucion: {{mostrarEnPantalla.Tipo_Institucion}}</h3>
-        <h3>Unidad academica: {{mostrarEnPantalla.Unidad_Academica}}</h3>
+
+          <div class="cuadrado">
+            <h1>Atributos del convenio</h1>
+            <h3>Nombre de convenio: {{ mostrarEnPantalla.Nombre_Convenio }} </h3>
+            <h3>Tipo de convenio: {{ mostrarEnPantalla.Tipo_Convenio }} </h3>
+            <h3>Movilidad: {{ mostrarEnPantalla.Movilidad}} </h3>         
+            <h3>Vigencia: {{ mostrarEnPantalla.Vigencia }} </h3>
+            <h3>Año de firma: {{ mostrarEnPantalla.Anio_Firma }} </h3>
+            <h3>Tipo de firma: {{ mostrarEnPantalla.Tipo_Firma }} </h3>
+            <h3>Cupos: {{ mostrarEnPantalla.Cupos }} </h3>
+            <h3>Documentos: {{ mostrarEnPantalla.Documentos }} </h3>
+            <h3>Condicion de renovacion: {{ mostrarEnPantalla.Condicion_Renovacion }} </h3>
+
+            <h3>Estatus: {{ mostrarEnPantalla.Estatus }} </h3>
+            <h3>Fecha de inicio: {{ mostrarEnPantalla.Fecha_Inicio }} </h3>
+            <h3>Fecha de termino: {{ mostrarEnPantalla.Fecha_Termino }} </h3>
+            
+            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModConvenio()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
+
+        </div>
+        
+        <!-- Cuadrado 2 -->
+        <div class="cuadrado"> <!-- se borro <h3>Tipo institucion: {{mostrarEnPantalla.Tipo_Institucion}}</h3> -->
+          <h1>Coordinador del convenios</h1>
+            <h3>Nombre coordinador: {{mostrarEnPantalla.Nombre_Coordinador}}</h3>
+            <h3>Correo coordinador: {{mostrarEnPantalla.Correo_Coordinador}}</h3>
+            <h3>Tipo coordinador: {{mostrarEnPantalla.Tipo_Coordinador}}</h3>
+
+            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModCoordinador()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
+
+        </div>
+        
+        <!-- Cuadrado 3 -->
+        <div class="cuadrado">
+          <h1>Institucion del convenio</h1>
+            <h3>Nombre institucion: {{mostrarEnPantalla.Nombre_Institucion}}</h3>
+            <h3>Tipo de institucion: {{mostrarEnPantalla.Tipo_Institucion}}</h3>
+            <h3>Pais: {{mostrarEnPantalla.Pais}}</h3>
+            <h3>Alcance: {{mostrarEnPantalla.Alcance}}</h3>
+            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModInstitucion()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
+
+        </div>
+
+                <!-- Cuadrado 3 -->
+        <div class="cuadrado">
+            <h1>Unidad gestora</h1>
+            <h3>Nombre institucion: {{mostrarEnPantalla.Nombre_Unidad_Gestora}}</h3>
+            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModInstitucion()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
+
+        </div>
+      
         <button  class="button" *ngIf="loginService.getUserRole() === 'si'" (click)="delete()">Borrar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
-        <br>
-        <br>
+        <br><br>
       </ng-container>
     </div>
   </div>

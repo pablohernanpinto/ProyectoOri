@@ -26,6 +26,7 @@ import { AddUsuarioComponent } from './components/modals/add-usuario/add-usuario
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersComponent } from './components/users/users.component';
+import { AddUnidadGestoraComponent } from './components/modals/add-unidad-gestora/add-unidad-gestora.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { UsersComponent } from './components/users/users.component';
     AddCoordinadorComponent,
     AddUsuarioComponent,
     UsersComponent,
+    AddUnidadGestoraComponent,
   ],
   imports: [
     BrowserModule,

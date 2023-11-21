@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
 import { LoginService } from 'src/guards/login.service';
-
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -21,9 +21,7 @@ export class ModalComponent {
   convenios: any;
   mostrarEnPantalla: any;
 
-/*   getUserRole() {
-    this.loginService.getUserRole();
-  } */
+
   closeDialog() {
     this.dialogRef.close('');
     window.location.reload();
@@ -38,6 +36,7 @@ export class ModalComponent {
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
       this.mostrarEnPantalla = (this.convenios[this.data.Index]);
+      console.log(this.mostrarEnPantalla)
     });
   }
 
@@ -49,4 +48,32 @@ export class ModalComponent {
     alert('SE BORRÓ EL CONVENIO');
     window.location.reload();
   }  
+
+  ModConvenio() {
+    console.log(this.mostrarEnPantalla.ID_Convenio)
+    this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
+    .subscribe();
+    this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
+    alert('SE BORRÓ EL CONVENIO');
+    window.location.reload();
+  }  
+  
+  ModCoordinador() {
+    console.log(this.mostrarEnPantalla.ID_Convenio)
+    this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
+    .subscribe();
+    this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
+    alert('SE BORRÓ EL CONVENIO');
+    window.location.reload();
+  }  
+  
+  ModInstitucion() {
+    console.log(this.mostrarEnPantalla.ID_Convenio)
+    this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
+    .subscribe();
+    this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
+    alert('SE BORRÓ EL CONVENIO');
+    window.location.reload();
+  }  
+
 }

@@ -11,14 +11,14 @@
               
               <div class="orden">
         
-                <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndexIns" (change)="onOptionSelected()">
+                <select name="nombreInst" class="seleccion" (change)="onOptionSelected()" [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndexIns" >
                   <option *ngIf="true" disabled selected value="">Seleccione una institución</option>
                   <option *ngFor="let convenio of optionsInstituciones" [value]="convenio">{{convenio}}</option>
                 </select>
                 <br>  
 
 
-                <select name="coordinadorInstitucion" class="seleccion" [(ngModel)]="formulario.id_coordinador" required  required [selectedIndex]="selectedIndexCoor">
+                <select name="coordinadorInstitucion" class="seleccion" [(ngModel)]="formulario.id_coordinador" required  [selectedIndex]="selectedIndexCoor">
                   <option *ngIf="true" disabled selected value="">Coordinador de institución</option>
                   <option *ngFor="let coordinador of optionsCoor" [value]="coordinador">{{ coordinador }}</option>
                 </select>

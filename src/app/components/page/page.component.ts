@@ -14,6 +14,7 @@ import { AddInstitucionComponent } from '../modals/add-institucion/add-instituci
 import { AddCoordinadorComponent } from '../modals/add-coordinador/add-coordinador.component';
 import { AddUsuarioComponent } from '../modals/add-usuario/add-usuario.component';
 import { LoginService } from 'src/guards/login.service';
+import { AddUnidadGestoraComponent } from '../modals/add-unidad-gestora/add-unidad-gestora.component';
 
 
 
@@ -40,6 +41,8 @@ export class PageComponent {
   busqueda:string  = '';
 
  
+ 
+
   PRUEBA(){
     console.log(this.loginService.getUserRole())
   }
@@ -62,15 +65,6 @@ export class PageComponent {
     this.renderer.setStyle(this.document.body, 'background-color', 'white');
   }
 
-  addCon() {
-    this.router.navigate(['/Add-Com']);
-    console.log(this.router.url);
-  }
-  
-  goMainPage() {
-    this.router.navigate(['/page']);
-    console.log(this.router.url);
-  }
 
   
   enviarMensaje(){
@@ -94,7 +88,9 @@ export class PageComponent {
   ModalAddUsuario(){
     const dialogRef = this.dialog.open(AddUsuarioComponent);
   }
-
+  ModalAddUnidadGestora(){
+    const dialogRef = this.dialog.open(AddUnidadGestoraComponent);
+  }
   ModalADD() {
     const dialogRef = this.dialog.open(AddComComponent);
   }

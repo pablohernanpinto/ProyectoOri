@@ -16,7 +16,7 @@
 .modal-content {
     border-radius: 10px;
     position: relative;
-    background-color: #fefefe;
+    background-color: #eef5f9;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
@@ -95,3 +95,24 @@
     max-height: 600px; /* Establece una altura máxima para el contenido del modal */
     overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
   }
+
+  #modificar{
+    background-color: white;
+    border: 2px solid rgba(224, 224, 27, 0.966);
+  }
+
+  #modificar:hover{
+    background-color: rgba(224, 224, 27, 0.966);
+    color: white;
+  }
+
+  .cuadrado {
+    border-top: 2px solid #01a1dd;
+    background-color: white;
+    flex-direction: row;
+    border: 2px solid #333; /* Borde sólido de color gris oscuro */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Margen inferior entre cuadrados */
+
+}
+
