@@ -10,12 +10,12 @@
           <form class="ingreso" (ngSubmit)="updateConvenio(formContact)" #formContact="ngForm">
             
             <div class="orden">
-              <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.Movilidad"  >
+              <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.movilidad"  >
                 <option *ngIf="true" disabled selected value="">Movilidad</option>
                 <option *ngFor="let movilidadOp of MovilidadOpciones" [value]="movilidadOp">{{movilidadOp}}</option>
               </select>
 
-              <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.Condicion_Renovacion"  >
+              <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.condicion_renovacion"  >
                 <option *ngIf="true" disabled selected value="">Seleccione una condicion de renovacion</option>
                 <option *ngFor="let renovacionOpcion of condicionRenovacion" [value]="renovacionOpcion">{{renovacionOpcion}}</option>
               </select>

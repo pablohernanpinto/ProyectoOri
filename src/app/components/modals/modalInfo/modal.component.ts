@@ -43,7 +43,6 @@ export class ModalComponent {
   }
 
   delete() {
-    console.log(this.mostrarEnPantalla.ID_Convenio)
     this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
     .subscribe();
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
@@ -52,8 +51,25 @@ export class ModalComponent {
   }  
 
   ModConvenio() {
-  console.log(this.mostrarEnPantalla)
-  const dialogRef = this.dialog.open(ModificarConvenioComponent,{data: {formulario:this.mostrarEnPantalla,Index: this.indexEnviar}});
+    console.log(this.mostrarEnPantalla)
+  const formularioModificacion = {
+    id_convenio: this.mostrarEnPantalla.ID_Convenio,
+    id_unidad_gestora: this.mostrarEnPantalla.ID_Unidad_Gestora,
+    id_coordinador: this.mostrarEnPantalla.ID_Coordinador,
+    nombre_conv: this.mostrarEnPantalla.Nombre_Convenio,
+    tipo_conv: this.mostrarEnPantalla.Tipo_Convenio,
+    movilidad: this.mostrarEnPantalla.Movilidad,
+    vigencia: this.mostrarEnPantalla.Vigencia,
+    ano_firma:this.mostrarEnPantalla.Anio_Firma,
+    tipo_firma: this.mostrarEnPantalla.Tipo_Firma,
+    cupos: this.mostrarEnPantalla.Cupos,
+    documentos: this.mostrarEnPantalla.Documentos,
+    condicion_renovacion: this.mostrarEnPantalla.Condicion_Renovacion,
+    estatus: this.mostrarEnPantalla.Estatus,
+    fecha_inicio: this.mostrarEnPantalla.Fecha_Inicio,
+    fecha_termino: this.mostrarEnPantalla.Fecha_Termino
+  }
+  const dialogRef = this.dialog.open(ModificarConvenioComponent,{data: {formulario:formularioModificacion,Index: this.indexEnviar}});
   
   }  
 }

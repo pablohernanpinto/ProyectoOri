@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddComComponent } from '../add-com/add-com.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
@@ -25,17 +25,16 @@ export class ModificarConvenioComponent {
 
   
   formulario = {
-    id_unidad_gestora: '',
-    id_coordinador: '',
+
     nombre_conv: '',
     tipo_conv: '',
-    Movilidad:'',
+    movilidad:'',
     vigencia: '',
     ano_firma: '',
     tipo_firma: '',
     cupos: '',
     documentos: '',
-    Condicion_Renovacion:'',
+    condicion_renovacion:'',
     id_institucion: '',
     estatus:'Activo',
     fecha_inicio: '',
@@ -47,6 +46,24 @@ export class ModificarConvenioComponent {
     nombre_coordinador: '',
     nombre_institucion: '',
   }; 
+
+
+  formularioCorrecto =  {
+    id_unidad_gestora: 1,
+    id_coordinador: 1,
+    nombre_conv: " Convenio 1",
+    tipo_conv: "Academico",
+    movilidad: "Si",
+    vigencia: "Vigente",
+    ano_firma: 2023,
+    tipo_firma: "Fisico",
+    cupos: 69,
+    documentos: "Documentos",
+    condicion_renovacion: "6 Meses",
+    estatus: "Activo",
+    fecha_inicio: "20/11/23",
+    fecha_termino: "20/11/28"
+} 
 
   tipoDeFirma: string[] = ['Digital', 'Fisica'];
   condicionRenovacion: string[] = ['6 meses', '3 meses'];
@@ -73,31 +90,29 @@ export class ModificarConvenioComponent {
   }
   ngOnInit() {
     this.formulario = this.data.formulario
-    console.log(this.formulario)
+    console.log(this.data.formulario.id_convenio)
   }
 
 
   updateConvenio(formContact: NgForm) {
-    console.log(this.formulario,'despues de ingresar')
+      const url = 'http://localhost:3000/api/convenios/'+String(this.data.formulario.id_convenio);
 
-     if (formContact.valid) {
-      const url = `http://localhost:3000/api/convenios/`+this.index;
-      this.http.put(url, this.formulario).subscribe(
+      if (formContact.valid) {
+      this.http.put(url,this.formulario).subscribe(
         (data) => {
           alert('SE HA ACTUALIZADO LA INSTITUCIÓN');
           console.log(data);
-          window.location.reload();
+          window.location.reload(); 
         },
         (error) => {
-          alert('ERROR AL ACTUALIZAR LA INSTITUCIÓN');
+
           console.error(error);
-          window.location.reload();
+          alert('SE HA ACTUALIZADO LA INSTITUCIÓN');
+          window.location.reload(); 
         }
       );
     } else {
       alert('INGRESO NO VÁLIDO');
-    } 
+    }  
   }
-
-
 }
