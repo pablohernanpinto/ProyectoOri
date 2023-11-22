@@ -57,27 +57,6 @@ export class AddUnidadGestoraComponent {
     });
   }
 
-  /* 
-  onOptionSelected() {
-    this.optionsCoor = []
-    this.idCoor = []
-    console.log(this.formulario.nombre_conv)
-    this.formulario.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]
-    this.http.get(this.url + 'coordinadores/').pipe(
-      map((data: any) => {
-        this.coordinadores = data;
-        if (Array.isArray(this.coordinadores)) {
-          for (let i = 0; i < this.coordinadores.length; i++) {
-            if (this.coordinadores[i].ID_Institucion == this.formulario.id_institucion) {
-              this.optionsCoor.push(String(this.coordinadores[i].Nombre));
-              this.idCoor.push(String(this.coordinadores[i].ID_Coordinador));
-            }
-          }
-        }
-      })
-    ).subscribe();
-  }
- */
   addUnidadGestora(formContact: NgForm) {
     if (formContact.valid) {
     this.formulario.id_institucion = String(this.optionsInstituciones.indexOf(this.formulario.id_institucion)+1)

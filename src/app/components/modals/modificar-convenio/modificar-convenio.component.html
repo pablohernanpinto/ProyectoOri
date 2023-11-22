@@ -1,0 +1,82 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Agregar Convenio</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+          <br>
+          <form class="ingreso" (ngSubmit)="updateConvenio(formContact)" #formContact="ngForm">
+            
+            <div class="orden">
+              <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.Movilidad"  >
+                <option *ngIf="true" disabled selected value="">Movilidad</option>
+                <option *ngFor="let movilidadOp of MovilidadOpciones" [value]="movilidadOp">{{movilidadOp}}</option>
+              </select>
+
+              <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.Condicion_Renovacion"  >
+                <option *ngIf="true" disabled selected value="">Seleccione una condicion de renovacion</option>
+                <option *ngFor="let renovacionOpcion of condicionRenovacion" [value]="renovacionOpcion">{{renovacionOpcion}}</option>
+              </select>
+              <br>  
+
+            </div>
+
+
+
+              <div class="orden">
+                <input  name = 'nombreConvenio' type="text" class="input" [(ngModel)]="formulario.nombre_conv" placeholder="Ingrese nombre de convenio" >
+                <input name = 'tipoDeConvenio'  type="text" class="input" [(ngModel)]="formulario.tipo_conv" placeholder="Tipo de convenio" >
+              </div>
+          
+              <div class="orden">
+
+
+                <input type="number" class="input" name = 'ano_firma' [(ngModel)]="formulario.ano_firma" placeholder="Año de Firma" >
+                
+                <input type="number" class="input" name = 'cupos' [(ngModel)]="formulario.cupos" placeholder="cupos" >
+
+
+              
+              </div>
+          
+
+          
+              <div class="orden">
+                
+
+                <input type="text" class="input" name = 'vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" >
+                <select name="tipoDeFirma" class="seleccion" [(ngModel)]="formulario.tipo_firma" required>
+                  <option *ngIf="true" disabled selected value="">Tipo de firma</option>
+                  <option *ngFor="let tipo of tipoDeFirma" [value]="tipo">{{ tipo }}</option>
+                </select>
+              </div>
+
+              <div class="orden">
+                <input type="text" name = 'documentos' class="input" [(ngModel)]="formulario.documentos" placeholder="Documentos" >
+              </div>
+
+              <div class="orden">
+                <div class="form-date">
+                  <label class="form-date__label" for="input-date">Fecha de inicio</label>
+                  <input class="form-datenput" (change)="FechaInicio()" class="input" [(ngModel)]="formulario.fecha_InicioSinFormato" type="date" id="input-date" name="input-date-start" value="22/07/2018">
+                  </div>
+
+                  <div class="form-date">
+                    <label class="form-date__label" for="input-date">Fecha de termino</label>
+                    <input class="form-datenput" (change)="FechaFinal()" class="input" [(ngModel)]="formulario.fecha_FinalSinFormato" type="date" id="input-date" name="input-date-end" value="22/07/2018">
+                    </div>
+                  </div>
+
+              <div class="orden">
+                <button type="submit">Agregar Convenio</button>
+
+              </div>
+          </form>
+          <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  

@@ -61,38 +61,9 @@
 
 
 
-        
-        <!-- Cuadrado 2 -->
-        <div class="cuadrado"> <!-- se borro <h3>Tipo institucion: {{mostrarEnPantalla.Tipo_Institucion}}</h3> -->
-          <h1>Coordinador del convenio</h1>
-<br>
-
-          <table class="fullElements">
-            <thead>
-              <tr class="listTittle">
-                <th>Nombre coordinador</th>
-                <th>Correo coordinador</th>
-                <th>Tipo coordinador</th>
-
-              </tr>
-            </thead>
-            <tbody >
-              <tr  class="listElements">
-                <td>{{ mostrarEnPantalla.Nombre_Coordinador }}</td>
-                <td>{{ mostrarEnPantalla.Correo_Coordinador }}</td>
-                <td>{{ mostrarEnPantalla.Tipo_Coordinador }}</td>
-
-              </tr>
-            </tbody>
-          </table>
-            <br>
-            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModCoordinador()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
-
-        </div>
-        
         <!-- Cuadrado 3 -->
         <div class="cuadrado">
-          <h1>Institucion del convenio</h1>
+          <h1>Detalle de la institucion</h1>
           <br>
             <table class="fullElements">
               <thead>
@@ -101,6 +72,7 @@
                   <th>Tipo de institucion</th>
                   <th>Pais</th>
                   <th>Alcance</th>
+                  <th>Unidad gestora</th>
   
                 </tr>
               </thead>
@@ -110,40 +82,35 @@
                   <td>{{ mostrarEnPantalla.Tipo_Institucion }}</td>
                   <td>{{ mostrarEnPantalla.Pais }}</td>
                   <td>{{ mostrarEnPantalla.Alcance }}</td>
-  
+                  <td>{{ mostrarEnPantalla.Nombre_Unidad_Gestora }}</td>
                 </tr>
               </tbody>
             </table>
-<br>
-            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModInstitucion()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
-
-        </div>
-
-        <!-- Cuadrado 3 -->
-        <div class="cuadrado">
-
-
-            <h1>Unidad gestora</h1>
+            <br>
             <table class="fullElements">
               <thead>
                 <tr class="listTittle">
-                  <th>Unidad gestora</th>
-  
+                  <th>Nombre coordinador</th>
+                  <th>Correo coordinador</th>
+                  <th>Tipo coordinador</th>
+
                 </tr>
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Nombre_Unidad_Gestora }}</td>
+                  <td>{{ mostrarEnPantalla.Nombre_Coordinador }}</td>
+                  <td>{{ mostrarEnPantalla.Correo_Coordinador }}</td>
+                  <td>{{ mostrarEnPantalla.Tipo_Coordinador }}</td>
 
                 </tr>
               </tbody>
             </table>
             <br>
-            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModInstitucion()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
-
+          <!--   <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModInstitucion()">Modificar</button> -->
         </div>
+
       
-        <button  class="button" *ngIf="loginService.getUserRole() === 'si'" (click)="delete()">Borrar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
+        <button  class="button" *ngIf="loginService.getUserRole() === 'si'" (click)="delete()">Borrar</button>
         <br><br>
       </ng-container>
     </div>

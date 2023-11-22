@@ -11,7 +11,7 @@ import { loginGuard } from 'src/guards/login.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'page', component: PageComponent, canActivate: [loginGuard] }, // ADMIN + USUARIO PRIVILEGIO 
+  { path: 'page', component: PageComponent, canActivate: [loginGuard]}, // ADMIN + USUARIO PRIVILEGIO 
 
   { path: '**', component: PageNotFoundComponent },
 ];

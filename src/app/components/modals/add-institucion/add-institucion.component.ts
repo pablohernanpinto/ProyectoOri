@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddComComponent } from '../add-com/add-com.component';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ModificarConvenioComponent } from '../modificar-convenio/modificar-convenio.component';
 
 @Component({
   selector: 'app-add-institucion',
@@ -55,14 +56,3 @@ export class AddInstitucionComponent {
   }
 }
 
-
-/* 
-          {
-        "id": 1,
-        "Nombre_Institucion": "Insitucion1",
-        "Unidad_Academica": "Unidadacademica1",
-        "Pais": "Pais",
-        "Alcance": "Alcance1",
-        "Tipo_Institucion": "Tipodeinstitucion"
-            },
-*/

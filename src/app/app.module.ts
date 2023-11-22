@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersComponent } from './components/users/users.component';
 import { AddUnidadGestoraComponent } from './components/modals/add-unidad-gestora/add-unidad-gestora.component';
+import { ModificarConvenioComponent } from './components/modals/modificar-convenio/modificar-convenio.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AddUnidadGestoraComponent } from './components/modals/add-unidad-gestor
     AddUsuarioComponent,
     UsersComponent,
     AddUnidadGestoraComponent,
+    ModificarConvenioComponent,
   ],
   imports: [
     BrowserModule,
