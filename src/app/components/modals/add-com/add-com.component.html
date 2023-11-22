@@ -10,19 +10,44 @@
             <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
               
               <div class="orden">
-        
-                <select name="nombreInst" class="seleccion" (change)="onOptionSelected()" [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndexIns" >
-                  <option *ngIf="true" disabled selected value="">Seleccione una institución</option>
-                  <option *ngFor="let convenio of optionsInstituciones" [value]="convenio">{{convenio}}</option>
+              <select name="nombreInst" class="seleccion"  [(ngModel)]="formulario.nombre_institucion" required (change)="onOptionSelected()"  > <!-- (change)="onOptionSelected()" -->
+                <option *ngIf="true" disabled selected value="">Seleccione una institución</option>
+                <option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</option>
+              </select>
+
+              </div>
+              <div class="orden">
+
+
+
+                <select name="nombre_unidadGestora" class="seleccion"  [(ngModel)]="formulario.nombre_unidadGestora" (change)="IDunidadGestora()" required >
+                  <option *ngIf="true" disabled selected value="">Seleccione una unidad gestora</option>
+                  <option *ngFor="let unidadGestora of optionsUnidadGestora" [value]="unidadGestora">{{unidadGestora}}</option>
                 </select>
                 <br>  
 
 
-                <select name="coordinadorInstitucion" class="seleccion" [(ngModel)]="formulario.id_coordinador" required  [selectedIndex]="selectedIndexCoor">
+                <select name="coordinadorInstitucion" class="seleccion" [(ngModel)]="formulario.nombre_coordinador" (change)="IDcoordinador()"  required  >
                   <option *ngIf="true" disabled selected value="">Coordinador de institución</option>
-                  <option *ngFor="let coordinador of optionsCoor" [value]="coordinador">{{ coordinador }}</option>
+                  <option *ngFor="let coordinador of coordinadoresNombres" [value]="coordinador">{{ coordinador }}</option>
                 </select>
               </div>
+
+              <div class="orden">
+                <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.movilidad" required >
+                  <option *ngIf="true" disabled selected value="">Movilidad</option>
+                  <option *ngFor="let movilidadOp of MovilidadOpciones" [value]="movilidadOp">{{movilidadOp}}</option>
+                </select>
+
+                <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.condicion_renovacion" required >
+                  <option *ngIf="true" disabled selected value="">Seleccione una condicion de renovacion</option>
+                  <option *ngFor="let renovacionOpcion of condicionRenovacion" [value]="renovacionOpcion">{{renovacionOpcion}}</option>
+                </select>
+                <br>  
+
+              </div>
+
+
 
                 <div class="orden">
                   <input  name = 'nombreConvenio' type="text" class="input" [(ngModel)]="formulario.nombre_conv" placeholder="Ingrese nombre de convenio" required>
@@ -31,16 +56,22 @@
                 </div>
             
                 <div class="orden">
-                  <input type="text" class="input" name = 'vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
+
 
                   <input type="number" class="input" name = 'ano_firma' [(ngModel)]="formulario.ano_firma" placeholder="Año de Firma" required>
+                  
+                  <input type="number" class="input" name = 'cupos' [(ngModel)]="formulario.cupos" placeholder="cupos" required>
+
+
+                
                 </div>
             
 
             
                 <div class="orden">
-                  <input type="number" class="input" name = 'cupos' [(ngModel)]="formulario.cupos" placeholder="cupos" required>
+                  
 
+                  <input type="text" class="input" name = 'vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
                   <select name="tipoDeFirma" class="seleccion" [(ngModel)]="formulario.tipo_firma" required>
                     <option *ngIf="true" disabled selected value="">Tipo de firma</option>
                     <option *ngFor="let tipo of tipoDeFirma" [value]="tipo">{{ tipo }}</option>
@@ -52,9 +83,21 @@
                 </div>
 
                 <div class="orden">
+                  <div class="form-date">
+                    <label class="form-date__label" for="input-date">Fecha de inicio</label>
+                    <input class="form-datenput" (change)="FechaInicio()" class="input" [(ngModel)]="formulario.fecha_InicioSinFormato" type="date" id="input-date" name="input-date-start" value="22/07/2018">
+                    </div>
+
+                    <div class="form-date">
+                      <label class="form-date__label" for="input-date">Fecha de termino</label>
+                      <input class="form-datenput" (change)="FechaFinal()" class="input" [(ngModel)]="formulario.fecha_FinalSinFormato" type="date" id="input-date" name="input-date-end" value="22/07/2018">
+                      </div>
+                    </div>
+
+                <div class="orden">
                   <button type="submit">Agregar Convenio</button>
+
                 </div>
-            
             </form>
             <br>
           </ng-container>
