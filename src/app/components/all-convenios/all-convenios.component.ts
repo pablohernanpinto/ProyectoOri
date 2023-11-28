@@ -10,7 +10,7 @@ import { ModalService } from '../header/modal.service';
   styleUrls: ['./all-convenios.component.css']
 })
 export class AllConveniosComponent {
-  convenios: any[] = []; // Inicialización aquí
+  convenios: any[] = []; 
   searchTerm: string = ''
   constructor(private http: HttpClient,
     public dialog: MatDialog,
