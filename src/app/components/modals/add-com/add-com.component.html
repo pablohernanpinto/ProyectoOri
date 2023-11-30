@@ -18,8 +18,6 @@
               </div>
               <div class="orden">
 
-
-
                 <select name="nombre_unidadGestora" class="seleccion"  [(ngModel)]="formulario.nombre_unidadGestora" (change)="IDunidadGestora()" required >
                   <option *ngIf="true" disabled selected value="">Seleccione una unidad gestora</option>
                   <option *ngFor="let unidadGestora of optionsUnidadGestora" [value]="unidadGestora">{{unidadGestora}}</option>

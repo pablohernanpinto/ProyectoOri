@@ -14,8 +14,10 @@
 
     <div class="header-container">
         <div class="izquierda">
-            <button  class="boton" *ngIf="loginService.getUserRole() === 'si'" mat-button (click)="toggleSidenav()">Añadir</button><!--  *ngIf="loginService.getUserRole() === 'si'" -->
-            <img title="Inicio" src="./../../../assets/LOGO_ORI2Color.png" width="150" alt="Logo de ORI">
+            <img class="boton" id="openBar" *ngIf="loginService.getUserRole() === 'si'" mat-button (click)="toggleSidenav()" src="./../../../assets/icons8-menu-64.png" alt="Boton menu">
+
+
+            <img title="Inicio" (click)="Home()" src="./../../../assets/LOGO_ORI2Color.png" width="150" alt="Logo de ORI">
         </div>
         <div class="search">
             <input type="text" [(ngModel)]="busqueda" (input)="enviarMensaje()" name="search" placeholder="Buscar por universidad, tipo de convenio, etc">
@@ -36,7 +38,9 @@
             <h3 class="opcion" (click)="ModalAddInstituciones()" value="institucion">Añadir institución</h3>
             <h3 class="opcion" (click)="ModalADD()" value="convenio">Añadir convenio</h3>
             <h3 class="opcion" (click)="ModalAddUnidadGestora()" value="convenio">Añadir unidad gestora</h3>
+
             <h3 class="opcion" *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com'"  (click)="ModalAddUsuario()" value="usuario">Agregar usuario</h3>
+            <h3 class="opcion" (click)="CrearReportes()" value="convenio">Crear reportes</h3>
         </nav>
 <!-- *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com' " -->
         
@@ -49,6 +53,7 @@
         </div>
 
         <nav id="convenios">
+
             <app-all-convenios></app-all-convenios>
         </nav>
 

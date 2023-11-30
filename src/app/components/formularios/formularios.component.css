@@ -141,6 +141,10 @@ mat-sidenav-content {
     
 }
 
+img:hover {
+    cursor: pointer;
+  }
+
 input[type="text"] {
     border-radius: 30px;
     height: 20px;
@@ -162,11 +166,85 @@ input[type="text"] {
     color:white;
 }
 
-img:hover {
-    cursor: pointer;
-    
-  }
-
-  #openBar{
+#openBar{
     padding: 10%;
 }
+
+
+/* formulario */
+
+.titulo {
+    color: #455a64;
+
+    font-weight: 400;
+    text-align: center;
+}
+
+.contenedorTitulo {
+    flex-direction: column;  /* Cambié row a column para que funcione el centro vertical */
+    padding: 1%;
+    display: flex;
+    justify-content: center;  /* Añadí esta línea para centrar verticalmente */
+    background-color: white;
+}
+
+.Formulario{
+    flex-direction: column;  /* Cambié row a column para que funcione el centro vertical */
+    align-items: center;
+    background-color: white;
+    display: flex;
+}
+.checkbox-container {
+    flex-grow: 1;
+  }
+
+
+
+  div {
+    display: flex;
+    align-items: baseline; /* Alinea los elementos a la línea de base */
+  }
+  
+  .mat-checkbox {
+    margin-right: 10px; /* Espacio entre el checkbox y el select */
+  }
+  
+
+
+button {
+    text-align: start;
+    font-size: medium;
+    background-color: #253e85;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #869ad1;
+    color: white;
+  }
+  
+
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    margin-bottom: 10px; /* Ajusta el espacio entre las filas según sea necesario */
+  }
+  
+  .column-left, .column-right {
+    padding: 5px;
+    padding-inline: 30px;
+  }
+  
+  .column-left {
+    flex: 1;
+  }
+  

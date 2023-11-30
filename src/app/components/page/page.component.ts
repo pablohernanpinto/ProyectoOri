@@ -39,10 +39,12 @@ export class PageComponent {
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
   convenios: any;
   busqueda:string  = '';
+  checked: boolean | undefined;
 
  
  
-
+/*             this.router.navigateByUrl('/page');
+ */
   PRUEBA(){
     console.log(this.loginService.getUserRole())
   }
@@ -65,10 +67,16 @@ export class PageComponent {
     this.renderer.setStyle(this.document.body, 'background-color', 'white');
   }
 
-
-  
   enviarMensaje(){
     this.envioServicio.disparadorDeBusqueda.next({mensaje:this.busqueda})
+  }
+
+  CrearReportes(){
+    this.router.navigateByUrl('/formulario');
+  }
+
+  Home(){
+    this.router.navigateByUrl('/page');
   }
 
   hacerPeticion() {

@@ -28,6 +28,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { UsersComponent } from './components/users/users.component';
 import { AddUnidadGestoraComponent } from './components/modals/add-unidad-gestora/add-unidad-gestora.component';
 import { ModificarConvenioComponent } from './components/modals/modificar-convenio/modificar-convenio.component';
+import { FormulariosComponent } from './components/formularios/formularios.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 @NgModule({
@@ -47,8 +54,14 @@ import { ModificarConvenioComponent } from './components/modals/modificar-conven
     UsersComponent,
     AddUnidadGestoraComponent,
     ModificarConvenioComponent,
+    FormulariosComponent,
+
+
   ],
   imports: [
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -61,6 +74,7 @@ import { ModificarConvenioComponent } from './components/modals/modificar-conven
     ReactiveFormsModule,
     MatSidenavModule,
     MatButtonModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
