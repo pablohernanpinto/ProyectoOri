@@ -131,3 +131,7 @@ input[type=text] {
     width: 97%;
   }
   
+
+  .full-width{
+    width: 50%;
+  }
