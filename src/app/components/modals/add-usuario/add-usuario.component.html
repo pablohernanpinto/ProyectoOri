@@ -7,31 +7,71 @@
       <div class="modal-body">
         <ng-container>
             <br>
-            <form class="ingreso" (ngSubmit)="addUsuarios(formContact)" #formContact="ngForm">
+            <form class="ingreso" [formGroup]="formulario" #formContact="ngForm">
 
                 
                 <div class="orden">
+
+
+                  
+                  <mat-form-field class="full-width">
+                    <mat-label>E-mail</mat-label>
+                    <input  formControlName = 'email' matInput  placeholder="Ej: Email@gmail.com" value="" required><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+                  <mat-form-field class="full-width">
+                    <mat-label>Constraseña</mat-label>
+                    <input  formControlName = 'contrasena' matInput   value="" required><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+
+
+<!-- 
                     <input  name = 'email' type="text" class="input" [(ngModel)]="formulario.email" placeholder="Email" required>
   
-                    <input name = 'contrasena'  type="text" class="input" [(ngModel)]="formulario.contrasena" placeholder="Contraseña" required>
+                    <input name = 'contrasena'  type="text" class="input" [(ngModel)]="formulario.contrasena" placeholder="Contraseña" required> -->
                 </div>
             
                   
                 <div class="orden">
-                    <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" required>
+
+
+                  <mat-form-field class="full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input  formControlName = 'nombre' matInput  placeholder="Ej: Joaquin"   value="" required><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+                  
+                  <mat-form-field class="full-width">
+                    <mat-label>Apellido</mat-label>
+                    <input  formControlName = 'apellido' matInput  placeholder="Ej: Montecinos"   value="" required><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+
+                 <!--    <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" required>
   
-                    <input name = 'apellido'  type="text" class="input" [(ngModel)]="formulario.apellido" placeholder="Apellido" required>
+                    <input name = 'apellido'  type="text" class="input" [(ngModel)]="formulario.apellido" placeholder="Apellido" required> -->
                   </div>
                 
                   <div class="orden">
-                    <input  name = 'vigencia' type="text" class="input" [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
+
+                    <mat-form-field style="width: 100%;" class="full-width">
+                      <mat-label>Privilegios de usuario</mat-label>
+                      <mat-select  formControlName = privilegios required>
+                        <mat-option value="si">Si</mat-option>
+                        <mat-option value="no">No</mat-option>
+                      </mat-select>
+                    </mat-form-field>  
+                 <!--    <input  name = 'vigencia' type="text" class="input" [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
   
-                    <input name = 'privilegios'  type="text" class="input" [(ngModel)]="formulario.privilegios" placeholder="Privilegios" required>
+                    <input name = 'privilegios'  type="text" class="input" [(ngModel)]="formulario.privilegios" placeholder="Privilegios" required> -->
                   </div>
               
 
                   <div class="orden">
-                    <button type="submit">Agregar Usuario</button>
+
+                    <button mat-raised-button color="primary" (click)="addUsuarios()" type="submit">Agregar</button>
+
                   </div>
             
             </form>            

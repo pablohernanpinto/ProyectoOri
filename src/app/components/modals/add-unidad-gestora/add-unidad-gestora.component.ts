@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddComComponent } from '../add-com/add-com.component';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-add-unidad-gestora',
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AddUnidadGestoraComponent {
 
 
-  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient) { }
+  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient,private formBuilder: FormBuilder) { }
   url = 'http://localhost:3000/api/';
   
 
@@ -20,10 +20,9 @@ export class AddUnidadGestoraComponent {
 
   optionsInstituciones: string[] = []; 
   optionsCoor: string[] = []; 
-  convenios: any[] = [];
+  Instituciones: any[] = [];
   idInstituciones: any[] = [];
   idCoor: any[] = [];
-
 
 
   closeDialog() {
@@ -31,12 +30,14 @@ export class AddUnidadGestoraComponent {
     window.location.reload();
 
   }
-  formulario = {
+
+   formulario = this.formBuilder.group({
     id_institucion: '',
     nombre_unidad: '',
-  };
+    nombreInstitucion: ''
 
-
+  })
+ 
 
   ngOnInit() {
     this.hacerPeticion();
@@ -45,28 +46,30 @@ export class AddUnidadGestoraComponent {
 
   hacerPeticion() {
     this.http.get(this.url+'nombresInstituciones/').subscribe((data: any) => {
-      this.convenios = data;
-      console.log(this.convenios,'aqio')
-      if (Array.isArray(this.convenios)) {
-        for (let i = 0; i < this.convenios.length; i++) {
-          this.optionsInstituciones.push(this.convenios[i].Nombre_Institucion)
-          this.idInstituciones.push(this.convenios[i].ID_Institucion)
+      this.Instituciones = data;
+//      console.log(this.Instituciones,'aqio')
+      if (Array.isArray(this.Instituciones)) {
+        for (let i = 0; i < this.Instituciones.length; i++) {
+          this.optionsInstituciones.push(this.Instituciones[i].Nombre_Institucion)
+          this.idInstituciones.push(this.Instituciones[i].ID_Institucion)
         }
-      //console.log( this.optionsInstituciones,'esto')
-      }
+    //  console.log( this.optionsInstituciones,'nombres',this.idInstituciones,'id')
+       }
     });
   }
 
-  addUnidadGestora(formContact: NgForm) {
-    if (formContact.valid) {
-    this.formulario.id_institucion = String(this.optionsInstituciones.indexOf(this.formulario.id_institucion)+1)
-     console.log(this.formulario,'ultimo')
-     
-      this.http.post('http://localhost:3000/api/unidad_gestora', this.formulario).subscribe(
+  obtenerIndex(){
+    this.formulario.value.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(String(this.formulario.value.nombreInstitucion))]
+  }
+
+  addUnidadGestora() {
+    this.obtenerIndex()
+    if (this.formulario.valid) {
+      this.http.post('http://localhost:3000/api/unidad_gestora', this.formulario.value).subscribe(
           (data) => {
             alert('SE HA INGRESADO UNIDAD GESTORA');
             //  window.location.reload();
-              console.log(data);
+      //        console.log(data);
               window.location.reload();
           
             },
@@ -79,7 +82,7 @@ export class AddUnidadGestoraComponent {
           );
       } else {
         alert('INGRESO NO VÁLIDO');
-      }  
+      }   
     }
   }
 

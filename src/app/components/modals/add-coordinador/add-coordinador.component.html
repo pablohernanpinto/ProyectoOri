@@ -7,33 +7,50 @@
       <div class="modal-body">
         <ng-container>
             <br>
-            <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+            <form [formGroup]="formulario"  #formContact="ngForm">
 
                 
                 <div class="orden">
-                  <!-- necesito el nombre de la institucion y pasar el id -->
-                  <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndex">
-                    <option *ngIf="true" disabled selected value="">Seleccione una institucion</option>
-                    <option *ngFor="let convenio of optionsInstituciones; let i = index" [value]="convenio">{{convenio}}</option>
-                  </select>
 
 
-                  <select name="Tipo_Coordinador" class="seleccion" [(ngModel)]="formulario.tipo" required>
-                    <option *ngIf="true" disabled selected value="">Tipo de coordinador</option>
-                    <option *ngFor="let tipo of tipoCord" [value]="tipo">{{ tipo }}</option>
-                  </select>
-                </div>
+                  
+                  <mat-form-field class="full-width">
+                    <mat-label>Tipo de coordinador</mat-label>
+                    <mat-select  formControlName = tipo required>
+                      <mat-option value="Interno">Interno</mat-option>
+                      <mat-option value="Externo">Externo</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+   
+                  <mat-form-field class="full-width">
+                    <mat-label>Institucion</mat-label>
+                    <mat-select formControlName="nombre_institucion"  [disabled]="formulario.value.tipo === 'Interno'" [required]="formulario.value.tipo != 'Interno'">
+                      <mat-option *ngFor="let nombInstitucion of optionsInstituciones" [value]="nombInstitucion">{{ nombInstitucion }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+
+                </div> 
             
                   
                 <div class="orden">
-                    <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" required>
-  
-                    <input name = 'correo'  type="text" class="input" [(ngModel)]="formulario.correo" placeholder="Correo" required>
+
+                    <mat-form-field class="full-width">
+                      <mat-label>Nombre de coordinador</mat-label>
+                      <input  formControlName = 'nombre' matInput  placeholder="Ej: Diego Gonzalez" value="" required>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                      <mat-label>Correo de coordinador</mat-label>
+                      <input  type="email" formControlName = 'correo' matInput  placeholder="Ej: Email@gmail.com" value="" required>
+                    </mat-form-field>
+
                   </div>
               
 
                   <div class="orden">
-                    <button type="submit">Agregar Coordinador</button>
+                    <button mat-raised-button color="primary" (click)="addCoordinador()" type="submit">Agregar</button>
+
                   </div>
             
             </form>            

@@ -55,8 +55,9 @@
                 </tr>
               </tbody>
             </table><br>            
-            <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModConvenio()">Modificar</button> <!-- *ngIf="loginService.getUserRole() === 'si'" -->
-
+            <div class="orden">
+              <button mat-raised-button color="accent" *ngIf="loginService.getUserRole() === 'si'" (click)="ModConvenio()">Modificar</button>
+            </div>
         </div>
 
 
@@ -87,30 +88,53 @@
               </tbody>
             </table>
             <br>
+            <h1>Detalle de coordinador interno</h1>
             <table class="fullElements">
+
               <thead>
                 <tr class="listTittle">
-                  <th>Nombre coordinador</th>
+                  <th>Nombre coordinador interno</th>
                   <th>Correo coordinador</th>
-                  <th>Tipo coordinador</th>
+
 
                 </tr>
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Nombre_Coordinador }}</td>
-                  <td>{{ mostrarEnPantalla.Correo_Coordinador }}</td>
-                  <td>{{ mostrarEnPantalla.Tipo_Coordinador }}</td>
+                  <td>{{ mostrarEnPantalla.Nombre_Coordinador_Interno }}</td>
+                  <td>{{ mostrarEnPantalla.Correo_Coordinador_Interno }}</td>
 
                 </tr>
               </tbody>
             </table>
             <br>
+            <h1>Detalle de coordinador Externo</h1>
+            <table class="fullElements">
+
+              <thead>
+                <tr class="listTittle">
+                  <th>Nombre coordinador externo</th>
+                  <th>Correo coordinador externo</th>
+
+                </tr>
+              </thead>
+              <tbody >
+                <tr  class="listElements">
+                  <td>{{ mostrarEnPantalla.Nombre_Coordinador_Externo }}</td>
+                  <td>{{ mostrarEnPantalla.Correo_Coordinador_Externo }}</td>
+
+                </tr>
+              </tbody>
+            </table>
           <!--   <button  class="button" id="modificar" *ngIf="loginService.getUserRole() === 'si'" (click)="ModInstitucion()">Modificar</button> -->
+          
+
+        </div>
+        <div class="orden">
+          <button mat-raised-button color="warn" *ngIf="loginService.getUserRole() === 'si'" (click)="delete()">Borrar</button>
         </div>
 
-      
-        <button  class="button" *ngIf="loginService.getUserRole() === 'si'" (click)="delete()">Borrar</button>
+
         <br><br>
       </ng-container>
     </div>

@@ -55,7 +55,8 @@ export class ModalComponent {
   const formularioModificacion = {
     id_convenio: this.mostrarEnPantalla.ID_Convenio,
     id_unidad_gestora: this.mostrarEnPantalla.ID_Unidad_Gestora,
-    id_coordinador: this.mostrarEnPantalla.ID_Coordinador,
+    id_coordinadorInterno: this.mostrarEnPantalla.ID_Coordinador_Interno,
+    id_coordinadorExterno: this.mostrarEnPantalla.ID_Coordinador_Externo,
     nombre_conv: this.mostrarEnPantalla.Nombre_Convenio,
     tipo_conv: this.mostrarEnPantalla.Tipo_Convenio,
     movilidad: this.mostrarEnPantalla.Movilidad,
@@ -67,7 +68,9 @@ export class ModalComponent {
     condicion_renovacion: this.mostrarEnPantalla.Condicion_Renovacion,
     estatus: this.mostrarEnPantalla.Estatus,
     fecha_inicio: this.mostrarEnPantalla.Fecha_Inicio,
-    fecha_termino: this.mostrarEnPantalla.Fecha_Termino
+    fecha_termino: this.mostrarEnPantalla.Fecha_Termino,
+    nombreCoordinadorInterno: this.mostrarEnPantalla.Nombre_Coordinador_Interno,
+    nombreCoordinadorExterno: this.mostrarEnPantalla.Nombre_Coordinador_Externo,
   }
   const dialogRef = this.dialog.open(ModificarConvenioComponent,{data: {formulario:formularioModificacion,Index: this.indexEnviar}});
   

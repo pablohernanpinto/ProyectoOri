@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
@@ -10,11 +10,13 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-com.component.css']
 })
 export class AddComComponent {
-  constructor(private http: HttpClient,public dialog: MatDialog,public dialogRef: MatDialogRef<AddComComponent>) { }
 
+
+  constructor(private http: HttpClient,public dialog: MatDialog,public dialogRef: MatDialogRef<AddComComponent>,private formBuilder: FormBuilder) { }
+  inicioDatepicker: any
   url = 'http://localhost:3000/api/';
 
-  formulario = {
+/*   formulario = {
     id_unidad_gestora: '',
     id_coordinador: '',
     nombre_conv: '',
@@ -37,8 +39,43 @@ export class AddComComponent {
     nombre_coordinador: '',
     nombre_institucion: '',
   }; 
+ */
+  formulario = this.formBuilder.group({
+    id_unidad_gestora: '',
+    nombre_conv: '',
+    tipo_conv: '',
+    movilidad:'',
+    vigencia:'',
+    ano_firma:'',
+    tipo_firma:'',
+    cupos:'',
+    documentos:'',
+    condicion_renovacion:'',
+    id_institucion:'',
+    estatus:'Activo',
+    fecha_inicio:'',
+    fecha_termino:'',
+    id_coordinador_externo: '',
+    id_coordinador_interno: '',
 
-  //obtener coordinadores
+
+    fecha_InicioSinFormato: new FormControl<Date | null>(null),
+    fecha_FinalSinFormato: new FormControl<Date | null>(null),
+    nombre_unidadGestora:'',
+    nombre_coordinador:'',
+    nombre_institucion:'',
+    nombre_coordinador_Externo:'',
+    nombre_coordinador_Interno:'',
+
+  })
+
+  //obtener coordinadores internos
+
+  coordinadoresInternos: any[] = [];
+  NombreCoordinadorInterno: any[]=[];
+  ID_CoordinadorInterno: any[] = [];
+
+  //obtener coordinadores Externos
   coordinadores:any[] = [];
   coordinadoresNombres:any[] = [];
   idCoordinadores: string[] = []; 
@@ -72,11 +109,11 @@ export class AddComComponent {
     this.optionsUnidadGestora = [];
     this.idCoordinadores = [];
     this.idUnidadGestora = [];
-    this.formulario.nombre_coordinador = ''
-    this.formulario.nombre_unidadGestora = ''
+    this.formulario.value.nombre_coordinador = ''
+    this.formulario.value.nombre_unidadGestora = ''
 
-    const indexSelect = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.nombre_institucion)]
-    this.formulario.id_institucion = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.nombre_institucion)]
+    const indexSelect = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.value.nombre_institucion)]
+    this.formulario.value.id_institucion = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.value.nombre_institucion)]
     this.coordinadoresDisponibles = this.coordinadores.filter((objeto) => objeto.ID_Institucion === indexSelect); 
     this.unidadGestoraDisponible = this.unidadGestora.filter((objeto) => objeto.ID_Institucion === indexSelect); 
 
@@ -93,33 +130,46 @@ export class AddComComponent {
   }   
 
   IDunidadGestora(){
-    const indexSelect = this.idUnidadGestora[this.optionsUnidadGestora.indexOf(this.formulario.nombre_unidadGestora)]
-    this.formulario.id_unidad_gestora = indexSelect;
+    this.formulario.value.id_unidad_gestora = this.idUnidadGestora[this.optionsUnidadGestora.indexOf(String(this.formulario.value.nombre_unidadGestora))];
+
   }
 
   
   IDcoordinador(){
-    const indexSelect = this.idCoordinadores[this.coordinadoresNombres.indexOf(this.formulario.nombre_coordinador)]
-    this.formulario.id_coordinador = indexSelect;
+
   }
 
-  FechaInicio(){
-    let elementos = this.formulario.fecha_InicioSinFormato.split("-");
-    this.formulario.fecha_inicio = elementos.reverse().join('/')
+  IDinstitucion(){
+    this.formulario.value.id_institucion = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.value.nombre_institucion)]
+  
   }
-  FechaFinal(){
-    let elementos = this.formulario.fecha_FinalSinFormato.split("-");
-    this.formulario.fecha_termino = elementos.reverse().join('/')
-    console.log(this.formulario)
+  
+
+  formatFecha(){
+    this.formulario.value.fecha_inicio = (this.formulario.value.fecha_InicioSinFormato?.toLocaleDateString('es-CL'))?.replaceAll('-','/')
+    this.formulario.value.fecha_termino = (this.formulario.value.fecha_FinalSinFormato?.toLocaleDateString('es-CL'))?.replaceAll('-','/')
+    
   }
 
-  addConvenio(formContact: NgForm) {
-    console.log(this.formulario, ' ingreso')
-      if (formContact.valid) {
-        this.http.post('http://localhost:3000/api/convenios', this.formulario).subscribe(
+  coordinadoresAgregarID(){
+    console.log(this.NombreCoordinadorInterno.indexOf(String(this.formulario.value.nombre_coordinador_Interno)))
+    this.formulario.value.id_coordinador_interno = this.ID_CoordinadorInterno[this.NombreCoordinadorInterno.indexOf(String(this.formulario.value.nombre_coordinador_Interno))]
+    this.formulario.value.id_coordinador_externo = this.idCoordinadores[this.coordinadoresNombres.indexOf(String(this.formulario.value.nombre_coordinador))];
+    console.log(this.formulario.value)
+
+  }
+
+  addConvenio() {
+    this.IDunidadGestora()
+    this.IDcoordinador()
+    this.IDinstitucion()
+    this.formatFecha()
+    this.coordinadoresAgregarID()
+       if (this.formulario.valid) {
+        this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
             (data) => {
               alert('CONVENIO INGRESADO');
-              //window.location.reload();
+              window.location.reload();
 
             },
             (error) => {
@@ -129,7 +179,7 @@ export class AddComComponent {
           );
       } else {
         alert('INGRESO NO VÁLIDO');
-      }
+      }   
     }
   
     
@@ -155,6 +205,17 @@ export class AddComComponent {
     this.http.get(this.url+'coordinadores/').subscribe((data: any) => {
       this.coordinadores = data;
     });
+
+    this.http.get(this.url+'listarCoordinadoresInternos/').subscribe((data: any) => {
+      this.coordinadoresInternos = data;
+      for (let i = 0; i < data.length; i++) {
+        this.ID_CoordinadorInterno.push(data[i].ID_Coordinador)
+        this.NombreCoordinadorInterno.push(data[i].Nombre)
+        } 
+      console.log(this.coordinadoresInternos,'data')
+    });
+    
+
   }
 }
 

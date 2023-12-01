@@ -24,6 +24,11 @@ input[type=text] {
     cursor: pointer;
   }
   
+
+  .full-width{
+    width: 50%;
+  }
+
   button:hover {
     background-color: #869ad1;
     color: white;

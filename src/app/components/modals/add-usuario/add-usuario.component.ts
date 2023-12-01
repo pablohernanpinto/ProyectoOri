@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddComComponent } from '../add-com/add-com.component';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-usuario',
@@ -12,16 +12,24 @@ import { NgForm } from '@angular/forms';
 export class AddUsuarioComponent {
 
 
-  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient) { }
+  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient,private formBuilder: FormBuilder) { }
 
-  formulario = {
+/*   formulario = {
     email: '',
     contrasena: '',
     nombre: '',
     apellido: '',
     vigencia: '',
     privilegios:'',
-  };
+  }; */
+  formulario = this.formBuilder.group({
+    email: '',
+    contrasena: '',
+    nombre: '',
+    apellido: '',
+    vigencia: 'no',
+    privilegios: '',
+  })
 
 
 
@@ -31,9 +39,9 @@ export class AddUsuarioComponent {
 
   }
 
-  addUsuarios(formContact: NgForm) {
-    if (formContact.valid) {
-      this.http.post('http://localhost:3000/api/usuarios/register', this.formulario).subscribe(
+  addUsuarios() {
+    if (this.formulario.valid) {
+      this.http.post('http://localhost:3000/api/usuarios/register', this.formulario.value).subscribe(
           (data) => {
             alert('SE HA INGRESADO EL USUARIO');
             console.log(data);

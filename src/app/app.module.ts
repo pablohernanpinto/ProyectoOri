@@ -15,7 +15,7 @@ import { AddComComponent } from './components/modals/add-com/add-com.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './components/modals/modalInfo/modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgToastModule } from 'ng-angular-popup';
@@ -33,8 +33,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -75,6 +76,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
+
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },

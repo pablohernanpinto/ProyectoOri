@@ -5,29 +5,8 @@ input[type=text] {
     box-sizing: border-box;
   }
   
-  .boton {
-    padding-top: 50px;
-    margin: 0 auto; /* Esto centrará el formulario horizontalmente */
-    text-align: start; /* Esto centrará el contenido del formulario */
-    width: 1500px;
-  }
-  
-  button {
-    text-align: start;
-    font-size: medium;
-    background-color: #253e85;
-    border-radius: 5px; /* Cambiado de 5cm a 5px */
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #869ad1;
-    color: white;
-  }
+
+
   
   .volverButton {
     padding-right: 10px;

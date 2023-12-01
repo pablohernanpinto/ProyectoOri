@@ -11,11 +11,13 @@ import { ModalService } from '../header/modal.service';
 })
 export class AllConveniosComponent {
   convenios: any[] = []; 
+  conveniosCuatroMeses: any[] = []
   searchTerm: string = ''
   constructor(private http: HttpClient,
     public dialog: MatDialog,
     private listado : ModalService) { }
 
+  formulario:any[] = []
 
 
   openModal(Index: number) {
@@ -34,9 +36,58 @@ export class AllConveniosComponent {
     );
   }
 
+  alarma(){
+    
+    //console.log(this.convenios)
+    for (let i = 0; i < this.convenios.length; i++) {
+      console.log(this.convenios[i].Fecha_Termino,'esto es')
+      const partesFecha = this.convenios[i].Fecha_Termino.split('/');
+      const year = parseInt('20' + partesFecha[2], 10); // Convertir a número
+      const month = parseInt(partesFecha[1], 10) - 1; // Convertir a número y restar 1
+      const day = parseInt(partesFecha[0], 10); // Convertir a número
+      
+      const fecha = new Date(year, month, day);
+
+
+      const fechaCuatroMesesAntes = new Date(fecha);
+      const fechaSeisMesesAntes = new Date(fecha);
+      fechaCuatroMesesAntes.setMonth(fecha.getMonth() - 4);      
+      fechaSeisMesesAntes.setMonth(fecha.getMonth() - 6);  
+
+      const fechaActual = new Date();
+
+      if (fechaCuatroMesesAntes < fechaActual) {
+        const Alerta = 'El convenio: '+ this.convenios[i].Nombre_Convenio +' vencera en los proximos cuatro meses.'
+        this.formulario.push({
+          ID_Convenio: this.convenios[i].ID_Convenio ,
+          Fecha_Termino: this.convenios[i].Fecha_Termino,
+          Nombre_Convenio: this.convenios[i].Nombre_Convenio,
+          TipoAlerta: '4 meses'
+        });
+        console.log(this.formulario)
+
+        // La fecha está dentro de los próximos 4 meses
+        //alert(Alerta);
+      }
+      if (fechaSeisMesesAntes < fechaActual && fechaCuatroMesesAntes > fechaActual ) {
+        const Alerta = 'El convenio: '+ this.convenios[i].Nombre_Convenio +' vencera en los proximos cuatro meses.'
+        this.formulario.push({
+          ID_Convenio: this.convenios[i].ID_Convenio ,
+          Fecha_Termino: this.convenios[i].Fecha_Termino,
+          Nombre_Convenio: this.convenios[i].Nombre_Convenio,
+          TipoAlerta: '6 meses'
+        });
+        console.log(this.formulario)
+
+        // La fecha está dentro de los próximos 4 meses
+        //alert(Alerta);
+      }
+      
+    }
+  }
 
   ngOnInit() {
-    this.hacerPeticion(); 
+    this.hacerPeticion();
     this.listado.disparadorDeBusqueda.subscribe(mensaje => {
       this.searchTerm = String(mensaje.mensaje);
     })
@@ -47,7 +98,8 @@ export class AllConveniosComponent {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
-      console.log(this.convenios)
+      this.alarma()
+      console.log(this.convenios, 'esto es')
     });
   }
 }

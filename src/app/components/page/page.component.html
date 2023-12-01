@@ -24,7 +24,13 @@
         </div>
     
         <div class="derecha">
-            <img class="icono" (click)="logout()"  title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
+
+            <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>Menu</button>
+                <mat-menu #menu="matMenu">
+                <button mat-menu-item >Open dialog</button>
+            </mat-menu>       
+
+            <img class="icono" (click)="logout()"  style="margin: 10px;" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
         </div>
     </div>
     
@@ -42,7 +48,7 @@
             <h3 class="opcion" *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com'"  (click)="ModalAddUsuario()" value="usuario">Agregar usuario</h3>
             <h3 class="opcion" (click)="CrearReportes()" value="convenio">Crear reportes</h3>
         </nav>
-<!-- *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com' " -->
+
         
     </mat-sidenav>
 

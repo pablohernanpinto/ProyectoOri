@@ -2,29 +2,41 @@
     <div class="modal-content">
       <div class="modal-header">
         <span (click)="closeDialog()" class="close">&times;</span>
-        <h2>Añadir institución</h2>
+        <h2>Añadir unidad gestora</h2>
       </div>
       <div class="modal-body">
         <ng-container>
             <br>
-            <form class="ingreso" (ngSubmit)="addUnidadGestora(formContact)" #formContact="ngForm"> <!--  -->
-                <div class="orden">
+            <form class="ingreso" [formGroup]="formulario"  #formContact="ngForm"> <!--  -->
+                <div >
                 
                     <div class="orden">
 
-                        
-                        <select name="nombreInst" class="seleccion"  [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndexIns" >
-                            <option *ngIf="true" disabled selected value="">Seleccione una institución</option>
-                            <option *ngFor="let convenio of optionsInstituciones" [value]="convenio">{{convenio}}</option>
-                        </select><br>  
-            
-                        <input  name = 'Nombre_Unidad_Gestora' type="text" class="input" [(ngModel)]="formulario.nombre_unidad" placeholder="Nombre unidad gestora" required>
-
+                        <mat-form-field class="full-width">
+                          <mat-label>Nombre unidad gestora</mat-label>
+                          <input formControlName = 'nombre_unidad' matInput placeholder="Ej: Facultad de ingenieria" value="" required> <!--  [(ngModel)]="formulario.pais" -->
+                        </mat-form-field>
+  
+                                
+                        <mat-form-field class="full-width">
+                          <mat-label>Institucion</mat-label>
+                          <mat-select  formControlName = nombreInstitucion required>
+                              <mat-option  *ngFor="let nombInstitucion of optionsInstituciones" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+  
 
 
                     </div>
-                </div>
-                <button type="submit">Añadir unidad gestora</button>
+                
+                    <div class="orden">
+                      <button mat-raised-button (click)="addUnidadGestora()" color="primary">Agregar</button>
+                    </div>
+
+                  </div>
+
+
+
             </form>            
             <br>
         </ng-container>

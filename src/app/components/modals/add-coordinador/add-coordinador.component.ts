@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddComComponent } from '../add-com/add-com.component';
 import { HttpClient } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-coordinador',
@@ -10,20 +10,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-coordinador.component.css']
 })
 export class AddCoordinadorComponent {
-  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient) { }
+  constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient,private formBuilder: FormBuilder) { }
 
   convenios: any;
   optionsInstituciones: string[] = []; 
   idInstituciones: string[] = []; 
   selectedIndex: number | undefined;
-  tipoCord: string[] = ['Interno', 'Externo'];
 
-  formulario = {
+
+  formulario = this.formBuilder.group({
     id_institucion: '',
     tipo: '',
     nombre: '',
     correo: '',
-  };
+    nombre_institucion:'',
+  })
 
   ngOnInit() {
     this.hacerPeticion();
@@ -34,14 +35,14 @@ export class AddCoordinadorComponent {
     window.location.reload();
   }
 
-  addConvenio(formContact: NgForm) {
-    if (formContact.valid) {
-
-      this.formulario.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(this.formulario.id_institucion)]
-
-
-      console.log(this.formulario,'test')
-      this.http.post('http://localhost:3000/api/coordinadores', this.formulario).subscribe(
+  addCoordinador() {
+    if (this.formulario.valid) {
+      this.formulario.value.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(String(this.formulario.value.nombre_institucion))]
+      if(this.formulario.value.tipo == 'Interno'){
+        this.formulario.value.nombre_institucion = 'Univesidad Catolica Del Maule'
+        this.formulario.value.id_institucion = '1'
+      }
+       this.http.post('http://localhost:3000/api/coordinadores', this.formulario.value).subscribe(
           (data) => {
             alert('SE HA INGRESADO COORDINADOR');
             window.location.reload();
@@ -51,10 +52,10 @@ export class AddCoordinadorComponent {
             console.error(error);
             window.location.reload();
           }
-        );
+        );  
     } else {
       alert('INGRESO NO VALIDO');
-    }
+    } 
   }
 
   hacerPeticion() {
