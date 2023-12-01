@@ -16,7 +16,8 @@ import { AddUsuarioComponent } from '../modals/add-usuario/add-usuario.component
 import { LoginService } from 'src/guards/login.service';
 import { AddUnidadGestoraComponent } from '../modals/add-unidad-gestora/add-unidad-gestora.component';
 
-
+import { DataSharingService } from './../all-convenios/data-sharing.service';
+import { ModalComponent } from './../modals/modalInfo/modal.component';
 
 @Component({
   selector: 'app-page',
@@ -24,6 +25,8 @@ import { AddUnidadGestoraComponent } from '../modals/add-unidad-gestora/add-unid
   styleUrls: ['./page.component.css']
 })
 export class PageComponent {
+last: any;
+
   constructor(
     private router: Router, 
     private renderer: Renderer2, 
@@ -32,22 +35,19 @@ export class PageComponent {
     public loginService: LoginService,
     public dialog: MatDialog,
     private http: HttpClient,
-    private envioServicio: ModalService
-
+    private envioServicio: ModalService,
+    private dataSharingService: DataSharingService,
+    
     ) { }
   sidebarOpen = false;
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
   convenios: any;
   busqueda:string  = '';
   checked: boolean | undefined;
+  Vence: any[] = [] ;
+  seisMeses: any[] = [];
+  alertas:any[] = [];
 
- 
- 
-/*             this.router.navigateByUrl('/page');
- */
-  PRUEBA(){
-    console.log(this.loginService.getUserRole())
-  }
   toggleSidenav() {
     // Verifica que sidenav no sea undefined antes de usarlo
     if (this.sidenav) {
@@ -62,9 +62,35 @@ export class PageComponent {
     this.sidebarOpen = !this.sidebarOpen;
   }
 
+  arregloDeAlertas(){
+    this.alertas = []
+
+    for (let i = 0; i < this.Vence.length; i++) {
+      const alerta = 'Convenio: '+this.Vence[i].Nombre_Convenio+', vence: '+ this.Vence[i].Fecha_Termino+', alarma: '+ this.Vence[i].TipoAlerta
+      this.alertas.push(alerta)
+      }
+  }
+
+
+  seleccionarAlerta(index:number){
+    console.log(this.Vence[index].ID_Convenio)
+    const indexEnviar = this.Vence[index].ID_Convenio -1
+    const dialogRef = this.dialog.open(ModalComponent, {data: {Index:indexEnviar}});
+
+  }
+
   ngOnInit(){
-    
     this.renderer.setStyle(this.document.body, 'background-color', 'white');
+    this.dataSharingService.lista1$.subscribe((lista) => {
+      for (let i = 0; i < lista.length; i++) {
+        this.Vence.push(lista[i]) 
+        }});
+
+    this.dataSharingService.lista2$.subscribe((lista) => {
+      for (let i = 0; i < lista.length; i++) {
+        this.Vence.push(lista[i]) 
+        }});
+
   }
 
   enviarMensaje(){

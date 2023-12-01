@@ -170,3 +170,10 @@ img:hover {
   #openBar{
     padding: 10%;
 }
+
+.linea {
+    content: '';
+    display: block;
+    border-bottom: 1px solid #253e85;
+    margin-top: 5px;  /* Ajusta según tus necesidades */
+  }

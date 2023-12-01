@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modals/modalInfo/modal.component';
 import { ModalService } from '../header/modal.service';
+import { DataSharingService } from './data-sharing.service';
+
 
 @Component({
   selector: 'app-all-convenios',
@@ -12,10 +14,12 @@ import { ModalService } from '../header/modal.service';
 export class AllConveniosComponent {
   convenios: any[] = []; 
   conveniosCuatroMeses: any[] = []
+  conveniosSeisMeses: any[] = []
   searchTerm: string = ''
   constructor(private http: HttpClient,
     public dialog: MatDialog,
-    private listado : ModalService) { }
+    private listado : ModalService,
+    private dataSharingService: DataSharingService) { }
 
   formulario:any[] = []
 
@@ -40,7 +44,7 @@ export class AllConveniosComponent {
     
     //console.log(this.convenios)
     for (let i = 0; i < this.convenios.length; i++) {
-      console.log(this.convenios[i].Fecha_Termino,'esto es')
+
       const partesFecha = this.convenios[i].Fecha_Termino.split('/');
       const year = parseInt('20' + partesFecha[2], 10); // Convertir a número
       const month = parseInt(partesFecha[1], 10) - 1; // Convertir a número y restar 1
@@ -55,35 +59,36 @@ export class AllConveniosComponent {
       fechaSeisMesesAntes.setMonth(fecha.getMonth() - 6);  
 
       const fechaActual = new Date();
-
+      console.log(fechaCuatroMesesAntes,'anterior',fechaActual,'actual')
       if (fechaCuatroMesesAntes < fechaActual) {
-        const Alerta = 'El convenio: '+ this.convenios[i].Nombre_Convenio +' vencera en los proximos cuatro meses.'
-        this.formulario.push({
+        this.conveniosCuatroMeses.push({
           ID_Convenio: this.convenios[i].ID_Convenio ,
           Fecha_Termino: this.convenios[i].Fecha_Termino,
           Nombre_Convenio: this.convenios[i].Nombre_Convenio,
           TipoAlerta: '4 meses'
         });
-        console.log(this.formulario)
+
 
         // La fecha está dentro de los próximos 4 meses
         //alert(Alerta);
       }
       if (fechaSeisMesesAntes < fechaActual && fechaCuatroMesesAntes > fechaActual ) {
-        const Alerta = 'El convenio: '+ this.convenios[i].Nombre_Convenio +' vencera en los proximos cuatro meses.'
-        this.formulario.push({
+        this.conveniosSeisMeses.push({
           ID_Convenio: this.convenios[i].ID_Convenio ,
           Fecha_Termino: this.convenios[i].Fecha_Termino,
           Nombre_Convenio: this.convenios[i].Nombre_Convenio,
           TipoAlerta: '6 meses'
         });
-        console.log(this.formulario)
 
-        // La fecha está dentro de los próximos 4 meses
-        //alert(Alerta);
-      }
       
+      }
     }
+    this.EnviarData()
+  }
+
+  EnviarData(){
+    this.dataSharingService.setLista1(this.conveniosCuatroMeses);
+    this.dataSharingService.setLista2(this.conveniosSeisMeses);
   }
 
   ngOnInit() {
@@ -99,7 +104,7 @@ export class AllConveniosComponent {
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
       this.alarma()
-      console.log(this.convenios, 'esto es')
+
     });
   }
 }

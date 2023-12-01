@@ -1,10 +1,13 @@
-import { Injectable, Output,EventEmitter} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModalService2 {
+export class DataSharingService {
+
+  constructor() { }
+
   private lista1Source = new BehaviorSubject<string[]>([]);
   private lista2Source = new BehaviorSubject<string[]>([]);
 
@@ -18,6 +21,4 @@ export class ModalService2 {
   setLista2(lista: string[]) {
     this.lista2Source.next(lista);
   }
-  
-  constructor() { }
 }

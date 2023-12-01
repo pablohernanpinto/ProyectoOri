@@ -25,10 +25,21 @@
     
         <div class="derecha">
 
-            <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>Menu</button>
-                <mat-menu #menu="matMenu">
-                <button mat-menu-item >Open dialog</button>
-            </mat-menu>       
+
+            <img  class="icono" (click)="arregloDeAlertas()" src="./../../../assets/notification.png" [matMenuTriggerFor]="menu"  style="margin: 10px;" alt="Imagen del menú">
+            
+            <mat-menu #menu="matMenu">
+                <button (click)="seleccionarAlerta(i)" mat-menu-item *ngFor="let elemento of alertas; let i = index"  >
+                  {{ elemento }}                <div class="linea"></div>
+                </button>
+
+              </mat-menu>
+
+
+
+
+
+
 
             <img class="icono" (click)="logout()"  style="margin: 10px;" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
         </div>
