@@ -13,7 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AllConveniosComponent } from './components/all-convenios/all-convenios.component';
 import { AddComComponent } from './components/modals/add-com/add-com.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './components/modals/modalInfo/modal.component';
@@ -36,6 +36,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
+import {AsyncPipe} from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 @NgModule({
@@ -79,6 +82,8 @@ import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatAutocompleteModule,
+    AsyncPipe,
 
   ],
   providers: [

@@ -163,3 +163,16 @@ input[type=text] {
     flex: 1;
     margin-right: 10px; /* Ajusta este valor para el espacio entre los campos */
   }
+
+  .Fechas {
+    padding-left: 20px;
+  }
+  
+  .orden .form-date {
+    flex: 1;
+    margin-right: 10px; /* Ajusta este valor para el espacio entre los campos */
+  }
+  
+  .full-width{
+    width: 50%;
+  }

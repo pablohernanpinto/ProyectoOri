@@ -99,6 +99,7 @@ export class FormulariosComponent {
 
   Home(){
     this.router.navigateByUrl('/page');
+    
   }
   imprimir(){
     console.log(this.instituciones)
@@ -113,9 +114,6 @@ export class FormulariosComponent {
     this.envioServicio.disparadorDeBusqueda.next({mensaje:this.busqueda})
   }
 
-  CrearReportes(){
-    this.router.navigateByUrl('/formulario');
-  }
 
   hacerPeticion() {
     const url = 'http://localhost:3000/api/convenios';

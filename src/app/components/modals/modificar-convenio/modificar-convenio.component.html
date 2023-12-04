@@ -7,90 +7,110 @@
       <div class="modal-body">
         <ng-container>
           <br>
-          <form class="ingreso" (ngSubmit)="updateConvenio(formContact)" #formContact="ngForm">
+          <form class="ingreso" [formGroup]="formularioModificar"  #formContact="ngForm">
 
 
+            <div class="orden">
+              <mat-form-field class="full-width">
+                <mat-label>Nombre de convenio</mat-label>
+                <input  formControlName = 'nombre_conv' matInput  placeholder="Anterior: {{formulario.nombre_conv}}" value="" >
+              </mat-form-field>
+
+              
+              <mat-form-field class="full-width">
+                <mat-label>Tipo de convenio</mat-label>
+                <input  formControlName = 'tipo_conv' matInput  placeholder="Anterior: {{formulario.tipo_conv}}" value="" >
+              </mat-form-field>
+
+
+            </div>
 
    
             <div class="orden">
 
 
-
-              <mat-form-field  style="width: 100%;" class="full-width">
+              <mat-form-field class="full-width">
                 <mat-label>Movilidad</mat-label>
-                <mat-select  formControlName = movilidad required>
-                    <mat-option  *ngFor="let movilidadOp of MovilidadOpciones" [value]="movilidadOp">{{movilidadOp}}</mat-option>
+                <mat-select  formControlName = movilidad placeholder="Anterior: {{formulario.movilidad}}" >
+                  <mat-option value="SI">Si</mat-option>
+                  <mat-option value="No">No</mat-option>
                 </mat-select>
+              </mat-form-field>        
+
+              <mat-form-field class="full-width">
+                <mat-label>Vigencia</mat-label>
+                <input  formControlName = 'vigencia' matInput  placeholder="Anterior: {{formulario.vigencia}}" value="" >
+              </mat-form-field>
+            </div>
+
+            <div class="orden">
+
+              <mat-form-field class="full-width">
+                <mat-label>Año de firma</mat-label>
+                <input  formControlName = 'ano_firma' matInput type="number" placeholder="Anterior: {{formulario.ano_firma}}" value="" >
               </mat-form-field>
 
-
-              <mat-form-field  style="width: 100%;" class="full-width">
-                <mat-label>Condicion de renovacion</mat-label>
-                <mat-select  formControlName = condicion_renovacion required>
-                    <mat-option  *ngFor="let renovacionOpcion of condicionRenovacion" [value]="renovacionOpcion">{{renovacionOpcion}}</mat-option>
+              <mat-form-field class="full-width">
+                <mat-label>Tipo de firma</mat-label>
+                <mat-select  formControlName = tipo_firma placeholder="Anterior: {{formulario.tipo_firma}}" >
+                  <mat-option value="Fisica">Fisica</mat-option>
+                  <mat-option value="Digital">Digital</mat-option>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field>   
 
 
-
-      
 
             </div>
 
-        <!--  
+            <div class="orden">
+              <mat-form-field class="full-width">
+                <mat-label>Cupos</mat-label>
+                <input  formControlName = 'cupos' matInput type="number" placeholder="Anterior: {{formulario.cupos}}" value="" >
+              </mat-form-field>
 
-              <div class="orden">
-                <input  name = 'nombreConvenio' type="text" class="input" [(ngModel)]="formulario.nombre_conv" placeholder="Ingrese nombre de convenio" >
-                <input name = 'tipoDeConvenio'  type="text" class="input" [(ngModel)]="formulario.tipo_conv" placeholder="Tipo de convenio" >
-              </div>
-          
-              <div class="orden">
+              <mat-form-field  class="full-width">
+                <mat-label>Documento</mat-label>
+                <input  formControlName = 'documentos' matInput  placeholder="Anterior: {{formulario.documentos}}" type="url" value="" >
+              </mat-form-field>
+
+            </div>
+
+            <div class="orden">
+
+              <mat-form-field class="full-width" style="width: 100%;">
+                <mat-label>Condicion de renovacion</mat-label>
+                <mat-select  formControlName = condicion_renovacion  placeholder="Anterior: {{formulario.condicion_renovacion}}">
+                  <mat-option value="Automatico">Automatico</mat-option>
+                  <mat-option value="Indefinido">Indefinido</mat-option>
+                  <mat-option value="Solicitar seis meses antes">Solicitar seis meses antes</mat-option>                 
+                  <mat-option value="Solicitar un mes antes">Solicitar un mes antes</mat-option>
+                </mat-select>
+              </mat-form-field>   
 
 
-                <input type="number" class="input" name = 'ano_firma' [(ngModel)]="formulario.ano_firma" placeholder="Año de Firma" >
-                
-                <input type="number" class="input" name = 'cupos' [(ngModel)]="formulario.cupos" placeholder="cupos" >
+            </div>
 
+            <div class="orden">
 
+              <mat-form-field class="full-width">
+                <mat-label>Fecha de inicio</mat-label>
+                <input matInput [matDatepicker]="inicioDatepicker" formControlName="fecha_InicioSinFormato"  placeholder="Anterior: {{formulario.fecha_inicio}}">
+                <mat-datepicker-toggle matIconSuffix [for]="inicioDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #inicioDatepicker disabled="false"></mat-datepicker>
+              </mat-form-field>
               
-              </div>
-          
+              <mat-form-field class="full-width">
+                <mat-label>Fecha de termino</mat-label>
+                <input matInput [matDatepicker]="inicioDatepicker2" formControlName="fecha_FinalSinFormato" placeholder="Anterior: {{formulario.fecha_termino}}" >
+                <mat-datepicker-toggle matIconSuffix [for]="inicioDatepicker2"></mat-datepicker-toggle>
+                <mat-datepicker #inicioDatepicker2 disabled="false"></mat-datepicker>
+              </mat-form-field>
+              
 
-          
-              <div class="orden">
-                
-
-                <input type="text" class="input" name = 'vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" >
-                <select name="tipoDeFirma" class="seleccion" [(ngModel)]="formulario.tipo_firma" required>
-                  <option *ngIf="true" disabled selected value="">Tipo de firma</option>
-                  <option *ngFor="let tipo of tipoDeFirma" [value]="tipo">{{ tipo }}</option>
-                </select>
-              </div>
+            </div>
 
               <div class="orden">
-                <input type="text" name = 'documentos' class="input" [(ngModel)]="formulario.documentos" placeholder="Documentos" >
-              </div>
-
-              <div class="orden">
-                <div class="form-date">
-                  <label class="form-date__label" for="input-date">Fecha de inicio</label>
-                  <input class="form-datenput" (change)="FechaInicio()" class="input" [(ngModel)]="formulario.fecha_InicioSinFormato" type="date" id="input-date" name="input-date-start" value="22/07/2018">
-                  </div>
-
-                  <div class="form-date">
-                    <label class="form-date__label" for="input-date">Fecha de termino</label>
-                    <input class="form-datenput" (change)="FechaFinal()" class="input" [(ngModel)]="formulario.fecha_FinalSinFormato" type="date" id="input-date" name="input-date-end" value="22/07/2018">
-                    </div>
-                  </div>
- -->
-
-
-
- 
-
-
-              <div class="orden">
-                <button type="submit">Agregar Convenio</button>
+                <button mat-raised-button color="primary" (click)="updateConvenio()" type="submit">Modificar</button>
 
               </div>
           </form>

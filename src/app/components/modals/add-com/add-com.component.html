@@ -137,15 +137,15 @@
                 <div class="orden">
 
                   <mat-form-field class="full-width">
-                    <mat-label>Fecha de Inicio</mat-label>
-                    <input matInput [matDatepicker]="inicioDatepicker" formControlName="fecha_InicioSinFormato" >
+                    <mat-label>Fecha de inicio</mat-label>
+                    <input matInput [matDatepicker]="inicioDatepicker" formControlName="fecha_InicioSinFormato" required>
                     <mat-datepicker-toggle matIconSuffix [for]="inicioDatepicker"></mat-datepicker-toggle>
                     <mat-datepicker #inicioDatepicker disabled="false"></mat-datepicker>
                   </mat-form-field>
                   
                   <mat-form-field class="full-width">
-                    <mat-label>Fecha de Inicio</mat-label>
-                    <input matInput [matDatepicker]="inicioDatepicker2" formControlName="fecha_FinalSinFormato" >
+                    <mat-label>Fecha de termino</mat-label>
+                    <input matInput [matDatepicker]="inicioDatepicker2" formControlName="fecha_FinalSinFormato" required >
                     <mat-datepicker-toggle matIconSuffix [for]="inicioDatepicker2"></mat-datepicker-toggle>
                     <mat-datepicker #inicioDatepicker2 disabled="false"></mat-datepicker>
                   </mat-form-field>

@@ -13,7 +13,7 @@ content h2{
 }
 
 .icono{
-    background-color: grey;
+    background-color: rgb(194, 194, 194);
     border-radius: 100%;
     padding:5px;
     width: 40px; /* Ajusta el ancho del icono según tus necesidades */
@@ -27,7 +27,7 @@ content h2{
 }
 
 #convenios, .usuarios{
-    border: 1px solid grey ;
+    border: 1px solid rgb(194, 194, 194) ;
     margin: 2%;
 }
 
@@ -177,3 +177,9 @@ img:hover {
     border-bottom: 1px solid #253e85;
     margin-top: 5px;  /* Ajusta según tus necesidades */
   }
+
+.alertaColor{
+    color: red;
+    font-weight: bold;
+    
+}

@@ -10,6 +10,51 @@
     <div class="contenedor">
 
         <h1 class="titulo">DIRECCIÓN DE RELACIONES NACIONALES E INTERNACIONALES</h1>
+
+
+        <div style="display: flex; flex-direction: row;" >
+        
+            <mat-form-field class="full-width" style="padding-right: 10px;">
+                <mat-label>Filtrar por</mat-label>
+                <mat-select (valueChange)="filtro($event)">
+                  <mat-option value="Alcance">Alcance</mat-option>
+                  <mat-option value="Anio_Firma">Año de firma</mat-option>
+                  <mat-option value="Condicion_Renovacion">Condicion renovacion</mat-option>
+                  <mat-option value="Estatus">Estatus</mat-option>
+                  <mat-option value="Movilidad">Movilidad</mat-option>
+                  <mat-option value="Nombre_Institucion">Nombre institucion</mat-option>
+                  <mat-option value="Nombre_Unidad_Gestora">Nombre unidad gestora</mat-option>
+                  <mat-option value="Pais">Pais</mat-option>
+                  <mat-option value="Tipo_Firma">Tipo firma</mat-option>
+                  <mat-option value="Vigencia">Vigencia</mat-option>
+                  <mat-option value="Tipo_Institucion">Tipo institucion</mat-option>
+                  <mat-option value="Nombre_Coordinador_Interno">Nombre coordinador interno</mat-option>
+                  <mat-option value="Nombre_Coordinador_Externo">Nombre coordinador externo</mat-option>
+                  
+                </mat-select>
+              </mat-form-field>   
+
+
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Number</mat-label>
+                  <input type="text"
+                         placeholder="Pick one"
+                         aria-label="Number"
+                         matInput
+                         [formControl]="myControl"
+                         [matAutocomplete]="auto">
+              
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of opciones" [value]="option">
+                      {{ option }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                </form>
+              
+              
+        </div>
     </div>
     
 </body>

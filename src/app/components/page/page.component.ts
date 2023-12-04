@@ -18,6 +18,7 @@ import { AddUnidadGestoraComponent } from '../modals/add-unidad-gestora/add-unid
 
 import { DataSharingService } from './../all-convenios/data-sharing.service';
 import { ModalComponent } from './../modals/modalInfo/modal.component';
+import { ListKeyManager } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-page',
@@ -26,6 +27,7 @@ import { ModalComponent } from './../modals/modalInfo/modal.component';
 })
 export class PageComponent {
 last: any;
+  img: string | undefined;
 
   constructor(
     private router: Router, 
@@ -42,11 +44,11 @@ last: any;
   sidebarOpen = false;
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
   convenios: any;
-  busqueda:string  = '';
+
   checked: boolean | undefined;
   Vence: any[] = [] ;
   seisMeses: any[] = [];
-  alertas:any[] = [];
+  alertas: { Nombre: string,Fecha:string, Tipo: string }[] = [];
 
   toggleSidenav() {
     // Verifica que sidenav no sea undefined antes de usarlo
@@ -66,21 +68,23 @@ last: any;
     this.alertas = []
 
     for (let i = 0; i < this.Vence.length; i++) {
-      const alerta = 'Convenio: '+this.Vence[i].Nombre_Convenio+', vence: '+ this.Vence[i].Fecha_Termino+', alarma: '+ this.Vence[i].TipoAlerta
-      this.alertas.push(alerta)
-      }
+
+      this.alertas.push({ Nombre: this.Vence[i].Nombre_Convenio,Fecha:this.Vence[i].Fecha_Termino ,Tipo: this.Vence[i].TipoAlerta });
+    }
   }
 
-
   seleccionarAlerta(index:number){
-    console.log(this.Vence[index].ID_Convenio)
-    const indexEnviar = this.Vence[index].ID_Convenio -1
+
+    const indexEnviar = this.Vence[index].ID_Convenio 
+
     const dialogRef = this.dialog.open(ModalComponent, {data: {Index:indexEnviar}});
 
   }
 
   ngOnInit(){
+    
     this.renderer.setStyle(this.document.body, 'background-color', 'white');
+
     this.dataSharingService.lista1$.subscribe((lista) => {
       for (let i = 0; i < lista.length; i++) {
         this.Vence.push(lista[i]) 
@@ -90,12 +94,11 @@ last: any;
       for (let i = 0; i < lista.length; i++) {
         this.Vence.push(lista[i]) 
         }});
-
+    
+    this.dataSharingService.img$.subscribe((img) => {this.img = img})
+    this.Vence = []
   }
 
-  enviarMensaje(){
-    this.envioServicio.disparadorDeBusqueda.next({mensaje:this.busqueda})
-  }
 
   CrearReportes(){
     this.router.navigateByUrl('/formulario');
@@ -129,9 +132,6 @@ last: any;
     const dialogRef = this.dialog.open(AddComComponent);
   }
 
-/*   getUserRole() {
-    this.loginService.getUserRole();
-  } */
 }
 
 

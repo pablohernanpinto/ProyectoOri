@@ -25,24 +25,42 @@ export class AllConveniosComponent {
 
 
   openModal(Index: number) {
-
-    const dialogRef = this.dialog.open(ModalComponent, {data: {Index:Index}});
+    const dialogRef = this.dialog.open(ModalComponent, {data: {Index:this.convenios[Index].ID_Convenio}});
   }
   
 
-    filtrarConvenios() {
+  filtrarConvenios() {
     return this.convenios.filter(convenio =>
-      convenio.Nombre_Convenio.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      convenio.Tipo_Convenio.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      convenio.Vigencia.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Alcance.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       convenio.Anio_Firma.toString().includes(this.searchTerm.toLowerCase()) ||
-      convenio.Tipo_Firma.toLowerCase().includes(this.searchTerm.toLowerCase())
+      convenio.Condicion_Renovacion.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Correo_Coordinador_Externo.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Correo_Coordinador_Interno.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Cupos.toString().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Documentos.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Estatus.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.ID_Convenio.toString().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Movilidad.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Nombre_Convenio.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Nombre_Coordinador_Externo.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Nombre_Coordinador_Interno.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Nombre_Institucion.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Nombre_Unidad_Gestora.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Pais.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Tipo_Convenio.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Tipo_Coordinador_Externo.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Tipo_Coordinador_Interno.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Tipo_Firma.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Tipo_Institucion.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      convenio.Vigencia.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+  
 
   alarma(){
-    
-    //console.log(this.convenios)
+    this.conveniosCuatroMeses = []
+    this.conveniosSeisMeses = []
+    this.EnviarData()
     for (let i = 0; i < this.convenios.length; i++) {
 
       const partesFecha = this.convenios[i].Fecha_Termino.split('/');
@@ -59,7 +77,7 @@ export class AllConveniosComponent {
       fechaSeisMesesAntes.setMonth(fecha.getMonth() - 6);  
 
       const fechaActual = new Date();
-      console.log(fechaCuatroMesesAntes,'anterior',fechaActual,'actual')
+
       if (fechaCuatroMesesAntes < fechaActual) {
         this.conveniosCuatroMeses.push({
           ID_Convenio: this.convenios[i].ID_Convenio ,
@@ -67,10 +85,6 @@ export class AllConveniosComponent {
           Nombre_Convenio: this.convenios[i].Nombre_Convenio,
           TipoAlerta: '4 meses'
         });
-
-
-        // La fecha está dentro de los próximos 4 meses
-        //alert(Alerta);
       }
       if (fechaSeisMesesAntes < fechaActual && fechaCuatroMesesAntes > fechaActual ) {
         this.conveniosSeisMeses.push({
@@ -87,8 +101,16 @@ export class AllConveniosComponent {
   }
 
   EnviarData(){
+    console.log(this.conveniosCuatroMeses)
+    if((this.conveniosCuatroMeses.length + this.conveniosSeisMeses.length) > 0){
+      this.dataSharingService.setImg('notification1.png')
+    }
+    else{
+      this.dataSharingService.setImg('notification2.png')
+    }
     this.dataSharingService.setLista1(this.conveniosCuatroMeses);
     this.dataSharingService.setLista2(this.conveniosSeisMeses);
+
   }
 
   ngOnInit() {

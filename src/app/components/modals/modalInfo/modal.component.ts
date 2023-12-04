@@ -11,6 +11,7 @@ import { ModificarConvenioComponent } from '../modificar-convenio/modificar-conv
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
+  tuArrayDeConvenios: any;
 
   constructor(private http: HttpClient,
     public dialog: MatDialog,
@@ -37,9 +38,14 @@ export class ModalComponent {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
-      console.log(this.data.Index,'en info')
-      this.mostrarEnPantalla = (this.convenios[this.data.Index]);
+
+
+      //console.log(this.data.Index,' este es el de hacer peticion')
       this.indexEnviar = this.data.Index
+
+      const convenioConsultado = this.convenios.find((convenio: any) => convenio.ID_Convenio === this.data.Index);
+
+      this.mostrarEnPantalla = convenioConsultado;
     });
   }
 
@@ -52,7 +58,8 @@ export class ModalComponent {
   }  
 
   ModConvenio() {
-    console.log(this.mostrarEnPantalla)
+
+//    console.log(this.mostrarEnPantalla,' esto es')
   const formularioModificacion = {
     id_convenio: this.mostrarEnPantalla.ID_Convenio,
     id_unidad_gestora: this.mostrarEnPantalla.ID_Unidad_Gestora,
@@ -70,8 +77,8 @@ export class ModalComponent {
     estatus: this.mostrarEnPantalla.Estatus,
     fecha_inicio: this.mostrarEnPantalla.Fecha_Inicio,
     fecha_termino: this.mostrarEnPantalla.Fecha_Termino,
-    nombreCoordinadorInterno: this.mostrarEnPantalla.Nombre_Coordinador_Interno,
-    nombreCoordinadorExterno: this.mostrarEnPantalla.Nombre_Coordinador_Externo,
+    id_coordinador_interno: this.mostrarEnPantalla.Nombre_Coordinador_Interno,
+    id_coordinador_externo: this.mostrarEnPantalla.Nombre_Coordinador_Externo,
   }
   const dialogRef = this.dialog.open(ModificarConvenioComponent,{data: {formulario:formularioModificacion,Index: this.indexEnviar}});
   

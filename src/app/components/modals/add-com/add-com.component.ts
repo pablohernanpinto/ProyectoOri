@@ -16,30 +16,6 @@ export class AddComComponent {
   inicioDatepicker: any
   url = 'http://localhost:3000/api/';
 
-/*   formulario = {
-    id_unidad_gestora: '',
-    id_coordinador: '',
-    nombre_conv: '',
-    tipo_conv: '',
-    movilidad:'',
-    vigencia: '',
-    ano_firma: '',
-    tipo_firma: '',
-    cupos: '',
-    documentos: '',
-    condicion_renovacion:'',
-    id_institucion: '',
-    estatus:'Activo',
-    fecha_inicio: '',
-    fecha_termino: '',
-
-    fecha_InicioSinFormato:'',
-    fecha_FinalSinFormato:'',
-    nombre_unidadGestora: '',
-    nombre_coordinador: '',
-    nombre_institucion: '',
-  }; 
- */
   formulario = this.formBuilder.group({
     id_unidad_gestora: '',
     nombre_conv: '',
@@ -93,13 +69,6 @@ export class AddComComponent {
   NombreInstitucion: any[] = [];
   idDeLLamadoInstitucion:any[] = [];
 
-
-  tipoDeFirma: string[] = ['Digital', 'Fisica'];
-  condicionRenovacion: string[] = ['6 meses', '3 meses'];
-  MovilidadOpciones: string[] = ['Si', 'No'];
-
-  
-
   ngOnInit() {
     this.PedirInstitucion();
   }
@@ -134,10 +103,6 @@ export class AddComComponent {
 
   }
 
-  
-  IDcoordinador(){
-
-  }
 
   IDinstitucion(){
     this.formulario.value.id_institucion = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.value.nombre_institucion)]
@@ -152,24 +117,25 @@ export class AddComComponent {
   }
 
   coordinadoresAgregarID(){
-    console.log(this.NombreCoordinadorInterno.indexOf(String(this.formulario.value.nombre_coordinador_Interno)))
     this.formulario.value.id_coordinador_interno = this.ID_CoordinadorInterno[this.NombreCoordinadorInterno.indexOf(String(this.formulario.value.nombre_coordinador_Interno))]
     this.formulario.value.id_coordinador_externo = this.idCoordinadores[this.coordinadoresNombres.indexOf(String(this.formulario.value.nombre_coordinador))];
-    console.log(this.formulario.value)
+
 
   }
 
   addConvenio() {
     this.IDunidadGestora()
-    this.IDcoordinador()
     this.IDinstitucion()
     this.formatFecha()
     this.coordinadoresAgregarID()
+    console.log(this.formulario.value)
        if (this.formulario.valid) {
         this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
             (data) => {
+
               alert('CONVENIO INGRESADO');
-              window.location.reload();
+              window.location.reload(); 
+
 
             },
             (error) => {
@@ -196,9 +162,14 @@ export class AddComComponent {
 
     this.http.get(this.url+'instituciones/').subscribe((data: any) => {
       this.instituciones = data;
+      
       for (let i = 0; i < this.instituciones.length; i++) {
-        this.NombreInstitucion.push(this.instituciones[i].Nombre_Institucion)
-        this.idInstitucion.push(this.instituciones[i].id)
+        console.log(this.instituciones[i].Nombre_Institucion)
+        if (this.instituciones[i].Nombre_Institucion != "Universidad Catolica Del Maule"){
+          this.NombreInstitucion.push(this.instituciones[i].Nombre_Institucion)
+          this.idInstitucion.push(this.instituciones[i].id)
+  
+        }
         }
       });
 
@@ -212,7 +183,6 @@ export class AddComComponent {
         this.ID_CoordinadorInterno.push(data[i].ID_Coordinador)
         this.NombreCoordinadorInterno.push(data[i].Nombre)
         } 
-      console.log(this.coordinadoresInternos,'data')
     });
     
 
