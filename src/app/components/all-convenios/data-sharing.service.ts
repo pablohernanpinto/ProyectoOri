@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +33,18 @@ export class DataSharingService {
     this.ImgSource.next(img);
 
   }
+  private busquedaSubject = new Subject<any>();
+
+  // Otros métodos del servicio...
+
+  // Nuevo método para exponer la función busqueda
+  public emitBusqueda(data: any) {
+    this.busquedaSubject.next(data);
+  }
+
+  public getBusquedaObservable() {
+    return this.busquedaSubject.asObservable();
+  }
+
+
 }

@@ -27,25 +27,24 @@ export class ModalComponent {
 
   closeDialog() {
     this.dialogRef.close('');
-    window.location.reload();
   }
 
   ngOnInit() {
     this.hacerPeticion();
+
   }
 
   hacerPeticion() {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
-
-
-      //console.log(this.data.Index,' este es el de hacer peticion')
       this.indexEnviar = this.data.Index
+
 
       const convenioConsultado = this.convenios.find((convenio: any) => convenio.ID_Convenio === this.data.Index);
 
       this.mostrarEnPantalla = convenioConsultado;
+
     });
   }
 

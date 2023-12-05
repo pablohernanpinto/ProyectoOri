@@ -106,6 +106,8 @@ last: any;
 
   Home(){
     this.router.navigateByUrl('/page');
+    window.location.reload();
+
   }
 
   hacerPeticion() {

@@ -48,14 +48,14 @@ export class LoginComponent {
 
   login(formContact: NgForm) {
     
-    console.log(this.formulario,'estesot')
+
     if (formContact.valid) {
 
       this.http.post('http://localhost:3000/api/usuarios/login', this.formulario).subscribe(
           (data) => {
           // Redirigir a la página principal después de un inicio de sesión exitoso
           this.data = data
-          console.log(data)
+
           let user = this.loginService.login(data);
           if (!user){
             alert('El usuario o la contraseña no son correctos');

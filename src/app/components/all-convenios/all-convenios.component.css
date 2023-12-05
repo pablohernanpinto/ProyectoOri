@@ -1,13 +1,16 @@
-body {
+
+.newBody {
     border-top: 2px solid #01a1dd;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
+    
     /* Esto asegura que el cuerpo ocupe toda la altura de la ventana */
 }
 
 .fullElements {
+    
     text-align: center;
     padding: 2%; /* Cambiado a un porcentaje para hacerlo relativo */
     border-collapse: collapse;
@@ -38,4 +41,22 @@ th{
     font-weight: bold;
 }
 
-  
+.filtro{
+    background-color: white;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+
+/* .filtros-container {
+    display: flex;
+  }
+
+.filtros{
+    justify-content: center;
+    align-items: center;
+    background-color: #253e85;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+  } */

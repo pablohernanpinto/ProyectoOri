@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/guards/login.service';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
+import { AllConveniosComponent } from '../all-convenios/all-convenios.component';
+
 
 @Component({
   selector: 'app-users',
@@ -13,14 +15,18 @@ import { Observable, map, startWith } from 'rxjs';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
+
   
   constructor(
     public loginService: LoginService,
     public dialog: MatDialog,
     private http: HttpClient,
     private envioServicio: ModalService,
-  
+    private dataSharingService: DataSharingService
+    
     ) { }
+
+    
 
   formulario = {
     Alcance: [] as any[],
@@ -39,12 +45,34 @@ export class UsersComponent {
   };
   opciones: any[] | undefined;
   myControl = new FormControl('');
+  criteriosBusqueda:any [] = []
   busqueda:string  = '';
+  data: any[] = [];
+  filtrado:any[] = [];
 
-  filteredOptions: Observable<string[]> | undefined;
+
 
   enviarMensaje(){
-    this.envioServicio.disparadorDeBusqueda.next({mensaje:this.busqueda})
+    this.filtrado = this.data
+    if (this.myControl.value != ''){
+      this.criteriosBusqueda.push(this.myControl.value)
+    }
+    for (let i = 0; i < this.criteriosBusqueda.length; i++) {
+    const objetosEncontrados = this.filtrado.filter(objeto =>
+      Object.values(objeto).some(valor =>
+        String(valor).toUpperCase() === String(this.criteriosBusqueda[i]).toUpperCase()
+      )
+    );
+    this.filtrado = []
+    this.filtrado = objetosEncontrados
+    console.log(this.filtrado);
+    
+    }
+  }
+
+
+  eliminarCriterio(index: number): void {
+    this.criteriosBusqueda.splice(index, 1);
   }
 
 
@@ -113,7 +141,7 @@ export class UsersComponent {
   hacerPeticion() {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
-      
+      this.data = data
       this.formulario.Alcance = [...new Set(data.map((convenio: { Alcance: any; }) => convenio.Alcance))];
       this.formulario.Anio_Firma = [...new Set(data.map((convenio: { Anio_Firma: any; }) => convenio.Anio_Firma))];
       this.formulario.Condicion_Renovacion = [...new Set(data.map((convenio: { Condicion_Renovacion: any; }) => convenio.Condicion_Renovacion))];
@@ -126,8 +154,6 @@ export class UsersComponent {
       this.formulario.Nombre_Unidad_Gestora = [...new Set(data.map((convenio: { Nombre_Unidad_Gestora: any; }) => convenio.Nombre_Unidad_Gestora))];
       this.formulario.Nombre_Coordinador_Externo = [...new Set(data.map((convenio: { Nombre_Coordinador_Externo: any; }) => convenio.Nombre_Coordinador_Externo))]; 
       this.formulario.Nombre_Coordinador_Interno = [...new Set(data.map((convenio: { Nombre_Coordinador_Interno: any; }) => convenio.Nombre_Coordinador_Interno))]; 
-      
-      console.log(data)
     })
   }
 }

@@ -7,27 +7,89 @@
 </head>
 <body>
 
+  <div class="filtro">
+        <br>
+        <div style="display: flex; flex-direction: row;" >
+        
+            <mat-form-field class="full-width" style="padding-right: 10px;">
+                <mat-label>Filtrar por</mat-label>
+                <mat-select (valueChange)="filtro($event)">
+                  <mat-option value="Alcance">Alcance</mat-option>
+                  <mat-option value="Anio_Firma">Año de firma</mat-option>
+                  <mat-option value="Condicion_Renovacion">Condicion renovacion</mat-option>
+                  <mat-option value="Estatus">Estatus</mat-option>
+                  <mat-option value="Movilidad">Movilidad</mat-option>
+                  <mat-option value="Nombre_Institucion">Nombre institucion</mat-option>
+                  <mat-option value="Nombre_Unidad_Gestora">Nombre unidad gestora</mat-option>
+                  <mat-option value="Pais">Pais</mat-option>
+                  <mat-option value="Tipo_Firma">Tipo firma</mat-option>
+                  <mat-option value="Vigencia">Vigencia</mat-option>
+                  <mat-option value="Tipo_Institucion">Tipo institucion</mat-option>
+                  <mat-option value="Nombre_Coordinador_Interno">Nombre coordinador interno</mat-option>
+                  <mat-option value="Nombre_Coordinador_Externo">Nombre coordinador externo</mat-option>
+                  
+                </mat-select>
+              </mat-form-field>   
 
-    <table class="fullElements">
-      <thead>
-        <tr class="listTittle">
-          <th>Nombre del Convenio</th>
-          <th>Tipo de Convenio</th>
-          <th>Vigencia</th>
-          <th>Año de Firma</th>
-          <th>Tipo de Firma</th>
-        </tr>
-      </thead>
-      <tbody >
-        <tr (click)="openModal(i)" class="listElements" *ngFor="let convenio of filtrarConvenios(); let i = index">
-          <td>{{ convenio.Nombre_Convenio }}</td>
-          <td>{{ convenio.Tipo_Convenio }}</td>
-          <td>{{ convenio.Vigencia }}</td>
-          <td>{{ convenio.Anio_Firma }}</td>
-          <td>{{ convenio.Tipo_Firma }}</td>
-        </tr>
-      </tbody>
-    </table>
+
+              <form class="example-form">
+                <mat-form-field style="width: 700px;" class="example-full-width">
+                  <mat-label>Buscar por universidad, tipo de convenio, etc</mat-label>
+                  
+                  <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option  mat-raised-button color="primary" *ngFor="let option of opciones" [value]="option">
+                      {{ option }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                </form>
+              
+        </div>
+        <div style="display: flex;flex-direction: row;">
+          <button mat-raised-button color="primary" (click)="enviarMensaje()" type="submit">Buscar</button>
+          <p style="padding-left: 5px;"></p>
+          <button  mat-raised-button color="primary" (click)="Home()" type="submit">Eliminar filtros</button>
+  
+        </div>
+        
+        <br><br>
+        
+        <div class="filtros-container" style="display: flex;">
+          <div class="filtros" *ngFor="let criterio of criteriosBusqueda; let i = index">
+            <button mat-raised-button (click)="eliminarCriterio(i);">{{ criterio }}</button>
+          </div>
+        </div>
+
+  </div>
+
+    <div class="newBody">
+      
+      <table class="fullElements">
+        <thead>
+          <tr class="listTittle">
+            <th>Nombre del Convenio</th>
+            <th>Tipo de Convenio</th>
+            <th>Vigencia</th>
+            <th>Año de Firma</th>
+            <th>Tipo de Firma</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr (click)="openModal(convenio.ID_Convenio)" class="listElements" *ngFor="let convenio of convenios; let i = index">
+  
+            <td>{{ convenio.Nombre_Convenio }}</td>
+            <td>{{ convenio.Tipo_Convenio }}</td>
+            <td>{{ convenio.Vigencia }}</td>
+            <td>{{ convenio.Anio_Firma }}</td>
+            <td>{{ convenio.Tipo_Firma }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
 </body>
 </html>
 
