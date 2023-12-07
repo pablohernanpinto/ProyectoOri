@@ -23,6 +23,7 @@
     
         <div class="derecha">
 
+            <img  class="icono" (click)="ModalUsuario()" src="./../../../assets/PERFIL.png"   style="margin: 10px; padding: 3px;" alt="Imagen del menú">
 
             <img  class="icono" (click)="arregloDeAlertas()" src="./../../../assets/{{img}}" [matMenuTriggerFor]="menu"  style="margin: 10px;" alt="Imagen del menú">
             
@@ -49,6 +50,8 @@
             <h3 class="opcion" (click)="ModalAddUnidadGestora()" value="convenio">Añadir unidad gestora</h3>
             <h3 class="opcion" (click)="ModalAddCoordinador()" value="coordinador">Añadir coordinador de institución</h3>
             <h3 class="opcion" (click)="ModalAddInstituciones()" value="institucion">Añadir institución</h3>
+            <h3 class="opcion" *ngIf="loginService.getUserRole() === 'si' && loginService.getUserName() === 'rodrigo@admin.com'" (click)="ModalListadDeUsuarios()" value="institucion">Listado de usuarios</h3>
+
 
         </nav>
 

@@ -50,6 +50,10 @@ export class LoginService {
   getUserName():string | undefined {
     return this.session ? this.session.EMAIL : undefined;
   }
+  getUserID():string | undefined {
+
+    return this.session ? this.session.ID_USUARIO : undefined;
+  }
 
   
 }

@@ -1,0 +1,47 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Listado de usuarios</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+            <br>
+
+            <table class="fullElements">
+                <thead>
+                  <tr class="listTittle">
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>E-mail</th>
+                    <th>Privilegios</th>
+
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr  class="listElements" *ngFor="let usuario of usuarios; let i = index">
+                    <td>{{ usuario.Nombre }}</td>
+                    <td>{{ usuario.Apellido }}</td>
+                    <td>{{ usuario.Email }}</td>
+                    <td>{{ usuario.Privilegios }}</td>
+                    <td><button mat-raised-button color="warn" *ngIf="loginService.getUserRole() === 'si'" (click)="delete(usuario.ID_Usuario)">Eliminar</button></td>
+<!--                <td>{{ usuario.ID_Usuario }}</td>
+
+ -->                    
+ 
+
+
+
+                  </tr>
+                </tbody>
+              </table>
+
+
+            
+            <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+

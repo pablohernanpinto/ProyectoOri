@@ -15,10 +15,13 @@ import { AddCoordinadorComponent } from '../modals/add-coordinador/add-coordinad
 import { AddUsuarioComponent } from '../modals/add-usuario/add-usuario.component';
 import { LoginService } from 'src/guards/login.service';
 import { AddUnidadGestoraComponent } from '../modals/add-unidad-gestora/add-unidad-gestora.component';
+import { UsersComponent } from '../modals/users/users.component';
 
 import { DataSharingService } from './../all-convenios/data-sharing.service';
 import { ModalComponent } from './../modals/modalInfo/modal.component';
 import { ListKeyManager } from '@angular/cdk/a11y';
+import { ModificaUsuarioComponent } from '../modals/modifica-usuario/modifica-usuario.component';
+
 
 @Component({
   selector: 'app-page',
@@ -110,11 +113,21 @@ last: any;
 
   }
 
+
   hacerPeticion() {
     const url = 'http://localhost:3000/api/convenios';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
     });
+  }
+
+
+  ModalUsuario(){
+    const dialogRef = this.dialog.open(ModificaUsuarioComponent);
+  }
+
+  ModalListadDeUsuarios(){
+    const dialogRef = this.dialog.open(UsersComponent);
   }
   ModalAddInstituciones(){
     const dialogRef = this.dialog.open(AddInstitucionComponent);

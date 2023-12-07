@@ -1,0 +1,68 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Modificar datos</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+            <br>
+            <form class="ingreso" [formGroup]="formulario" #formContact="ngForm">
+
+                
+                <div class="orden">
+
+
+                  
+                  <mat-form-field class="full-width">
+                    <mat-label>E-mail</mat-label>
+                    <input  formControlName = 'email' matInput  placeholder="Anterio: {{Informacion.Email}}" value="" ><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+                  <mat-form-field class="full-width">
+                    <mat-label>Constraseña</mat-label>
+                    <input  formControlName = 'contrasena' matInput   value="" ><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+
+
+
+                </div>
+            
+                  
+                <div class="orden">
+
+
+                  <mat-form-field class="full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input  formControlName = 'nombre' matInput  placeholder="Anterio: {{Informacion.Nombre}}"   value="" ><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+                  
+                  <mat-form-field class="full-width">
+                    <mat-label>Apellido</mat-label>
+                    <input  formControlName = 'apellido' matInput  placeholder="Anterio: {{Informacion.Apellido}}"   value="" ><!-- [(ngModel)]="formulario.tipo_institucion" -->
+                  </mat-form-field>
+
+
+                 <!--    <input  name = 'nombre' type="text" class="input" [(ngModel)]="formulario.nombre" placeholder="Nombre" >
+  
+                    <input name = 'apellido'  type="text" class="input" [(ngModel)]="formulario.apellido" placeholder="Apellido" > -->
+                  </div>
+                
+
+
+                  <div class="orden">
+
+                    <button mat-raised-button color="primary" (click)="updateConvenio()" type="submit">Aceptar</button>
+
+                  </div>
+            
+            </form>            
+            <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+

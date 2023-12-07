@@ -25,7 +25,7 @@ import { AddUsuarioComponent } from './components/modals/add-usuario/add-usuario
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-import { UsersComponent } from './components/users/users.component';
+import { UsersComponent } from './components/modals/users/users.component';
 import { AddUnidadGestoraComponent } from './components/modals/add-unidad-gestora/add-unidad-gestora.component';
 import { ModificarConvenioComponent } from './components/modals/modificar-convenio/modificar-convenio.component';
 import { FormulariosComponent } from './components/formularios/formularios.component';
@@ -38,6 +38,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import {AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ModificaUsuarioComponent } from './components/modals/modifica-usuario/modifica-usuario.component';
+import { ModificaUsuarioModalComponent } from './components/modals/modifica-usuario-modal/modifica-usuario-modal.component';
 
 
 
@@ -59,6 +61,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     AddUnidadGestoraComponent,
     ModificarConvenioComponent,
     FormulariosComponent,
+    ModificaUsuarioComponent,
+    ModificaUsuarioModalComponent,
 
 
   ],

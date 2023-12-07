@@ -19,6 +19,9 @@ content h2{
     width: 40px; /* Ajusta el ancho del icono según tus necesidades */
     height: 40px; /* Ajusta la altura del icono según tus necesidades */
     margin-left: 10px; /* Ajusta el margen entre las imágenes en la derecha */
+    animation-duration: 50ms;
+
+
 
 }
 .iconos {
@@ -167,7 +170,7 @@ input[type="text"] {
 
 img:hover {
     cursor: pointer;
-    
+    background-color: rgb(100, 99, 99) ;
   }
 
   #openBar{
