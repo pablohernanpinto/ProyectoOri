@@ -13,13 +13,17 @@ content h2{
 }
 
 .icono{
-    background-color: grey;
-    border-radius: 100%;
-    padding:5px;
-    width: 40px; /* Ajusta el ancho del icono según tus necesidades */
-    height: 40px; /* Ajusta la altura del icono según tus necesidades */
-    margin-left: 10px; /* Ajusta el margen entre las imágenes en la derecha */
+  background-color: rgb(194, 194, 194);
+  border-radius: 100%;
+  padding:5px;
+  width: 40px; /* Ajusta el ancho del icono según tus necesidades */
+  height: 40px; /* Ajusta la altura del icono según tus necesidades */
+  margin-left: 10px; /* Ajusta el margen entre las imágenes en la derecha */
+  animation-duration: 50ms;
+}
 
+.icono:hover{
+  background-color: rgb(100, 99, 99) ;
 }
 .iconos {
     display: flex;
@@ -27,9 +31,18 @@ content h2{
 }
 
 #convenios, .usuarios{
-    border: 1px solid grey ;
-    margin: 2%;
+  border: 1px solid rgb(194, 194, 194) ;
+  margin-bottom: 2%;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 1%;
 }
+
+img:hover {
+  cursor: pointer;
+}
+
+
 
 .sidebar {
     height: 100%;
@@ -193,27 +206,12 @@ img:hover {
   
 
 
-button {
-    text-align: start;
-    font-size: medium;
-    background-color: #253e85;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #869ad1;
-    color: white;
-  }
-  
 
   
   .container {
     display: flex;
     flex-direction: column;
+    background-color: white;
   }
   
   .row {
@@ -229,4 +227,7 @@ button {
   .column-left {
     flex: 1;
   }
+  
+  
+
   

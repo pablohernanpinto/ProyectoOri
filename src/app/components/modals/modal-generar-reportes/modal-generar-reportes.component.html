@@ -1,0 +1,61 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span (click)="closeDialog()" class="close">&times;</span>
+        <h2>Previsualizacion de reportes</h2>
+      </div>
+      <div class="modal-body">
+        <ng-container>
+            <br>
+            <div class="newBody">
+      
+                <table class="fullElements">
+                  <thead>
+                    <tr class="listTittle">
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Tipo</th>
+                      <th>Movilidad</th>
+                      <th>Año de firma</th>
+                      <th>Tipo de firma</th>
+                      <th>Cupos</th>
+                      <th>Documentos</th>
+                      <th>Condicion de renovacion</th>
+                      <th>Estado</th>
+                      <th>Fecha de inicio</th>
+                      <th>Fecha de termino</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <tr class="listElements" *ngFor="let convenio of data; let i = index">
+                      <td>{{ i+1 }}</td>
+                      <td>{{ convenio.Nombre_Convenio }}</td>
+                      <td>{{ convenio.Tipo_Convenio }}</td>
+                      <td>{{ convenio.Movilidad }}</td>
+                      <td>{{ convenio.Anio_Firma }}</td>
+                      <td>{{ convenio.Tipo_Firma }}</td>
+                      <td>{{ convenio.Cupos }}</td>
+                      <td>{{ convenio.Documentos }}</td>
+                      <td>{{ convenio.Condicion_Renovacion }}</td>
+                      <td>{{ convenio.Estatus}}</td>
+                      <td>{{ convenio.Fecha_Inicio }}</td>
+                      <td>{{ convenio.Fecha_Termino }}</td>
+                      <button mat-raised-button color="warn" (click)="eliminarDeLista(convenio.ID_Convenio)" type="submit">Eliminar</button>
+
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>      
+            <br><br>
+            <button mat-raised-button color="primary" (click)="generarPDF()" type="submit">Agregar</button>
+<br><br>
+
+                  <br>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+

@@ -5,6 +5,7 @@ import { ModalComponent } from '../modals/modalInfo/modal.component';
 import { ModalService } from '../header/modal.service';
 import { DataSharingService } from './data-sharing.service';
 import { FormControl } from '@angular/forms';
+import { ModalGenerarReportesComponent } from '../modals/modal-generar-reportes/modal-generar-reportes.component';
 
 
 
@@ -69,6 +70,12 @@ export class AllConveniosComponent {
   Home(){
 
     window.location.reload();
+
+  }
+
+  Reporte(){
+
+    const dialogRef = this.dialog.open(ModalGenerarReportesComponent,{data:this.convenios});
 
   }
 

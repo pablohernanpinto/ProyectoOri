@@ -40,6 +40,7 @@ import {AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ModificaUsuarioComponent } from './components/modals/modifica-usuario/modifica-usuario.component';
 import { ModificaUsuarioModalComponent } from './components/modals/modifica-usuario-modal/modifica-usuario-modal.component';
+import { ModalGenerarReportesComponent } from './components/modals/modal-generar-reportes/modal-generar-reportes.component';
 
 
 
@@ -63,6 +64,7 @@ import { ModificaUsuarioModalComponent } from './components/modals/modifica-usua
     FormulariosComponent,
     ModificaUsuarioComponent,
     ModificaUsuarioModalComponent,
+    ModalGenerarReportesComponent,
 
 
   ],

@@ -20,13 +20,14 @@ content h2{
     height: 40px; /* Ajusta la altura del icono según tus necesidades */
     margin-left: 10px; /* Ajusta el margen entre las imágenes en la derecha */
     animation-duration: 50ms;
-
-
-
 }
+
+.icono:hover{
+    background-color: rgb(100, 99, 99) ;
+}
+
 .iconos {
     display: flex;
-
 }
 
 #convenios, .usuarios{
@@ -170,7 +171,7 @@ input[type="text"] {
 
 img:hover {
     cursor: pointer;
-    background-color: rgb(100, 99, 99) ;
+
   }
 
   #openBar{

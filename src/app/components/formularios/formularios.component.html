@@ -15,7 +15,9 @@
 
     
         <div class="derecha">
-            <img class="icono" (click)="logout()"  title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
+            <img  class="icono" (click)="ModalUsuario()" src="./../../../assets/PERFIL.png"   style="margin: 10px; padding: 3px;" alt="Imagen del menú">
+
+            <img class="icono" (click)="logout()"  style="margin: 10px;" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout">
         </div>
     </div>
     
@@ -51,6 +53,7 @@
     <mat-sidenav-content id="mySidenav">
 
 
+    <form class="ingreso" [formGroup]="formularioEntrega"  #formContact="ngForm">
 
     <div class="Formulario">
 
@@ -61,7 +64,6 @@
 
         </div>
 
-        <div class="container">
 
             <div class="container">
                 <div class="row">
@@ -70,14 +72,13 @@
                     
                     <div class="row">
                         <div class="column-left">
-                          <mat-checkbox style="padding-right:44px;" class="example-margin mat-primary" (change)="imprimir()" [(ngModel)]="institucionBool">{{'Institucion'}}</mat-checkbox>
+                          <mat-checkbox style="padding-right:44px;" class="example-margin mat-primary"  (change)="cambioEstado(1)">{{'Institucion'}}</mat-checkbox>
                         </div>
                         <div class="column-right">
-          
                           <mat-form-field>
                               <mat-label>Instituciones</mat-label>
-                              <mat-select [disabled]="!institucionBool" >
-                                <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                              <mat-select formControlName = nombre_institucion >
+                                <mat-option *ngFor="let nombInstitucion of formulario.Nombre_Institucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
                               </mat-select>
                           </mat-form-field>
           
@@ -92,14 +93,14 @@
 
                     <div class="row">
                         <div class="column-left">
-                            <mat-checkbox class="example-margin mat-primary" style="padding-right:3px;"  (change)="imprimir()" [(ngModel)]="tipoDeConvenioBool">Tipo de convenio</mat-checkbox>
+                            <mat-checkbox class="example-margin mat-primary" style="padding-right:3px;"  (change)="cambioEstado(2)">Tipo de convenio</mat-checkbox>
                         </div>
                         <div class="column-right">
         
                             <mat-form-field>
                                 <mat-label>Tipo convenio</mat-label>
-                                <mat-select [disabled]="!tipoDeConvenioBool" >
-                                    <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                                <mat-select formControlName = tipo_conv>
+                                    <mat-option *ngFor="let Tipo_Convenio of formulario.Tipo_Convenio" [value]="Tipo_Convenio">{{Tipo_Convenio}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
         
@@ -115,14 +116,14 @@
                   <div class="column-left">
                     <div class="row">
                         <div class="column-left">
-                          <mat-checkbox class="example-margin mat-primary" style="padding-right:13px;"(change)="imprimir()" [disabled]="!institucionBool" [(ngModel)]="unidadGestoraBool">Unidad Gestora</mat-checkbox>
+                          <mat-checkbox class="example-margin mat-primary" style="padding-right:13px;"(change)="cambioEstado(3)" [disabled]="institucionBool">Unidad Gestora</mat-checkbox>
                         </div>
                         <div class="column-right">
           
                           <mat-form-field>
                               <mat-label>Unidad Gestora</mat-label>
-                              <mat-select [disabled]="!unidadGestoraBool" >
-                                <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                              <mat-select formControlName = nombre_unidadGestora >
+                                <mat-option *ngFor="let Nombre_Unidad_Gestora of formulario.Nombre_Unidad_Gestora" [value]="Nombre_Unidad_Gestora">{{Nombre_Unidad_Gestora}}</mat-option>
                               </mat-select>
                           </mat-form-field>
           
@@ -133,13 +134,13 @@
 
                     <div class="row">
                         <div class="column-left">
-                            <mat-checkbox class="example-margin mat-primary"style="padding-right:24px;" (change)="imprimir()" [(ngModel)]="tipoDeFirmaBool">Tipo de Firma</mat-checkbox>
+                            <mat-checkbox class="example-margin mat-primary"style="padding-right:24px;" (change)="cambioEstado(4)" >Tipo de Firma</mat-checkbox>
                         </div>
                         <div class="column-right">
         
                             <mat-form-field>
                                 <mat-label>Tipo de firma</mat-label>
-                                <mat-select [disabled]="!tipoDeFirmaBool" >
+                                <mat-select formControlName = tipo_firma  >
                                     <mat-option value="Digital">Digital</mat-option>
                                     <mat-option value="Fisica">Fisica</mat-option>
                                 </mat-select>
@@ -157,13 +158,13 @@
           
                         <div class="row">
                             <div class="column-left">
-                              <mat-checkbox style="padding-right:61px;"  class="example-margin mat-primary" (change)="imprimir()" [(ngModel)]="alcanceBool">Alcance</mat-checkbox>
+                              <mat-checkbox style="padding-right:61px;"  class="example-margin mat-primary" (change)="cambioEstado(5)" >Alcance</mat-checkbox>
                             </div>
                             <div class="column-right">
                           
                               <mat-form-field>
                                   <mat-label>Alcance</mat-label>
-                                  <mat-select [disabled]="!alcanceBool" >
+                                  <mat-select formControlName = alcance >
                                       <mat-option value="Nacional">Nacional</mat-option>
                                       <mat-option value="Internacional">Internacional</mat-option>
                                   </mat-select>
@@ -176,15 +177,15 @@
 
                         <div class="row">
                             <div class="column-left">
-                                <mat-checkbox class="example-margin mat-primary" style="padding-right:30px;" (change)="imprimir()" [(ngModel)]="anioDeFirmaBool">Año de firma</mat-checkbox>
+                                <mat-checkbox class="example-margin mat-primary" style="padding-right:30px;" (change)="cambioEstado(6)" >Año de firma</mat-checkbox>
                             </div>
                             <div class="column-right">
                    
             
                                 <mat-form-field>
-                                    <mat-label>Tipo convenio</mat-label>
-                                    <mat-select [disabled]="!anioDeFirmaBool" >
-                                        <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                                    <mat-label>Año de firma</mat-label>
+                                    <mat-select formControlName = ano_firma >
+                                        <mat-option *ngFor="let Anio_Firma of formulario.Anio_Firma" [value]="Anio_Firma">{{Anio_Firma}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -198,14 +199,14 @@
                     <div class="column-left">
                         <div class="row">
                             <div class="column-left">
-                                <mat-checkbox style="padding-right:85px;"  class="example-margin mat-primary" (change)="imprimir()" [(ngModel)]="paisBool">Pais</mat-checkbox>
+                                <mat-checkbox style="padding-right:85px;"  class="example-margin mat-primary" (change)="cambioEstado(7)" >Pais</mat-checkbox>
                           </div>
                             <div class="column-right">
                                
                             <mat-form-field>
                                 <mat-label>Pais</mat-label>
-                                <mat-select [disabled]="!paisBool" >
-                                  <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                                <mat-select formControlName = pais>
+                                  <mat-option *ngFor="let Pais of formulario.Pais" [value]="Pais">{{Pais}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
             
@@ -216,14 +217,14 @@
 
                         <div class="row">
                             <div class="column-left">
-                                <mat-checkbox class="example-margin mat-primary"style="padding-right:64px;" (change)="imprimir()" [(ngModel)]="estatusBool">Estatus</mat-checkbox>
+                                <mat-checkbox class="example-margin mat-primary"style="padding-right:64px;" (change)="cambioEstado(8)">Estatus</mat-checkbox>
                             </div>
                             <div class="column-right">
                         
                                 <mat-form-field>
                                     <mat-label>Estatus</mat-label>
                                     <mat-select [disabled]="!estatusBool" >
-                                        <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                                        <mat-option *ngFor="let Estatus of formulario.Estatus" [value]="Estatus">{{Estatus}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
             
@@ -239,7 +240,7 @@
 
                         <div class="row">
                             <div class="column-left">
-                                <mat-checkbox style="padding-right:50px;"  class="example-margin mat-primary" (change)="imprimir()" [(ngModel)]="movilidadBool">Movilidad</mat-checkbox>
+                                <mat-checkbox style="padding-right:50px;"  class="example-margin mat-primary" (change)="cambioEstado(9)">Movilidad</mat-checkbox>
                             </div>
                             <div class="column-right">
                     
@@ -260,14 +261,14 @@
 
                         <div class="row">
                             <div class="column-left">
-                                <mat-checkbox class="example-margin mat-primary" (change)="imprimir()" [(ngModel)]="fechaDeTerminoBool">Fecha de termino</mat-checkbox>
+                                <mat-checkbox class="example-margin mat-primary" (change)="cambioEstado(10)" >Fecha de termino</mat-checkbox>
                             </div>
                             <div class="column-right">
                 
                                 <mat-form-field>
                                     <mat-label>Fecha de termino</mat-label>
                                     <mat-select [disabled]="!fechaDeTerminoBool" >
-                                        <mat-option *ngFor="let nombInstitucion of NombreInstitucion" [value]="nombInstitucion">{{nombInstitucion}}</mat-option>
+                                        <mat-option value="Si">Si</mat-option>  
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -275,9 +276,10 @@
                     </div>
                   </div>
                   <div style="margin: 1%;">
-                    <button>Ver reporte</button>
+                    
+                    <button mat-raised-button color="primary" (click)="modalReporte()"  type="submit">Previsualizar reporte</button>
                 </div>
-                </div>
+
                     
 
               
@@ -285,7 +287,8 @@
           
 
     </div>
-
+    </form>
+    <br><br><br><br>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
