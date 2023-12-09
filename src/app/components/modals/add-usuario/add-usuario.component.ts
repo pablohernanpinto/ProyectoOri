@@ -14,14 +14,6 @@ export class AddUsuarioComponent {
 
   constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient,private formBuilder: FormBuilder) { }
 
-/*   formulario = {
-    email: '',
-    contrasena: '',
-    nombre: '',
-    apellido: '',
-    vigencia: '',
-    privilegios:'',
-  }; */
   formulario = this.formBuilder.group({
     email: '',
     contrasena: '',

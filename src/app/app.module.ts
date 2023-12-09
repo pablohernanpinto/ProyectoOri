@@ -90,7 +90,6 @@ import { ModalGenerarReportesComponent } from './components/modals/modal-generar
     MatMenuModule,
     MatAutocompleteModule,
     AsyncPipe,
-
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },

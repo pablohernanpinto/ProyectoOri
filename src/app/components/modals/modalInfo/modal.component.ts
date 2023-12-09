@@ -39,12 +39,8 @@ export class ModalComponent {
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
       this.indexEnviar = this.data.Index
-
-
       const convenioConsultado = this.convenios.find((convenio: any) => convenio.ID_Convenio === this.data.Index);
-
       this.mostrarEnPantalla = convenioConsultado;
-
     });
   }
 

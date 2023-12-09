@@ -34,8 +34,6 @@ interface Convenio {
   Tipo_Institucion: string;
   Vigencia: string;
 
-
-
   ID_CONVENIO: number;
   ID_UNIDAD_GESTORA: number,
   NOMBRE_CONV: string,

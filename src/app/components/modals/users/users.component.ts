@@ -38,9 +38,6 @@ export class UsersComponent {
 
   }
 
-
-
-  
   ngOnInit() {
     this.hacerPeticion();
   }

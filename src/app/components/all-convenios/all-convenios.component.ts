@@ -15,6 +15,7 @@ import { ModalGenerarReportesComponent } from '../modals/modal-generar-reportes/
   styleUrls: ['./all-convenios.component.css']
 })
 export class AllConveniosComponent {
+  
   conveniosTodo: any;
   constructor(private http: HttpClient,
   public dialog: MatDialog,
@@ -30,6 +31,14 @@ export class AllConveniosComponent {
   conveniosCuatroMeses: any[] = []
   conveniosSeisMeses: any[] = []
   searchTerm: string = ''
+
+
+  /////////////////////////////
+
+
+  /////////////////////////////
+
+
 
 
   formulario = {
@@ -96,6 +105,7 @@ export class AllConveniosComponent {
     this.filtrado = []
     this.filtrado = objetosEncontrados
     this.convenios = this.filtrado;
+    console.log(this.criteriosBusqueda)
     }
   }
 
@@ -238,6 +248,7 @@ export class AllConveniosComponent {
       this.formulario.Nombre_Unidad_Gestora = [...new Set(data.map((convenio: { Nombre_Unidad_Gestora: any; }) => convenio.Nombre_Unidad_Gestora))];
       this.formulario.Nombre_Coordinador_Externo = [...new Set(data.map((convenio: { Nombre_Coordinador_Externo: any; }) => convenio.Nombre_Coordinador_Externo))]; 
       this.formulario.Nombre_Coordinador_Interno = [...new Set(data.map((convenio: { Nombre_Coordinador_Interno: any; }) => convenio.Nombre_Coordinador_Interno))]; 
+      this.formulario.Tipo_Institucion = [...new Set(data.map((convenio: { Tipo_Institucion: any; }) => convenio.Tipo_Institucion))];
 
     });
   }
