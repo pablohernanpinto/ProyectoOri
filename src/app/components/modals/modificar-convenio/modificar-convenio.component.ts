@@ -150,40 +150,12 @@ formularioModificar = this.formBuilder.group( {
       this.formulario.estatus  = this.formularioModificar.value.estatus || '' 
     }
 
-    if (this.formularioModificar.value.fecha_inicio != '' ){
+    if (this.formularioModificar.value.fecha_inicio != undefined ){
       this.formulario.fecha_inicio  = this.formularioModificar.value.fecha_inicio || '' 
     }
-    if (this.formularioModificar.value.fecha_termino != '' ){
+    if (this.formularioModificar.value.fecha_termino != undefined ){
 
       this.formulario.fecha_termino  = this.formularioModificar.value.fecha_termino || '' 
-    }
-
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
-    }
-    
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
-    }
-    
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
-    }
-    
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
-    }
-    
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
-    }
-    
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
-    }
-    
-    if (this.formularioModificar.value.id_institucion != ''){
-      this.formulario.id_institucion  = this.formularioModificar.value.id_institucion || '' 
     }
 
   }
@@ -191,9 +163,15 @@ formularioModificar = this.formBuilder.group( {
 
 
   updateConvenio() {
+
+    console.log(this.formulario)
+
+
+    console.log(this.formularioModificar.value)
     this.formatFecha()
     this.addCampos()
     const url = 'http://localhost:3000/api/convenios/'+String(this.data.formulario.id_convenio);
+
 
 
     //console.log(this.formularioModificar.value)
@@ -202,7 +180,7 @@ formularioModificar = this.formBuilder.group( {
       this.http.put(url,this.formulario).subscribe(
         (data) => {
           alert('SE HA ACTUALIZADO LA INSTITUCIÓN');
-          console.log(data);
+          //console.log(data);
           window.location.reload(); 
         },
         (error) => {
