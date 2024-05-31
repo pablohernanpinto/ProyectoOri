@@ -35,17 +35,19 @@ export class ModalComponent {
   }
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/convenios';
+    const url = 'https://localhost:7230/api/Convenio/';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
+
       this.indexEnviar = this.data.Index
-      const convenioConsultado = this.convenios.find((convenio: any) => convenio.ID_Convenio === this.data.Index);
+      const convenioConsultado = this.convenios.find((convenio: any) => convenio.iD_Convenio === this.data.Index);
+
       this.mostrarEnPantalla = convenioConsultado;
     });
   }
 
   delete() {
-    this.http.delete('http://localhost:3000/api/convenios/'+this.mostrarEnPantalla.ID_Convenio)
+    this.http.delete('https://localhost:7230/api/Convenio/'+this.mostrarEnPantalla.iD_Convenio)
     .subscribe();
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
     alert('SE BORRÓ EL CONVENIO');
@@ -54,28 +56,7 @@ export class ModalComponent {
 
   ModConvenio() {
 
-//    console.log(this.mostrarEnPantalla,' esto es')
-  const formularioModificacion = {
-    id_convenio: this.mostrarEnPantalla.ID_Convenio,
-    id_unidad_gestora: this.mostrarEnPantalla.ID_Unidad_Gestora,
-    id_coordinadorInterno: this.mostrarEnPantalla.ID_Coordinador_Interno,
-    id_coordinadorExterno: this.mostrarEnPantalla.ID_Coordinador_Externo,
-    nombre_conv: this.mostrarEnPantalla.Nombre_Convenio,
-    tipo_conv: this.mostrarEnPantalla.Tipo_Convenio,
-    movilidad: this.mostrarEnPantalla.Movilidad,
-    vigencia: this.mostrarEnPantalla.Vigencia,
-    ano_firma:this.mostrarEnPantalla.Anio_Firma,
-    tipo_firma: this.mostrarEnPantalla.Tipo_Firma,
-    cupos: this.mostrarEnPantalla.Cupos,
-    documentos: this.mostrarEnPantalla.Documentos,
-    condicion_renovacion: this.mostrarEnPantalla.Condicion_Renovacion,
-    estatus: this.mostrarEnPantalla.Estatus,
-    fecha_inicio: this.mostrarEnPantalla.Fecha_Inicio,
-    fecha_termino: this.mostrarEnPantalla.Fecha_Termino,
-    id_coordinador_interno: this.mostrarEnPantalla.Nombre_Coordinador_Interno,
-    id_coordinador_externo: this.mostrarEnPantalla.Nombre_Coordinador_Externo,
-  }
-  const dialogRef = this.dialog.open(ModificarConvenioComponent,{data: {formulario:formularioModificacion,Index: this.indexEnviar}});
+  const dialogRef = this.dialog.open(ModificarConvenioComponent,{data: {formulario:this.mostrarEnPantalla,Index: this.indexEnviar}});
   
   }  
 }

@@ -60,13 +60,13 @@ export class AllConveniosComponent {
 
 
   openModal(Index: number) {
+    console.log(Index,'esto es lo que envio')
     const dialogRef = this.dialog.open(ModalComponent, {data: {Index:Index}}); 
   }
     
   eliminarCriterio(index: number): void {
 
     this.criteriosBusqueda.splice(index, 1);
-//    console.log(this.criteriosBusqueda)
     this.myControl = new FormControl('');
     this.enviarMensaje();
 /*     setTimeout(() => {
@@ -105,7 +105,7 @@ export class AllConveniosComponent {
     this.filtrado = []
     this.filtrado = objetosEncontrados
     this.convenios = this.filtrado;
-    console.log(this.criteriosBusqueda)
+
     }
   }
 
@@ -115,7 +115,7 @@ export class AllConveniosComponent {
     this.EnviarData()
     for (let i = 0; i < this.convenios.length; i++) {
 
-      const partesFecha = this.convenios[i].Fecha_Termino.split('/');
+      const partesFecha = this.convenios[i].fecha_Termino.split('/');
       const year = parseInt('20' + partesFecha[2], 10); // Convertir a número
       const month = parseInt(partesFecha[1], 10) - 1; // Convertir a número y restar 1
       const day = parseInt(partesFecha[0], 10); // Convertir a número
@@ -130,19 +130,21 @@ export class AllConveniosComponent {
 
       const fechaActual = new Date();
 
+  
       if (fechaCuatroMesesAntes < fechaActual) {
+
         this.conveniosCuatroMeses.push({
           ID_Convenio: this.convenios[i].ID_Convenio ,
-          Fecha_Termino: this.convenios[i].Fecha_Termino,
-          Nombre_Convenio: this.convenios[i].Nombre_Convenio,
+          Fecha_Termino: this.convenios[i].fecha_Termino,
+          Nombre_Convenio: this.convenios[i].nombre_Convenio,
           TipoAlerta: '4 meses'
         });
       }
       if (fechaSeisMesesAntes < fechaActual && fechaCuatroMesesAntes > fechaActual ) {
         this.conveniosSeisMeses.push({
           ID_Convenio: this.convenios[i].ID_Convenio ,
-          Fecha_Termino: this.convenios[i].Fecha_Termino,
-          Nombre_Convenio: this.convenios[i].Nombre_Convenio,
+          Fecha_Termino: this.convenios[i].fecha_Termino,
+          Nombre_Convenio: this.convenios[i].nombre_Convenio,
           TipoAlerta: '6 meses'
         });
 
@@ -233,23 +235,26 @@ export class AllConveniosComponent {
     const url = 'https://localhost:7230/api/Convenio/';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
-      console.log(data)
       this.conveniosTodo = data
+      
       this.alarma()
+
       this.data = data
-      this.formulario.alcance = [...new Set(data.map((convenio: { Alcance: any; }) => convenio.Alcance))];
-      this.formulario.anio_Firma = [...new Set(data.map((convenio: { Anio_Firma: any; }) => convenio.Anio_Firma))];
-      this.formulario.condicion_Renovacion = [...new Set(data.map((convenio: { Condicion_Renovacion: any; }) => convenio.Condicion_Renovacion))];
-      this.formulario.estatus = [...new Set(data.map((convenio: { Estatus: any; }) => convenio.Estatus))];
-      this.formulario.movilidad = [...new Set(data.map((convenio: { Movilidad: any; }) => convenio.Movilidad))];
-      this.formulario.nombre_Institucion = [...new Set(data.map((convenio: { Nombre_Institucion: any; }) => convenio.Nombre_Institucion))];
-      this.formulario.pais = [...new Set(data.map((convenio: { Pais: any; }) => convenio.Pais))];
-      this.formulario.tipo_Firma = [...new Set(data.map((convenio: { Tipo_Firma: any; }) => convenio.Tipo_Firma))];
-      this.formulario.vigencia = [...new Set(data.map((convenio: { Vigencia: any; }) => convenio.Vigencia))];
-      this.formulario.nombre_Unidad_Gestora = [...new Set(data.map((convenio: { Nombre_Unidad_Gestora: any; }) => convenio.Nombre_Unidad_Gestora))];
-      this.formulario.nombre_Coordinador_Externo = [...new Set(data.map((convenio: { Nombre_Coordinador_Externo: any; }) => convenio.Nombre_Coordinador_Externo))]; 
-      this.formulario.nombre_Coordinador_Interno = [...new Set(data.map((convenio: { Nombre_Coordinador_Interno: any; }) => convenio.Nombre_Coordinador_Interno))]; 
-      this.formulario.tipo_Institucion = [...new Set(data.map((convenio: { Tipo_Institucion: any; }) => convenio.Tipo_Institucion))];
+
+      this.formulario.alcance = [...new Set(data.map((convenio: { alcance: any; }) => convenio.alcance))];
+      this.formulario.anio_Firma = [...new Set(data.map((convenio: { anio_Firma: any; }) => convenio.anio_Firma))];
+      this.formulario.condicion_Renovacion = [...new Set(data.map((convenio: { condicion_Renovacion: any; }) => convenio.condicion_Renovacion))];
+      this.formulario.estatus = [...new Set(data.map((convenio: { estatus: any; }) => convenio.estatus))];
+      this.formulario.movilidad = [...new Set(data.map((convenio: { movilidad: any; }) => convenio.movilidad))];
+      this.formulario.nombre_Institucion = [...new Set(data.map((convenio: { nombre_Institucion: any; }) => convenio.nombre_Institucion))];
+      this.formulario.pais = [...new Set(data.map((convenio: { pais: any; }) => convenio.pais))];
+      this.formulario.tipo_Firma = [...new Set(data.map((convenio: { tipo_Firma: any; }) => convenio.tipo_Firma))];
+      this.formulario.vigencia = [...new Set(data.map((convenio: { vigencia: any; }) => convenio.vigencia))];
+      this.formulario.nombre_Unidad_Gestora = [...new Set(data.map((convenio: { nombre_Unidad_Gestora: any; }) => convenio.nombre_Unidad_Gestora))];
+      this.formulario.nombre_Coordinador_Externo = [...new Set(data.map((convenio: { nombre_Coordinador_Externo: any; }) => convenio.nombre_Coordinador_Externo))]; 
+      this.formulario.nombre_Coordinador_Interno = [...new Set(data.map((convenio: { nombre_Coordinador_Interno: any; }) => convenio.nombre_Coordinador_Interno))]; 
+      this.formulario.tipo_Institucion = [...new Set(data.map((convenio: { tipo_Institucion: any; }) => convenio.tipo_Institucion))];
+      
 
     });
   }

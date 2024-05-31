@@ -2,7 +2,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <span (click)="closeDialog()" class="close">&times;</span>
-      <h2  *ngIf="mostrarEnPantalla">{{ mostrarEnPantalla.Nombre_Convenio }}</h2>
+      <h2  *ngIf="mostrarEnPantalla">{{ mostrarEnPantalla.nombre_Convenio }}</h2>
     </div>
     <div class="modal-body">
       <ng-container *ngIf="mostrarEnPantalla">
@@ -23,12 +23,12 @@
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Nombre_Convenio }}</td>
-                  <td>{{ mostrarEnPantalla.Tipo_Convenio }}</td>
-                  <td>{{ mostrarEnPantalla.Movilidad }}</td>
-                  <td>{{ mostrarEnPantalla.Vigencia }}</td>
-                  <td>{{ mostrarEnPantalla.Anio_Firma }}</td>
-                  <td>{{ mostrarEnPantalla.Tipo_Firma }}</td>
+                  <td>{{ mostrarEnPantalla.nombre_Convenio }}</td>
+                  <td>{{ mostrarEnPantalla.tipo_Convenio }}</td>
+                  <td>{{ mostrarEnPantalla.movilidad }}</td>
+                  <td>{{ mostrarEnPantalla.vigencia }}</td>
+                  <td>{{ mostrarEnPantalla.anio_Firma }}</td>
+                  <td>{{ mostrarEnPantalla.tipo_Firma }}</td>
                 </tr>
               </tbody>
             </table>
@@ -46,12 +46,12 @@
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Cupos }}</td>
-                  <td>{{ mostrarEnPantalla.Documentos }}</td>
-                  <td>{{  mostrarEnPantalla.Condicion_Renovacion }}</td>
-                  <td>{{ mostrarEnPantalla.Estatus }}</td>
-                  <td>{{mostrarEnPantalla.Fecha_Inicio }}</td>
-                  <td>{{ mostrarEnPantalla.Fecha_Termino }}</td>
+                  <td>{{ mostrarEnPantalla.cupos }}</td>
+                  <td>{{ mostrarEnPantalla.documentos }}</td>
+                  <td>{{  mostrarEnPantalla.condicion_Renovacion }}</td>
+                  <td>{{ mostrarEnPantalla.estatus }}</td>
+                  <td>{{mostrarEnPantalla.fecha_Inicio }}</td>
+                  <td>{{ mostrarEnPantalla.fecha_Termino }}</td>
                 </tr>
               </tbody>
             </table><br>            
@@ -79,11 +79,11 @@
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Nombre_Institucion }}</td>
-                  <td>{{ mostrarEnPantalla.Tipo_Institucion }}</td>
-                  <td>{{ mostrarEnPantalla.Pais }}</td>
-                  <td>{{ mostrarEnPantalla.Alcance }}</td>
-                  <td>{{ mostrarEnPantalla.Nombre_Unidad_Gestora }}</td>
+                  <td>{{ mostrarEnPantalla.nombre_Institucion }}</td>
+                  <td>{{ mostrarEnPantalla.tipo_Institucion }}</td>
+                  <td>{{ mostrarEnPantalla.pais }}</td>
+                  <td>{{ mostrarEnPantalla.alcance }}</td>
+                  <td>{{ mostrarEnPantalla.nombre_Unidad_Gestora }}</td>
                 </tr>
               </tbody>
             </table>
@@ -101,8 +101,8 @@
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Nombre_Coordinador_Interno }}</td>
-                  <td>{{ mostrarEnPantalla.Correo_Coordinador_Interno }}</td>
+                  <td>{{ mostrarEnPantalla.nombre_Coordinador_Interno }}</td>
+                  <td>{{ mostrarEnPantalla.correo_Coordinador_Interno }}</td>
 
                 </tr>
               </tbody>
@@ -120,8 +120,8 @@
               </thead>
               <tbody >
                 <tr  class="listElements">
-                  <td>{{ mostrarEnPantalla.Nombre_Coordinador_Externo }}</td>
-                  <td>{{ mostrarEnPantalla.Correo_Coordinador_Externo }}</td>
+                  <td>{{ mostrarEnPantalla.nombre_Coordinador_Externo }}</td>
+                  <td>{{ mostrarEnPantalla.correo_Coordinador_Externo }}</td>
 
                 </tr>
               </tbody>

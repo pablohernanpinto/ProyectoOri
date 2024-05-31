@@ -105,13 +105,13 @@
           </tr>
         </thead>
         <tbody >
-          <tr (click)="openModal(convenio.ID_Convenio)" class="listElements" *ngFor="let convenio of convenios; let i = index">
-  
-            <td>{{ convenio.Nombre_Convenio }}</td>
-            <td>{{ convenio.Tipo_Convenio }}</td>
-            <td>{{ convenio.Vigencia }}</td>
-            <td>{{ convenio.Anio_Firma }}</td>
-            <td>{{ convenio.Tipo_Firma }}</td>
+          <tr (click)="openModal(convenio.iD_Convenio)" class="listElements" *ngFor="let convenio of convenios; let i = index">
+
+            <td>{{ convenio.nombre_Convenio }}</td>
+            <td>{{ convenio.tipo_Convenio }}</td>
+            <td>{{ convenio.vigencia }}</td>
+            <td>{{ convenio.anio_Firma }}</td>
+            <td>{{ convenio.tipo_Firma }}</td>
           </tr>
         </tbody>
       </table>
