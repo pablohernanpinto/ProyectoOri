@@ -13,7 +13,7 @@ export class AddUnidadGestoraComponent {
 
 
   constructor(public dialogRef: MatDialogRef<AddComComponent>,private http: HttpClient,private formBuilder: FormBuilder) { }
-  url = 'http://localhost:3000/api/';
+  url = 'https://localhost:7230/api/';
   
 
   selectedIndexIns: number | undefined;
@@ -32,8 +32,8 @@ export class AddUnidadGestoraComponent {
   }
 
    formulario = this.formBuilder.group({
-    id_institucion: '',
-    nombre_unidad: '',
+    idInstitucion: '',
+    nombreUnidad: '',
     nombreInstitucion: ''
 
   })
@@ -45,13 +45,13 @@ export class AddUnidadGestoraComponent {
   }
 
   hacerPeticion() {
-    this.http.get(this.url+'nombresInstituciones/').subscribe((data: any) => {
+    this.http.get(this.url+'Institucion/nombresInstituciones/').subscribe((data: any) => {
       this.Instituciones = data;
-//      console.log(this.Instituciones,'aqio')
+    console.log(this.Instituciones,'aqio')
       if (Array.isArray(this.Instituciones)) {
         for (let i = 0; i < this.Instituciones.length; i++) {
-          this.optionsInstituciones.push(this.Instituciones[i].Nombre_Institucion)
-          this.idInstituciones.push(this.Instituciones[i].ID_Institucion)
+          this.optionsInstituciones.push(this.Instituciones[i].nombre_Institucion)
+          this.idInstituciones.push(this.Instituciones[i].id_Institucion)
         }
     //  console.log( this.optionsInstituciones,'nombres',this.idInstituciones,'id')
        }
@@ -59,19 +59,20 @@ export class AddUnidadGestoraComponent {
   }
 
   obtenerIndex(){
-    this.formulario.value.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(String(this.formulario.value.nombreInstitucion))]
+    this.formulario.value.idInstitucion = this.idInstituciones[this.optionsInstituciones.indexOf(String(this.formulario.value.nombreInstitucion))]
   }
 
   addUnidadGestora() {
     this.obtenerIndex()
+    console.log(this.formulario.value )
     if (this.formulario.valid) {
-      this.http.post('http://localhost:3000/api/unidad_gestora', this.formulario.value).subscribe(
+      this.http.post(this.url+'UnidadGestora', this.formulario.value).subscribe(
           (data) => {
             alert('SE HA INGRESADO UNIDAD GESTORA');
             //  window.location.reload();
-      //        console.log(data);
+            //  console.log(data);
               window.location.reload();
-          
+            
             },
             (error) => {
               alert('ERROR AL INGRESAR UNIDAD GESTORA');

@@ -123,6 +123,7 @@ export class ModalGenerarReportesComponent {
 
   generarPDF() {
     if (true) {
+      console.log(this.data)
       // Hacer la solicitud al servidor para obtener el PDF
       this.http.post('http://localhost:3000/api/generarInformePDF', this.data, { responseType: 'arraybuffer' }).subscribe(
         (data: ArrayBuffer) => {

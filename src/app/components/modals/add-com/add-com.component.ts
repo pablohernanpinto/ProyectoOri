@@ -14,7 +14,7 @@ export class AddComComponent {
 
   constructor(private http: HttpClient,public dialog: MatDialog,public dialogRef: MatDialogRef<AddComComponent>,private formBuilder: FormBuilder) { }
   inicioDatepicker: any
-  url = 'http://localhost:3000/api/';
+  url = 'https://localhost:7230';
 
   formulario = this.formBuilder.group({
     id_unidad_gestora: '',
@@ -44,6 +44,24 @@ export class AddComComponent {
     nombre_coordinador_Interno:'',
 
   })
+
+  /* {
+  "id_unidad_gestora": 0,
+  "id_coordinador_externo": 0,
+  "id_coordinador_interno": 0,
+  "nombre_conv": "string",
+  "tipo_conv": "string",
+  "movilidad": "string",
+  "vigencia": "string",
+  "ano_firma": 0,
+  "tipo_firma": "string",
+  "cupos": 0,
+  "documentos": "string",
+  "condicion_renovacion": "string",
+  "estatus": "string",
+  "fecha_inicio": "string",
+  "fecha_termino": "string"
+} */
 
   //obtener coordinadores internos
 
@@ -83,19 +101,26 @@ export class AddComComponent {
 
     const indexSelect = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.value.nombre_institucion)]
     this.formulario.value.id_institucion = this.idInstitucion[this.NombreInstitucion.indexOf(this.formulario.value.nombre_institucion)]
-    this.coordinadoresDisponibles = this.coordinadores.filter((objeto) => objeto.ID_Institucion === indexSelect); 
-    this.unidadGestoraDisponible = this.unidadGestora.filter((objeto) => objeto.ID_Institucion === indexSelect); 
 
+
+    this.coordinadoresDisponibles = this.coordinadores.filter((objeto) => objeto.idInstitucion === indexSelect); 
+
+
+    this.unidadGestoraDisponible = this.unidadGestora.filter((objeto) => objeto.idInstitucion === indexSelect); 
+  console.log(this.unidadGestoraDisponible)
     for (let i = 0; i < this.coordinadoresDisponibles.length; i++) {
-      this.coordinadoresNombres.push(this.coordinadoresDisponibles[i].Nombre)
-      this.idCoordinadores.push(this.coordinadoresDisponibles[i].ID_Coordinador)
+      this.coordinadoresNombres.push(this.coordinadoresDisponibles[i].nombre)
+      this.idCoordinadores.push(this.coordinadoresDisponibles[i].idCoordinador)
     }
     
     for (let i = 0; i < this.unidadGestoraDisponible.length; i++) {
 
-      this.optionsUnidadGestora.push(this.unidadGestoraDisponible[i].Nombre_Unidad_Gestora)
-      this.idUnidadGestora.push(this.unidadGestoraDisponible[i].ID_Unidad_Gestora)
+      this.optionsUnidadGestora.push(this.unidadGestoraDisponible[i].nombreUnidad)
+      this.idUnidadGestora.push(this.unidadGestoraDisponible[i].idUnidadGestora)
     }
+
+
+
   }   
 
   IDunidadGestora(){
@@ -128,20 +153,23 @@ export class AddComComponent {
     this.IDinstitucion()
     this.formatFecha()
     this.coordinadoresAgregarID()
-    console.log(this.formulario.value)
+
        if (this.formulario.valid) {
-        this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
+        this.http.post(this.url+'/api/Convenio', this.formulario.value).subscribe(
             (data) => {
-
+              
               alert('CONVENIO INGRESADO');
-              window.location.reload(); 
-
+/*               window.location.reload(); 
+ */
 
             },
+            
             (error) => {
+              console.log(this.formulario.value)
               alert('ERROR AL INGRESAR CONVENIO');
               console.error(error);
-            }
+/*               window.location.reload(); 
+ */            }
           );
       } else {
         alert('INGRESO NO VÁLIDO');
@@ -156,32 +184,31 @@ export class AddComComponent {
 
 
   PedirInstitucion() {
-    this.http.get(this.url+'unidad_gestora/').subscribe((data: any) => {
+    this.http.get(this.url+'/api/UnidadGestora/').subscribe((data: any) => {
       this.unidadGestora = data;
     });
 
-    this.http.get(this.url+'instituciones/').subscribe((data: any) => {
+    this.http.get(this.url+'/api/Institucion/').subscribe((data: any) => {
       this.instituciones = data;
-      
       for (let i = 0; i < this.instituciones.length; i++) {
-        console.log(this.instituciones[i].Nombre_Institucion)
         if (this.instituciones[i].Nombre_Institucion != "Universidad Catolica Del Maule"){
-          this.NombreInstitucion.push(this.instituciones[i].Nombre_Institucion)
-          this.idInstitucion.push(this.instituciones[i].id)
+          this.NombreInstitucion.push(this.instituciones[i].nombreInstitucion)
+          this.idInstitucion.push(this.instituciones[i].idInstitucion)
   
-        }
+          }
         }
       });
 
-    this.http.get(this.url+'coordinadores/').subscribe((data: any) => {
+    this.http.get(this.url+'/api/coordinador').subscribe((data: any) => {
+      console.log(data,'thsi')
       this.coordinadores = data;
     });
 
-    this.http.get(this.url+'listarCoordinadoresInternos/').subscribe((data: any) => {
+    this.http.get(this.url+'/api/Coordinador/listarCoordinadoresInternos').subscribe((data: any) => {
       this.coordinadoresInternos = data;
       for (let i = 0; i < data.length; i++) {
-        this.ID_CoordinadorInterno.push(data[i].ID_Coordinador)
-        this.NombreCoordinadorInterno.push(data[i].Nombre)
+        this.ID_CoordinadorInterno.push(data[i].id_Coordinador)
+        this.NombreCoordinadorInterno.push(data[i].nombre)
         } 
     });
     

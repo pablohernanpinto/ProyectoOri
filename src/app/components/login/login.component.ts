@@ -47,9 +47,21 @@ export class LoginComponent {
   
 
   login(formContact: NgForm) {
-    
 
-    if (formContact.valid) {
+
+          this.data = {
+            ID_USUARIO: 0,
+            EMAIL: "rodrigo@admin.com",
+            PRIVILEGIOS: "si"
+            } 
+          
+          let user = this.loginService.login(this.data);
+          if (!user){
+            alert('El usuario o la contraseña no son correctos');
+          }else{
+            this.router.navigateByUrl('/page');
+          }
+/*     if (formContact.valid) {
 
       this.http.post('http://localhost:3000/api/usuarios/login', this.formulario).subscribe(
           (data) => {
@@ -70,7 +82,7 @@ export class LoginComponent {
         );
     } else {
       alert('INGRESO NO VALIDO');
-    }
+    } */
 }
 
 }

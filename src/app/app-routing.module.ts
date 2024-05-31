@@ -12,8 +12,8 @@ import { FormulariosComponent } from './components/formularios/formularios.compo
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'page', component: PageComponent, canActivate: [loginGuard]}, // ADMIN + USUARIO PRIVILEGIO 
-  { path: 'formulario', component: FormulariosComponent, canActivate: [loginGuard]},
+  { path: 'page', component: PageComponent/* , canActivate: [loginGuard] */}, // ADMIN + USUARIO PRIVILEGIO 
+  { path: 'formulario', component: FormulariosComponent/* , canActivate: [loginGuard] */},
   { path: '**', component: PageNotFoundComponent },
 ];
 

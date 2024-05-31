@@ -17,10 +17,10 @@ export class AddInstitucionComponent {
 
 
   formulario = this.formBuilder.group({
-    nombre_inst: '',
+    nombreInstitucion: '',
     pais: '',
     alcance: '',
-    tipo_institucion: '',
+    tipoInstitucion: '',
   })
 
   inputValue: string = '';
@@ -51,7 +51,8 @@ export class AddInstitucionComponent {
       this.formulario.value.alcance = 'Nacional'
     }
     if (this.formulario.valid) {
-      this.http.post('http://localhost:3000/api/instituciones', this.formulario.value).subscribe(
+      console.log(this.formulario.value)
+      this.http.post('https://localhost:7230/api/Institucion', this.formulario.value).subscribe(
           (data) => {
             alert('SE A INGRESADO INSTITUCION');
           //  window.location.reload();

@@ -19,7 +19,7 @@ export class AddCoordinadorComponent {
 
 
   formulario = this.formBuilder.group({
-    id_institucion: '',
+    idInstitucion: '',
     tipo: '',
     nombre: '',
     correo: '',
@@ -37,12 +37,12 @@ export class AddCoordinadorComponent {
 
   addCoordinador() {
     if (this.formulario.valid) {
-      this.formulario.value.id_institucion = this.idInstituciones[this.optionsInstituciones.indexOf(String(this.formulario.value.nombre_institucion))]
+      this.formulario.value.idInstitucion = this.idInstituciones[this.optionsInstituciones.indexOf(String(this.formulario.value.nombre_institucion))]
       if(this.formulario.value.tipo == 'Interno'){
         this.formulario.value.nombre_institucion = 'Univesidad Catolica Del Maule'
-        this.formulario.value.id_institucion = '1'
+        this.formulario.value.idInstitucion = '1'
       }
-       this.http.post('http://localhost:3000/api/coordinadores', this.formulario.value).subscribe(
+       this.http.post('https://localhost:7230/api/Coordinador', this.formulario.value).subscribe(
           (data) => {
             alert('SE HA INGRESADO COORDINADOR');
             window.location.reload();
@@ -59,13 +59,14 @@ export class AddCoordinadorComponent {
   }
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/';
-    this.http.get(url+'nombresInstituciones/').subscribe((data: any) => {
+    const url = 'https://localhost:7230/api/Institucion/nombresInstituciones';
+    this.http.get(url).subscribe((data: any) => {
+      console.log(data)
       this.convenios = data;
       if (Array.isArray(this.convenios)) {
         for (let i = 0; i < this.convenios.length; i++) {
-          this.optionsInstituciones.push(this.convenios[i].Nombre_Institucion)
-          this.idInstituciones.push(this.convenios[i].ID_Institucion)
+          this.optionsInstituciones.push(this.convenios[i].nombre_Institucion)
+          this.idInstituciones.push(this.convenios[i].id_Institucion)
         }
       }
     });
