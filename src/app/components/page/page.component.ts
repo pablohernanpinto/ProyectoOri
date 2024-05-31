@@ -100,6 +100,7 @@ last: any;
     
     this.dataSharingService.img$.subscribe((img) => {this.img = img})
     this.Vence = []
+    console.log(this.Vence,'esteeeeeeeeeeeeeee')
   }
 
 
@@ -115,7 +116,7 @@ last: any;
 
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/convenios';
+    const url = 'https://localhost:7230/api/Convenio/';
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
     });

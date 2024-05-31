@@ -115,34 +115,40 @@ export class AllConveniosComponent {
     this.EnviarData()
     for (let i = 0; i < this.convenios.length; i++) {
 
-      const partesFecha = this.convenios[i].fecha_Termino.split('/');
-      const year = parseInt('20' + partesFecha[2], 10); // Convertir a número
+      const partesFecha = this.convenios[i].fecha_Termino.split('-');
+      const year = parseInt(partesFecha[2], 10); // Convertir a número
       const month = parseInt(partesFecha[1], 10) - 1; // Convertir a número y restar 1
       const day = parseInt(partesFecha[0], 10); // Convertir a número
       
-      const fecha = new Date(year, month, day);
+      const fechaTermino = new Date(year, month, day);
 
 
-      const fechaCuatroMesesAntes = new Date(fecha);
-      const fechaSeisMesesAntes = new Date(fecha);
-      fechaCuatroMesesAntes.setMonth(fecha.getMonth() - 4);      
-      fechaSeisMesesAntes.setMonth(fecha.getMonth() - 6);  
+      const fechaCuatroMesesAntes = new Date(fechaTermino);
+      const fechaSeisMesesAntes = new Date(fechaTermino);
+      fechaCuatroMesesAntes.setMonth(fechaTermino.getMonth() - 4);      
+      fechaSeisMesesAntes.setMonth(fechaTermino.getMonth() - 6);  
 
       const fechaActual = new Date();
 
+      //para pruebas
+      const fecha1 = new Date(fechaTermino);
+      const fecha2 = new Date(fechaTermino);
+      fecha2.setMonth(fecha2.getMonth() - 4)
+
+      console.log(fechaCuatroMesesAntes,'4 antes',fechaActual,'fecha actual' )
   
-      if (fechaCuatroMesesAntes < fechaActual) {
+      if (fechaCuatroMesesAntes < fechaActual ) {
 
         this.conveniosCuatroMeses.push({
-          ID_Convenio: this.convenios[i].ID_Convenio ,
+          ID_Convenio: this.convenios[i].iD_Convenio ,
           Fecha_Termino: this.convenios[i].fecha_Termino,
           Nombre_Convenio: this.convenios[i].nombre_Convenio,
           TipoAlerta: '4 meses'
         });
       }
-      if (fechaSeisMesesAntes < fechaActual && fechaCuatroMesesAntes > fechaActual ) {
+      else if (fechaSeisMesesAntes < fechaActual && fechaCuatroMesesAntes > fechaActual ) {
         this.conveniosSeisMeses.push({
-          ID_Convenio: this.convenios[i].ID_Convenio ,
+          ID_Convenio: this.convenios[i].iD_Convenio ,
           Fecha_Termino: this.convenios[i].fecha_Termino,
           Nombre_Convenio: this.convenios[i].nombre_Convenio,
           TipoAlerta: '6 meses'
@@ -164,6 +170,7 @@ export class AllConveniosComponent {
     else{
       this.dataSharingService.setImg('notification2.png')
     }
+    console.log(this.conveniosCuatroMeses,'cuatro meses',this.conveniosSeisMeses,'seis meses')
     this.dataSharingService.setLista1(this.conveniosCuatroMeses);
     this.dataSharingService.setLista2(this.conveniosSeisMeses);
 

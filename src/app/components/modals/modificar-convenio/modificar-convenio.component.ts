@@ -198,20 +198,20 @@ export class ModificarConvenioComponent {
     this.formatFecha()
     this.addCampos()
     this.arreglarEnvio()
-    const url = 'http://localhost:7230/api/convenios/'+String(this.data.formulario.iD_Convenio);
+    const url = 'https://localhost:7230/api/Convenio/'+String(this.data.formulario.iD_Convenio);
     console.log(this.formularioEnviar,'esto es lo que se envia')
     if (this.formularioModificar.valid) {
       this.http.put(url,this.formularioEnviar).subscribe(
         (data) => {
           alert('SE HA ACTUALIZADO LA INSTITUCIÓN');
           //console.log(data);
-          //window.location.reload(); 
+        //  window.location.reload(); 
         },
         (error) => {
 
           console.error(error);
           alert('SE HA ACTUALIZADO LA INSTITUCIÓN');
-          //window.location.reload(); 
+        //  window.location.reload(); 
         }
       );
     } else {
