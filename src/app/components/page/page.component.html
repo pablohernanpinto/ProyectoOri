@@ -23,9 +23,9 @@
     
         <div class="derecha">
 
-            <img  class="icono" (click)="ModalUsuario()" src="./../../../assets/PERFIL.png"   style="margin: 10px; padding: 3px;" alt="Imagen del menú">
+            <img *ngIf="loginService.getUserRole() === 'si'"  class="icono" (click)="ModalUsuario()" src="./../../../assets/PERFIL.png"   style="margin: 10px; padding: 3px;" alt="Imagen del menú">
 
-            <img  class="icono" (click)="arregloDeAlertas()" src="./../../../assets/{{img}}" [matMenuTriggerFor]="menu"  style="margin: 10px;" alt="Imagen del menú">
+            <img *ngIf="loginService.getUserRole() === 'si'" class="icono" (click)="arregloDeAlertas()" src="./../../../assets/{{img}}" [matMenuTriggerFor]="menu"  style="margin: 10px;" alt="Imagen del menú">
             
             <mat-menu #menu="matMenu">
                 <button (click)="seleccionarAlerta(i)" mat-menu-item *ngFor="let elemento of alertas; let i = index"  >

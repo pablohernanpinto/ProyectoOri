@@ -20,10 +20,10 @@
                 </thead>
                 <tbody >
                   <tr  class="listElements" *ngFor="let usuario of usuarios; let i = index">
-                    <td>{{ usuario.Nombre }}</td>
-                    <td>{{ usuario.Apellido }}</td>
-                    <td>{{ usuario.Email }}</td>
-                    <td>{{ usuario.Privilegios }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.apellido }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.privilegios }}</td>
                     <td><button mat-raised-button color="warn" *ngIf="loginService.getUserRole() === 'si'" (click)="delete(usuario.ID_Usuario)">Eliminar</button></td>
 <!--                <td>{{ usuario.ID_Usuario }}</td>
 

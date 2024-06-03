@@ -53,7 +53,7 @@ export class UsersComponent {
   }
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/usuarios';
+    const url = 'https://localhost:7230/api/Usuario/';
     this.http.get(url).subscribe((data: any) => {
       this.usuarios = data
     })

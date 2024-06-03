@@ -44,7 +44,20 @@ export class LoginComponent {
   logout() {
     this.loginService.logout(); // Llama al método logout del servicio
   }
-  
+  loginVisita(){
+    this.data = {
+      ID_USUARIO: 9999,
+      EMAIL: "visitante@admin",
+      PRIVILEGIOS: "no"
+      } 
+    
+    let user = this.loginService.login(this.data);
+    if (!user){
+      alert('El usuario o la contraseña no son correctos');
+    }else{
+      this.router.navigateByUrl('/page');
+    }
+  }
 
   login(formContact: NgForm) {
 

@@ -69,7 +69,7 @@ last: any;
 
   arregloDeAlertas(){
     this.alertas = []
-    console.log(this.alertas)
+
     for (let i = 0; i < this.Vence.length; i++) {
 
       this.alertas.push({ Nombre: this.Vence[i].Nombre_Convenio,Fecha:this.Vence[i].Fecha_Termino ,Tipo: this.Vence[i].TipoAlerta });
@@ -100,7 +100,7 @@ last: any;
     
     this.dataSharingService.img$.subscribe((img) => {this.img = img})
     this.Vence = []
-    console.log(this.Vence,'esteeeeeeeeeeeeeee')
+
   }
 
 

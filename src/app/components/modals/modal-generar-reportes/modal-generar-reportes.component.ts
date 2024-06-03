@@ -5,50 +5,64 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 
 interface Convenio {
-  Alcance: string;
-  Anio_Firma: number;
-  Condicion_Renovacion: string;
-  Correo_Coordinador_Externo: string;
-  Correo_Coordinador_Interno: string;
-  Cupos: number;
-  Documentos: string;
-  Estatus: string;
-  Fecha_Inicio: string;
-  Fecha_Termino: string;
-  ID_Convenio: number;
-  ID_Coordinador_Externo: number;
-  ID_Coordinador_Interno: number;
-  ID_Institucion: number;
-  ID_Unidad_Gestora: number;
-  Movilidad: string;
-  Nombre_Convenio: string;
-  Nombre_Coordinador_Externo: string;
-  Nombre_Coordinador_Interno: string;
-  Nombre_Institucion: string;
-  Nombre_Unidad_Gestora: string;
-  Pais: string;
-  Tipo_Convenio: string;
-  Tipo_Coordinador_Externo: string;
-  Tipo_Coordinador_Interno: string;
-  Tipo_Firma: string;
-  Tipo_Institucion: string;
-  Vigencia: string;
-
-  ID_CONVENIO: number;
-  ID_UNIDAD_GESTORA: number,
-  NOMBRE_CONV: string,
-  TIPO_CONV: string,
-  MOVILIDAD: string,
-  VIGENCIA: string,
-  ANO_FIRMA: number,
-  TIPO_FIRMA: string,
-  CUPOS: number,
-  DOCUMENTOS: string,
-  CONDICION_RENOVACION: string,
-  ESTATUS: string,
-  FECHA_INICIO: string,
-  FECHA_TERMINO: string,
+  alcance: string;
+  anio_Firma: number;
+  condicion_Renovacion: string;
+  correo_Coordinador_Externo: string;
+  correo_Coordinador_Interno: string;
+  estatus: string;
+  iD_Convenio: number;
+  iD_Coordinador_Externo: number;
+  iD_Coordinador_Interno: number;
+  iD_Institucion: number;
+  nombre_Convenio: string;
+  nombre_Coordinador_Externo: string;
+  nombre_Coordinador_Interno: string;
+  nombre_Institucion: string;
+  nombre_Unidad_Gestora: string;
+  pais: string;
+  tipo_Convenio: string;
+  tipo_Coordinador_Externo: string;
+  tipo_Coordinador_Interno: string;
+  tipo_Institucion: string;
+  iD_Unidad_Gestora: number,
+  movilidad: string,
+  vigencia: string,
+  tipo_Firma: string,
+  cupos: number,
+  documentos: string,
+  fecha_Inicio: string,
+  fecha_Termino: string,
 }
+
+/* [ { "iD_Convenio": 3,
+ "nombre_Convenio": "",
+  "tipo_Convenio": "caca",
+   "movilidad": "SI",
+    "vigencia": "123", 
+    "anio_Firma": 123, 
+    "tipo_Firma": "Fisica",
+     "cupos": 123,
+      "documentos": "123", 
+      "condicion_Renovacion": "Indefinido",
+       "estatus": "Activo", 
+       "fecha_Inicio": "08-05-2024", 
+       "fecha_Termino": "31-08-2024",
+        "iD_Institucion": 2,
+         "nombre_Institucion": "asd123",
+          "iD_Unidad_Gestora": 5, 
+          "nombre_Unidad_Gestora": "asd", 
+          "pais": "asd123",
+           "alcance": "Internacional",
+            "tipo_Institucion": "as123",
+             "iD_Coordinador_Externo": 2,
+              "tipo_Coordinador_Externo": "Externo",
+               "nombre_Coordinador_Externo": "asd",
+                "correo_Coordinador_Externo": "asdasdas", 
+                "iD_Coordinador_Interno": 3, 
+                "tipo_Coordinador_Interno": "Interno", 
+                "nombre_Coordinador_Interno": "qwewqewq", 
+                "correo_Coordinador_Interno": "asdasdasd" }, */
 
 @Component({
   selector: 'app-modal-generar-reportes',
@@ -63,54 +77,16 @@ export class ModalGenerarReportesComponent {
     @Inject(MAT_DIALOG_DATA) public data: Convenio[],    
   ) { }
   
+  convenios = this.data
   inputValue: string = '';
   ArrayEnviar:any[] = [];
   ngOnInit() {
 
-    this.arregloDeData();
-
-  }
-
-  arregloDeData() {
-    // Crear un nuevo array para almacenar los elementos modificados
-    const newArray = [];
-  
-    for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i]) {
-        // Asignar nuevos nombres a las propiedades
-        this.data[i].ID_CONVENIO = this.data[i].ID_Convenio;
-        this.data[i].ID_UNIDAD_GESTORA = this.data[i].ID_Unidad_Gestora;
-        this.data[i].NOMBRE_CONV = this.data[i].Nombre_Convenio;
-        this.data[i].TIPO_CONV = this.data[i].Tipo_Convenio;
-        this.data[i].MOVILIDAD = this.data[i].Movilidad;
-        this.data[i].VIGENCIA = this.data[i].Vigencia;
-        this.data[i].ANO_FIRMA = this.data[i].Anio_Firma;
-        this.data[i].TIPO_FIRMA = this.data[i].Tipo_Firma;
-        this.data[i].CUPOS = this.data[i].Cupos;
-        this.data[i].DOCUMENTOS = this.data[i].Documentos;
-        this.data[i].CONDICION_RENOVACION = this.data[i].Condicion_Renovacion;
-        this.data[i].ESTATUS = this.data[i].Estatus;
-        this.data[i].FECHA_INICIO = this.data[i].Fecha_Inicio;
-        this.data[i].FECHA_TERMINO = this.data[i].Fecha_Termino;
-  
-        // Eliminar propiedades antiguas
-  
-        // Agregar el elemento modificado al nuevo array
-
-      }
-    }
-
-    for (let i = 0; i < this.data.length; i++) {
-      this.ArrayEnviar.push(this.data[i])
-      
-    }
-    
   }
 
   eliminarDeLista(id:number){
-    console.log(this.data)
-    this.data = this.data.filter(convenio => convenio.ID_Convenio !== id);
-  }
+    this.data = this.data.filter(convenio => convenio.iD_Convenio !== id);
+  } 
 
 // Recorrer el objeto y agregar elementos al nuevo array
   
@@ -125,7 +101,7 @@ export class ModalGenerarReportesComponent {
     if (true) {
       console.log(this.data)
       // Hacer la solicitud al servidor para obtener el PDF
-      this.http.post('http://localhost:3000/api/generarInformePDF', this.data, { responseType: 'arraybuffer' }).subscribe(
+      this.http.post('https://localhost:7230/api/Convenio/generarInformePdf', this.data, { responseType: 'arraybuffer' }).subscribe(
         (data: ArrayBuffer) => {
           // Crear un Blob a partir de los datos del PDF
           const blob = new Blob([data], { type: 'application/pdf' });

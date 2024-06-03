@@ -60,7 +60,7 @@ export class AllConveniosComponent {
 
 
   openModal(Index: number) {
-    console.log(Index,'esto es lo que envio')
+
     const dialogRef = this.dialog.open(ModalComponent, {data: {Index:Index}}); 
   }
     
@@ -83,7 +83,7 @@ export class AllConveniosComponent {
   }
 
   Reporte(){
-
+    console.log(this.convenios,' el que se envia')
     const dialogRef = this.dialog.open(ModalGenerarReportesComponent,{data:this.convenios});
 
   }
@@ -135,7 +135,6 @@ export class AllConveniosComponent {
       const fecha2 = new Date(fechaTermino);
       fecha2.setMonth(fecha2.getMonth() - 4)
 
-      console.log(fechaCuatroMesesAntes,'4 antes',fechaActual,'fecha actual' )
   
       if (fechaCuatroMesesAntes < fechaActual ) {
 
@@ -170,7 +169,7 @@ export class AllConveniosComponent {
     else{
       this.dataSharingService.setImg('notification2.png')
     }
-    console.log(this.conveniosCuatroMeses,'cuatro meses',this.conveniosSeisMeses,'seis meses')
+
     this.dataSharingService.setLista1(this.conveniosCuatroMeses);
     this.dataSharingService.setLista2(this.conveniosSeisMeses);
 
@@ -243,7 +242,7 @@ export class AllConveniosComponent {
     this.http.get(url).subscribe((data: any) => {
       this.convenios = data;
       this.conveniosTodo = data
-      
+
       this.alarma()
 
       this.data = data
@@ -262,7 +261,7 @@ export class AllConveniosComponent {
       this.formulario.nombre_Coordinador_Interno = [...new Set(data.map((convenio: { nombre_Coordinador_Interno: any; }) => convenio.nombre_Coordinador_Interno))]; 
       this.formulario.tipo_Institucion = [...new Set(data.map((convenio: { tipo_Institucion: any; }) => convenio.tipo_Institucion))];
       
-
+      console.log(data,' impersion de data')
     });
   }
 

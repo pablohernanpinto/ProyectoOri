@@ -30,24 +30,25 @@
                   <tbody >
                     <tr class="listElements" *ngFor="let convenio of data; let i = index">
                       <td>{{ i+1 }}</td>
-                      <td>{{ convenio.Nombre_Convenio }}</td>
-                      <td>{{ convenio.Tipo_Convenio }}</td>
-                      <td>{{ convenio.Movilidad }}</td>
-                      <td>{{ convenio.Anio_Firma }}</td>
-                      <td>{{ convenio.Tipo_Firma }}</td>
-                      <td>{{ convenio.Cupos }}</td>
-                      <td>{{ convenio.Documentos }}</td>
-                      <td>{{ convenio.Condicion_Renovacion }}</td>
-                      <td>{{ convenio.Estatus}}</td>
-                      <td>{{ convenio.Fecha_Inicio }}</td>
-                      <td>{{ convenio.Fecha_Termino }}</td>
-                      <button mat-raised-button color="warn" (click)="eliminarDeLista(convenio.ID_Convenio)" type="submit">Eliminar</button>
+                      <td>{{ convenio.nombre_Convenio }}</td>
+                      <td>{{ convenio.tipo_Convenio }}</td>
+                      <td>{{ convenio.movilidad }}</td>
+                      <td>{{ convenio.anio_Firma }}</td>
+                      <td>{{ convenio.tipo_Firma }}</td>
+                      <td>{{ convenio.cupos }}</td>
+                      <td>{{ convenio.documentos }}</td>
+                      <td>{{ convenio.condicion_Renovacion }}</td>
+                      <td>{{ convenio.estatus}}</td>
+                      <td>{{ convenio.fecha_Inicio }}</td>
+                      <td>{{ convenio.fecha_Termino }}</td>
+                      <button mat-raised-button color="warn" (click)="eliminarDeLista(convenio.iD_Convenio)"  type="submit">Eliminar</button>
                     </tr>
                   </tbody>
                 </table>
               </div>      
             <br><br>
-            <button mat-raised-button color="primary" (click)="generarPDF()" type="submit">Generar PDF</button>
+
+            <button mat-raised-button color="primary"  (click)="generarPDF()" type="submit">Generar PDF</button>
 <br><br>
 
                   <br>
@@ -57,3 +58,65 @@
   </div>
   
 
+<!-- [
+    {
+        "iD_Convenio": 3,
+        "nombre_Convenio": "",
+        "tipo_Convenio": "caca",
+        "movilidad": "SI",
+        "vigencia": "123",
+        "anio_Firma": 123,
+        "tipo_Firma": "Fisica",
+        "cupos": 123,
+        "documentos": "123",
+        "condicion_Renovacion": "Indefinido",
+        "estatus": "Activo",
+        "fecha_Inicio": "08-05-2024",
+        "fecha_Termino": "31-08-2024",
+        "iD_Institucion": 2,
+        "nombre_Institucion": "asd123",
+        "iD_Unidad_Gestora": 5,
+        "nombre_Unidad_Gestora": "asd",
+        "pais": "asd123",
+        "alcance": "Internacional",
+        "tipo_Institucion": "as123",
+        "iD_Coordinador_Externo": 2,
+        "tipo_Coordinador_Externo": "Externo",
+        "nombre_Coordinador_Externo": "asd",
+        "correo_Coordinador_Externo": "asdasdas",
+        "iD_Coordinador_Interno": 3,
+        "tipo_Coordinador_Interno": "Interno",
+        "nombre_Coordinador_Interno": "qwewqewq",
+        "correo_Coordinador_Interno": "asdasdasd"
+    },
+    {
+        "iD_Convenio": 4,
+        "nombre_Convenio": "caca",
+        "tipo_Convenio": "6 meses",
+        "movilidad": "SI",
+        "vigencia": "123",
+        "anio_Firma": 123,
+        "tipo_Firma": "Fisica",
+        "cupos": 123,
+        "documentos": "123",
+        "condicion_Renovacion": "Solicitar seis meses antes",
+        "estatus": "Activo",
+        "fecha_Inicio": "02-10-2023",
+        "fecha_Termino": "30-11-2024",
+        "iD_Institucion": 2,
+        "nombre_Institucion": "asd123",
+        "iD_Unidad_Gestora": 5,
+        "nombre_Unidad_Gestora": "asd",
+        "pais": "asd123",
+        "alcance": "Internacional",
+        "tipo_Institucion": "as123",
+        "iD_Coordinador_Externo": 2,
+        "tipo_Coordinador_Externo": "Externo",
+        "nombre_Coordinador_Externo": "asd",
+        "correo_Coordinador_Externo": "asdasdas",
+        "iD_Coordinador_Interno": 1,
+        "tipo_Coordinador_Interno": "Interno",
+        "nombre_Coordinador_Interno": "asd",
+        "correo_Coordinador_Interno": "sd"
+    }
+] -->

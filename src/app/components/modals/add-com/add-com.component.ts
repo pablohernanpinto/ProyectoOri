@@ -107,7 +107,7 @@ export class AddComComponent {
 
 
     this.unidadGestoraDisponible = this.unidadGestora.filter((objeto) => objeto.idInstitucion === indexSelect); 
-  console.log(this.unidadGestoraDisponible)
+
     for (let i = 0; i < this.coordinadoresDisponibles.length; i++) {
       this.coordinadoresNombres.push(this.coordinadoresDisponibles[i].nombre)
       this.idCoordinadores.push(this.coordinadoresDisponibles[i].idCoordinador)
@@ -200,7 +200,7 @@ export class AddComComponent {
       });
 
     this.http.get(this.url+'/api/coordinador').subscribe((data: any) => {
-      console.log(data,'thsi')
+
       this.coordinadores = data;
     });
 
