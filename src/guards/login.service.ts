@@ -21,6 +21,7 @@ export class LoginService {
   login(data: Object) {
     if (data) {
       this.session = data;
+      console.log(this.session,'esta es la sesison')
       localStorage.setItem('session', JSON.stringify(this.session));
       return true; // Devuelve verdadero si el inicio de sesión es exitoso.
     }
@@ -45,14 +46,14 @@ export class LoginService {
   // Método para verificar el rol del usuario
   getUserRole(): string | undefined {
     
-    return this.session ? this.session.PRIVILEGIOS : undefined;
+    return this.session ? this.session.privilegios : undefined;
   }
   getUserName():string | undefined {
-    return this.session ? this.session.EMAIL : undefined;
+    return this.session ? this.session.email : undefined;
   }
   getUserID():string | undefined {
 
-    return this.session ? this.session.ID_USUARIO : undefined;
+    return this.session ? this.session.iD_USUARIO : undefined;
   }
 
   

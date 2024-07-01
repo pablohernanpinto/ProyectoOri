@@ -32,13 +32,11 @@ export class ModificaUsuarioComponent {
   hacerPeticion() {
     const id = Number(this.loginService.getUserID());
 
-
-    this.http.get('http://localhost:3000/api/usuarios/').subscribe((data: any) => {
+    this.http.get('https://localhost:7230/api/Usuario/').subscribe((data: any) => {
       // Utiliza el método find para buscar el objeto con el ID_Usuario correspondiente
-
-    const convenioConsultado = data.find((convenio: any) => convenio.ID_Usuario === id);
+    const convenioConsultado = data.find((convenio: any) => convenio.idUsuario === id);
+    
     this.usuario = convenioConsultado
-
     });
     
   }

@@ -67,7 +67,7 @@ export class ModificaUsuarioModalComponent {
 
   updateConvenio() {
     this.arregloEntrada()
-      let url = 'http://localhost:3000/api/usuarios/'+String(this.Informacion.ID_Usuario)
+      let url = 'https://localhost:7230/api/Usuario/'+String(this.Informacion.ID_Usuario)
 
   
   

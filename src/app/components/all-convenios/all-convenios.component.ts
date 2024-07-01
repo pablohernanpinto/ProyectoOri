@@ -83,7 +83,7 @@ export class AllConveniosComponent {
   }
 
   Reporte(){
-    console.log(this.convenios,' el que se envia')
+
     const dialogRef = this.dialog.open(ModalGenerarReportesComponent,{data:this.convenios});
 
   }
@@ -261,7 +261,6 @@ export class AllConveniosComponent {
       this.formulario.nombre_Coordinador_Interno = [...new Set(data.map((convenio: { nombre_Coordinador_Interno: any; }) => convenio.nombre_Coordinador_Interno))]; 
       this.formulario.tipo_Institucion = [...new Set(data.map((convenio: { tipo_Institucion: any; }) => convenio.tipo_Institucion))];
       
-      console.log(data,' impersion de data')
     });
   }
 

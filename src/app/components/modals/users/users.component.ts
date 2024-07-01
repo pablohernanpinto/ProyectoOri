@@ -45,7 +45,7 @@ export class UsersComponent {
   delete(Id: number){
   console.log(Id)  
 
-      this.http.delete('http://localhost:3000/api/usuarios/'+Id)
+      this.http.delete('https://localhost:7230/api/Usuario/'+Id)
     .subscribe();
     this.toast.error({detail:"ERROR",summary:'Your Error Message',sticky:true});
     alert('SE ELIMINO EL USUARIO');
@@ -56,6 +56,7 @@ export class UsersComponent {
     const url = 'https://localhost:7230/api/Usuario/';
     this.http.get(url).subscribe((data: any) => {
       this.usuarios = data
+      console.log(this.usuarios)
     })
   }
 }
