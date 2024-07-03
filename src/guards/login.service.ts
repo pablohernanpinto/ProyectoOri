@@ -21,7 +21,7 @@ export class LoginService {
   login(data: Object) {
     if (data) {
       this.session = data;
-      console.log(this.session,'esta es la sesison')
+
       localStorage.setItem('session', JSON.stringify(this.session));
       return true; // Devuelve verdadero si el inicio de sesión es exitoso.
     }

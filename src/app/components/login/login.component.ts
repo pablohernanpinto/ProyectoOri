@@ -75,7 +75,6 @@ export class LoginComponent {
             this.router.navigateByUrl('/page');
           } */
      if (formContact.valid) {
-      
       this.http.post('https://localhost:7230/api/Usuario/Login', this.formulario).subscribe(
           (data) => {
           // Redirigir a la página principal después de un inicio de sesión exitoso
@@ -93,6 +92,7 @@ export class LoginComponent {
           }
         );
     } else {
+
       alert('INGRESO NO VALIDO');
     } 
 }

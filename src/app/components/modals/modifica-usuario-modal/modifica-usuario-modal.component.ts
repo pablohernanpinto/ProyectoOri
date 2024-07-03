@@ -35,7 +35,7 @@ export class ModificaUsuarioModalComponent {
 
   ngOnInit() {
     this.Informacion = this.data
-
+    console.log(this.data)
 
   }
 
@@ -48,43 +48,44 @@ export class ModificaUsuarioModalComponent {
 
     /*     this.formulario.value.apellido = this.Informacion.Apellido */
     if (this.formulario.value.nombre == ''){
-      this.formulario.value.nombre = this.Informacion.Nombre
+      this.formulario.value.nombre = this.Informacion.nombre
     }
     if (this.formulario.value.apellido == ''){
-      this.formulario.value.apellido = this.Informacion.Apellido
+      this.formulario.value.apellido = this.Informacion.apellido
     }
     if (this.formulario.value.contrasena == ''){
-      this.formulario.value.contrasena = this.Informacion.Contrasena
+      this.formulario.value.contrasena = this.Informacion.contrasena
     }
     if (this.formulario.value.email == ''){
-      this.formulario.value.email = this.Informacion.Email
+      this.formulario.value.email = this.Informacion.email
     }
     if (this.formulario.value.privilegios == ''){
-      this.formulario.value.privilegios = this.Informacion.Privilegios
+      this.formulario.value.privilegios = this.Informacion.privilegios
     }
 
   }
 
   updateConvenio() {
     this.arregloEntrada()
-      let url = 'https://localhost:7230/api/Usuario/'+String(this.Informacion.ID_Usuario)
+      let url = 'https://localhost:7230/api/Usuario/'+String(this.Informacion.idUsuario)
 
-  
-  
+      console.log(url)
+
       //console.log(this.formularioModificar.value)
 
 
         this.http.put(url,this.formulario.value).subscribe(
           (data) => {
+          
             alert('SE HA ACTUALIZADO USUARIO');
-            console.log(data);
-            window.location.reload(); 
+            console.log(data,'aquii');
+          //  window.location.reload(); 
           },
           (error) => {
   
             console.error(error);
-            alert('SE HA ACTUALIZADO USUARIO');
-            window.location.reload(); 
+            alert('ERROR EN LA MODIFICACION');
+          //  window.location.reload(); 
           }
         );  
     }

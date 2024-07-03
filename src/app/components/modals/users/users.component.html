@@ -24,7 +24,7 @@
                     <td>{{ usuario.apellido }}</td>
                     <td>{{ usuario.email }}</td>
                     <td>{{ usuario.privilegios }}</td>
-                    <td><button mat-raised-button color="warn" *ngIf="loginService.getUserRole() === 'si'" (click)="delete(usuario.ID_Usuario)">Eliminar</button></td>
+                    <td><button mat-raised-button color="warn" *ngIf="loginService.getUserRole() === 'si'" (click)="delete(usuario.idUsuario)">Eliminar</button></td>
 <!--                <td>{{ usuario.ID_Usuario }}</td>
 
  -->                    

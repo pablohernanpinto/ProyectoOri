@@ -23,6 +23,16 @@ export class AddUsuarioComponent {
     privilegios: '',
   })
 
+/* {
+  "idUsuario": 0,
+  "email": "string",
+  "contrasena": "string",
+  "nombre": "string",
+  "apellido": "string",
+  "vigencia": "string",
+  "privilegios": "string"
+} */
+
 
 
   closeDialog() {
@@ -32,12 +42,15 @@ export class AddUsuarioComponent {
   }
 
   addUsuarios() {
+    /* 
+/api/Usuario/register */
     if (this.formulario.valid) {
-      this.http.post('http://localhost:3000/api/usuarios/register', this.formulario.value).subscribe(
+      console.log(this.formulario.value)
+      this.http.post('https://localhost:7230/api/Usuario/register', this.formulario.value).subscribe(
           (data) => {
             alert('SE HA INGRESADO EL USUARIO');
             console.log(data);
-            window.location.reload();
+           // window.location.reload();
 
           },
           (error) => {
